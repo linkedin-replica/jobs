@@ -32,7 +32,7 @@ ArangoDB arangoDB;
         // TODO
     }
 
-    public static void main(String [] srgs){
+    public List<Job> getAppliedjobs(){
 
     }
 }

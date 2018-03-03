@@ -1,2 +1,3 @@
-db.name=linkedin
+db.name=Linkedin
 collection.companies.name=companies
+collections.jobs.name=jobs
