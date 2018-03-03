@@ -1,6 +1,6 @@
 package models;
 
-public class job {
+public class Job {
           private   String jobID ;
     private   String industryType;
     private         String employmentType;

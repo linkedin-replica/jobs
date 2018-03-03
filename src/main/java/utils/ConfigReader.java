@@ -12,9 +12,17 @@ public class ConfigReader {
 
     private volatile static ConfigReader instance;
 
+    public static boolean isTesting;
+    private Properties properties;
+
+    public ConfigReader(String configFileName) throws IOException {
+        properties = new Properties();
+        properties.load(new FileInputStream("src/main/resources/config/" + configFileName));
+    }
+
     private ConfigReader() throws IOException {
         populateWithConfig("commands.config", commandNameToClass);
-        populateWithConfig("arango.config", arangoConfig);
+        populateWithConfig(isTesting ? "arango.test.config" : "arango.config", arangoConfig);
         populateWithConfig("app.config", appConfig);
     }
 
@@ -49,5 +57,8 @@ public class ConfigReader {
 
     public String getArangoConfig(String key) {
         return arangoConfig.getProperty(key);
+    }
+    public String getConfig(String key) {
+        return properties.getProperty(key);
     }
 }
