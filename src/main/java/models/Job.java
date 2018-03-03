@@ -11,6 +11,23 @@ public class Job {
     private  String companyName;
     private  String companyLocation;
     private   String compnayPicture;
+    public Job(){
+
+    }
+
+    public Job(String jobID, String industryType, String employmentType, String jobFunctions, String positionName, String professionLevel, String companyID, String companyName, String companyLocation, String compnayPicture, String jobBrief) {
+        this.jobID = jobID;
+        this.industryType = industryType;
+        this.employmentType = employmentType;
+        this.jobFunctions = jobFunctions;
+        this.positionName = positionName;
+        this.professionLevel = professionLevel;
+        this.companyID = companyID;
+        this.companyName = companyName;
+        this.companyLocation = companyLocation;
+        this.compnayPicture = compnayPicture;
+        this.jobBrief = jobBrief;
+    }
 
     public void setJobID(String jobID) {
         this.jobID = jobID;
