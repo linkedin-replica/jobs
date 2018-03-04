@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import models.Company;
+import models.Job;
 import com.arangodb.ArangoCollection;
 import com.arangodb.ArangoCursor;
 //import com.arangodb.ArangoDB;

@@ -1,7 +1,26 @@
 package models;
 
-public class job {
-          private   String jobID ;
+public class Job {
+
+    public Job(){};
+
+    public Job(String jobID, String industryType, String employmentType, String jobFunctions, String positionName,
+               String professionLevel, String companyID,
+               String companyName, String companyLocation, String compnayPicture, String jobBrief) {
+        this.jobID = jobID;
+        this.industryType = industryType;
+        this.employmentType = employmentType;
+        this.jobFunctions = jobFunctions;
+        this.positionName = positionName;
+        this.professionLevel = professionLevel;
+        this.companyID = companyID;
+        this.companyName = companyName;
+        this.companyLocation = companyLocation;
+        this.compnayPicture = compnayPicture;
+        this.jobBrief = jobBrief;
+    }
+
+    private   String jobID ;
     private   String industryType;
     private         String employmentType;
     private  String jobFunctions;
