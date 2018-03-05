@@ -21,9 +21,9 @@ public class ViewAppliedJobsCommand extends Command{
         DatabaseHandler noSqlHandler = (DatabaseHandler) new ArangoHandler();
 
         this.setDbHandler(noSqlHandler);
-       List<Job> jobs = dbHandler.getAppliedJobs(args.get("userId"));
+//       List<Job> jobs = dbHandler.getAppliedJobs(args.get("userId"));
         LinkedHashMap<String, Object>resutls = new LinkedHashMap<String, Object>();
-        resutls.put("response",jobs);
+        resutls.put("response","hello");
         return resutls;
     }
 

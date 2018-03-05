@@ -1,7 +1,10 @@
 package database;
+import java.awt.*;
 import java.io.IOException;
 import java.util.*;
+import java.util.List;
 
+import com.arangodb.entity.MultiDocumentEntity;
 import models.Job;
 import com.arangodb.ArangoCollection;
 import com.arangodb.ArangoCursor;
@@ -30,18 +33,15 @@ public class ArangoHandler implements DatabaseHandler{
         // TODO
     }
 
-    public List<Job> getAppliedjobs(String userId){
-return null;
-    }
-    public List<Job> getAppliedJobs(String userID){
-    try {
-       User user= dbInstance.collection("jobs").getDocument(userID,User.class);
+    public ArrayList<Job> getAppliedjobs(ArrayList<String> Ids){
+        Collection<String> keys = Ids;
+        MultiDocumentEntity<Job> cursor= dbInstance.collection("jobs").getDocuments(keys,Job.class);
+       Collection<Job> jobs = cursor.getDocuments();
 
-    } catch (ArangoDBException e) {
-        System.err.println("Failed to retrive  document. " + e.getMessage());
+       return new ArrayList<Job>(jobs);
+
     }
-    return null;
-}
+
     public List<Job> getSavedJobs(String userID){
         try {
             User user= dbInstance.collection("jobs").getDocument(userID,User.class);
