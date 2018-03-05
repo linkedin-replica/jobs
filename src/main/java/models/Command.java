@@ -1,6 +1,7 @@
 package models;
 
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import database.DatabaseHandler;
@@ -16,7 +17,7 @@ public abstract class Command {
      * @return The output (if any) of the command
      */
 
-    public abstract LinkedHashMap<String, Object> execute();
+    public abstract LinkedHashMap<String, Object> execute() throws IOException;
     public void setDbHandler(DatabaseHandler dbHandler) {
         this.dbHandler = dbHandler;
     }

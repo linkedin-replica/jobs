@@ -4,6 +4,7 @@ package database;
  * A singleton class carrying a database instance
  */
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -22,7 +23,15 @@ import com.arangodb.velocypack.exception.VPackException;
 public class DatabaseInstance {
 
     // TODO uncouple arango, read from some config file
-    private static DatabaseHandler db = new ArangoHandler();
+    private static DatabaseHandler db;
+
+    static {
+        try {
+            db = new ArangoHandler();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private DatabaseInstance() {
     }

@@ -2,11 +2,22 @@ package models;
 
 public class Job {
 
-    public Job(){};
 
-    public Job(String jobID, String industryType, String employmentType, String jobFunctions, String positionName,
-               String professionLevel, String companyID,
-               String companyName, String companyLocation, String compnayPicture, String jobBrief) {
+
+    private  String jobID ;
+    private  String industryType;
+    private  String employmentType;
+    private  String jobFunctions;
+    private  String positionName;
+    private  String professionLevel;
+    private  String companyID;
+    private  String companyName;
+    private  String companyLocation;
+    private   String compnayPicture;
+    public Job(){
+    }
+
+    public Job(String jobID, String industryType, String employmentType, String jobFunctions, String positionName, String professionLevel, String companyID, String companyName, String companyLocation, String compnayPicture, String jobBrief) {
         this.jobID = jobID;
         this.industryType = industryType;
         this.employmentType = employmentType;
@@ -19,17 +30,6 @@ public class Job {
         this.compnayPicture = compnayPicture;
         this.jobBrief = jobBrief;
     }
-
-    private   String jobID ;
-    private   String industryType;
-    private         String employmentType;
-    private  String jobFunctions;
-    private  String positionName;
-    private  String professionLevel;
-    private  String companyID;
-    private  String companyName;
-    private  String companyLocation;
-    private   String compnayPicture;
 
     public void setJobID(String jobID) {
         this.jobID = jobID;
