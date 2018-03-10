@@ -73,6 +73,17 @@ public class ArangoHandlerTest {
         assertEquals("Job has been deleted" , null , newJob);
 
     }
+    @Test
+    public void getAppliedjobsTest() throws IOException{
+       ArrayList<String> ids = new ArrayList<String>();
+       ids.add("144616");
+       ids.add("156540");
+       ArrayList<Job> jobs =arangoHandler.getAppliedjobs(ids);
+       System.out.println(jobs.get(0).getCompanyName());
+        System.out.println(jobs.get(1).getCompanyName());
+        assertEquals("Jobs must be of size 2" ,jobs.size() ,2);
+
+    }
 
 
     @AfterClass

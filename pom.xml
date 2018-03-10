@@ -18,6 +18,11 @@
             <artifactId>junit</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.javalite</groupId>
+            <artifactId>activejdbc</artifactId>
+            <version>1.4.13</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
