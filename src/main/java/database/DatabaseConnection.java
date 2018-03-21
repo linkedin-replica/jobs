@@ -1,50 +1,51 @@
 package database;
 
 import com.arangodb.ArangoDB;
-import utils.ConfigReader;
+import config.Configuration;
+import config.Configuration;
 
 import java.io.IOException;
 
 /**
- * A singleton class carrying a database instance
+ * A singleton class carrying a com.linkedin.replica.database instance
  */
 public class DatabaseConnection {
     private ArangoDB arangoDriver;
-    private ConfigReader config;
+    private Configuration config;
 
-    private volatile static DatabaseConnection dbConnection;
+    private static DatabaseConnection dbConnection;
 
     private DatabaseConnection() throws IOException {
-        config = new ConfigReader("database_auth");
+        config = Configuration.getInstance();
 
         initializeArangoDB();
     }
 
     private void initializeArangoDB() {
         arangoDriver = new ArangoDB.Builder()
-                .user(config.getConfig("arangodb.user"))
-                .password(config.getConfig("arangodb.password"))
+                .user(config.getArangoConfig("arangodb.user"))
+                .password(config.getArangoConfig("arangodb.password"))
                 .build();
+    }
+
+    public static void init() throws IOException {
+        dbConnection = new DatabaseConnection();
     }
 
     /**
      * Get a singleton DB instance
      * @return The DB instance
      */
-    public static DatabaseConnection getDBConnection() throws IOException {
-        if(dbConnection == null) {
-            synchronized (DatabaseConnection.class) {
-                if (dbConnection == null)
-                    dbConnection = new DatabaseConnection();
-            }
-        }
+    public static DatabaseConnection getInstance() throws IOException {
         return dbConnection;
     }
-    public void closeConnections() {
-        arangoDriver.shutdown();
-    }
+
 
     public ArangoDB getArangoDriver() {
         return arangoDriver;
+    }
+
+    public void closeConnections() {
+        arangoDriver.shutdown();
     }
 }

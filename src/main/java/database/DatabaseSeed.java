@@ -76,7 +76,7 @@ public class DatabaseSeed {
     }
 
     /**
-     * Insert jobs specified in jobs.json file to the database collection jobs
+     * Insert commands specified in commands.json file to the database collection commands
      * @throws IOException
      * @throws ClassNotFoundException
      * @throws SQLException
@@ -86,7 +86,7 @@ public class DatabaseSeed {
 
         ArangoDB arangoDB = DatabaseConnection.getDBConnection().getArangoDriver();
         String dbName = config.getConfig("db.name");
-        String collectionName = config.getConfig("collection.jobs.name");
+        String collectionName = config.getConfig("collection.commands.name");
 
         try{
             arangoDB.db(dbName).createCollection(collectionName);
@@ -104,7 +104,7 @@ public class DatabaseSeed {
         }
         int id = 0;
         BaseDocument jobDocument;
-        JSONArray jobs = getJSONData("src/main/resources/data/jobs.json");
+        JSONArray jobs = getJSONData("src/main/resources/data/commands.json");
         for (Object job : jobs) {
             JSONObject jobObject = (JSONObject) job;
             jobDocument = new BaseDocument();
@@ -122,7 +122,7 @@ public class DatabaseSeed {
     }
 
     /**
-     * Delete jobs collection from the database if it exists
+     * Delete commands collection from the database if it exists
      * @throws ArangoDBException
      * @throws FileNotFoundException
      * @throws ClassNotFoundException
@@ -131,7 +131,7 @@ public class DatabaseSeed {
      */
     public static void deleteAllJobs() throws ArangoDBException, IOException{
         String dbName = config.getConfig("db.name");
-        String collectionName = config.getConfig("collection.jobs.name");
+        String collectionName = config.getConfig("collection.commands.name");
         try {
             DatabaseConnection.getDBConnection().getArangoDriver().db(dbName).collection(collectionName).drop();
         } catch(ArangoDBException exception) {

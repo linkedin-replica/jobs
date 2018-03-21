@@ -1,7 +1,7 @@
 package services;
 
 import database.DatabaseHandler;
-import models.Command;
+import commands.Command;
 import utils.ConfigReader;
 
 import java.io.IOException;

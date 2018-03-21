@@ -1,24 +1,11 @@
-package jobs;
+package commands.impl;
 
-import database.ArangoHandler;
+import commands.Command;
 import database.DatabaseHandler;
-import models.Command;
-import models.Job;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
-
-import database.ArangoHandler;
-import database.DatabaseHandler;
-import  models.Command;
-import models.Job;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
 
 public class DeleteJobAsCompanyCommand extends Command {
 
@@ -27,11 +14,8 @@ public class DeleteJobAsCompanyCommand extends Command {
     }
 
     public LinkedHashMap<String, Object> execute() throws IOException {
+        DatabaseHandler dbHandler = (DatabaseHandler) this.dbHandler;
         validateArgs(new String[]{"userId"});
-        // get notifications from db
-        DatabaseHandler noSqlHandler = (DatabaseHandler) new ArangoHandler();
-
-        this.setDbHandler(noSqlHandler);
         dbHandler.deleteJobAsaCompany(args.get("jobId"));
         LinkedHashMap<String, Object>resutls = new LinkedHashMap<String, Object>();
         resutls.put("response",true);

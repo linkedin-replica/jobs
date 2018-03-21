@@ -1,4 +1,4 @@
-package  models;
+package models;
 
 public class Company {
     private String companyName;

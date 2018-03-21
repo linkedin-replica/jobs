@@ -1,24 +1,12 @@
-package jobs;
+package commands.impl;
 
-import database.ArangoHandler;
+import commands.Command;
 import database.DatabaseHandler;
-import models.Command;
 import models.Job;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
-
-import database.ArangoHandler;
-import database.DatabaseHandler;
-import  models.Command;
-import models.Job;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
 
 public class JobAsCompanyCommand extends Command {
 
@@ -27,11 +15,11 @@ public class JobAsCompanyCommand extends Command {
         }
 
         public LinkedHashMap<String, Object> execute() throws IOException {
+
             validateArgs(new String[]{"userId"});
             // get notifications from db
-            DatabaseHandler noSqlHandler = (DatabaseHandler) new ArangoHandler();
+            DatabaseHandler dbHandler = (DatabaseHandler) this.dbHandler;
 
-            this.setDbHandler(noSqlHandler);
             Job job = new Job(args.get("jobId"),args.get("industryType"),args.get("employementType"), args.get("jobFunctions"),
                 args.get("positionName"), args.get("professionLevel"),args.get("companyID"),args.get("companyName"),
                             args.get("companyLocation"),args.get("companyProfilePicture"),args.get("jobBrief"));
@@ -39,6 +27,7 @@ public class JobAsCompanyCommand extends Command {
             LinkedHashMap<String, Object>resutls = new LinkedHashMap<String, Object>();
             resutls.put("response",true);
             return resutls;
+
         }
 
 

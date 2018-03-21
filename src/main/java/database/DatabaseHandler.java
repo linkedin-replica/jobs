@@ -1,6 +1,5 @@
 package database;
 
-import models.Company;
 import models.Job;
 
 import java.util.List;
