@@ -56,22 +56,24 @@ public class MysqlHandler implements DatabaseHandler {
     }
 
     public ArrayList<String> getAppliedJobsIDs(String userId) throws SQLException {
+        ArrayList<String>Ids = new ArrayList<>();
         String query = "{CALL view_applied_jobs(?);}";
         CallableStatement stmt = mySqlConnection.prepareCall(query);
         stmt.setString(1, userId);
         ResultSet result = stmt.executeQuery();
         try{
         while (result.next()) {
-            String coffeeName = result.getString("id");
-
-            System.out.println(coffeeName + "\t" );
+            String id = result.getString("id");
+            Ids.add(id);
+            System.out.println(id + "\t" );
         }
     } catch (SQLException e ) {
             System.out.println("Exception ");
     } finally {
         if (stmt != null) { stmt.close(); }
     }
-    return null;
+        return Ids;
+
     }
 
     public void disconnect() {

@@ -17,14 +17,14 @@ public class JobListingCommand extends Command {
     }
 
     public LinkedHashMap<String, Object> execute() throws IOException {
-        validateArgs(new String[]{"userId"});
+        validateArgs(new String[]{"jobId"});
         // get notifications from db
         DatabaseHandler noSqlHandler = (DatabaseHandler) new ArangoHandler();
         this.setDbHandler(noSqlHandler);
 
-        // ArrayList<Job> Jobs =  dbHandler.createJobAsaCompany(args);
+        Job job =  dbHandler.getJob(args.get("jobId"));
         LinkedHashMap<String, Object> resutls = new LinkedHashMap<String, Object>();
-        //resutls.put("response",Jobs);
+        resutls.put("response", job);
         return resutls;
     }
 }

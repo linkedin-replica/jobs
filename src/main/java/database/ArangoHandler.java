@@ -59,7 +59,6 @@ public class ArangoHandler implements DatabaseHandler{
                 System.err.println("Failed to update document. " + e.getMessage());
             }
     }
-
     public  Job getJob(String JobID){
         String JobsCollectionName = config.getConfig("collection.jobs.name");
         Job job = dbInstance.collection(JobsCollectionName).getDocument(JobID,
@@ -83,78 +82,6 @@ public class ArangoHandler implements DatabaseHandler{
         dbInstance.collection(JobsCollectionName).insertDocument(job);
     }
 
-
-        public ArrayList<Job>  JobListing(LinkedHashMap<String, String> args){
-            String JobsCollectionName = config.getConfig("collection.jobs.name");
-
-            Map<String, Object> bindVars = new HashMap<String, Object>();
-            String values = "";
-                if(args.containsKey("companyLocation")){
-                    values = "t.companyLocation == @location";
-                    bindVars.put("location",args.get("companyLocation"));
-                }
-            if(args.containsKey("companyName")){
-                    if(values.equals(""))
-                        values = "t.companyName == @companyName";
-                        else
-                        values += " AND t.companyName == @companyName";
-                bindVars.put("companyName",args.get("companyName"));
-            }
-            if(args.containsKey("industryType")){
-                if(values.equals(""))
-                    values = "t.industryType == @industryType";
-                else
-                    values += " AND t.industryType == @industryType";
-                bindVars.put("industryType",args.get("industryType"));
-            }
-            if(args.containsKey("employmentType")){
-                if(values.equals(""))
-                    values = "t.employmentType == @employmentType";
-                else
-                    values += " AND t.employmentType == @employmentType";
-                bindVars.put("employmentType",args.get("employmentType"));
-            }
-            if(args.containsKey("professionLevel")){
-                if(values.equals(""))
-                    values = "t.professionLevel == @professionLevel";
-                else
-                    values += " AND t.professionLevel == @professionLevel";
-                bindVars.put("professionLevel",args.get("professionLevel"));
-            }
-            if(args.containsKey("positionName")){
-                if(values.equals(""))
-                    values = "t.positionName == @positionName";
-                else
-                    values += " AND t.positionName == @positionName";
-                bindVars.put("positionName",args.get("positionName"));
-            }
-            ArrayList<String> skills = new ArrayList<>();
-            if(args.containsKey("skill1")){
-                skills.add(args.get("skill1"));
-            }
-            if(args.containsKey("skill2")){
-                skills.add(args.get("skill2"));
-            }
-            if(args.containsKey("skill3")){
-                skills.add(args.get("skill3"));
-            }
-            System.out.println(skills.size());
-            if(skills.size() >= 1){
-                if(values.equals(""))
-                    values = "COUNT(INTERSECTION(@skills, t.requiredSkills)) != 0  ";
-                else
-                    values += " AND COUNT(INTERSECTION(@skills, t.requiredSkills)) != 0 ";
-                bindVars.put("skills",skills);
-            }
-            String query = "For t in " + JobsCollectionName + " FILTER " + values +
-                            " return t";
-            System.out.println(query);
-            ArangoCursor<Job> cursor = dbInstance.query(query, bindVars, null, Job.class);
-            final ArrayList<Job> returnedResults = new ArrayList<Job>();
-            cursor.forEachRemaining(returnedResults::add);
-            return returnedResults;
-        }
-
     public void deleteJobAsaCompany(String jobID){
         String JobsCollectionName = config.getConfig("collection.jobs.name");
 
@@ -164,7 +91,6 @@ public class ArangoHandler implements DatabaseHandler{
             System.err.println("Failed to Delete document. " + e.getMessage());
         }
     }
-
     public ArangoHandler()throws IOException {
         config = new ConfigReader("arango_names");
         // init db
