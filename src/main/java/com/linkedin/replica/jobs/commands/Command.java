@@ -2,14 +2,16 @@ package com.linkedin.replica.jobs.commands;
 
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
+import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 
 public abstract class Command {
     protected HashMap<String, String> args;
-    protected DatabaseHandler dbHandler;
+    protected JobsHandler jobsHandler;
     public Command(HashMap<String, String> args) {
         this.args = args;
     }
@@ -19,9 +21,9 @@ public abstract class Command {
      * @return The output (if any) of the command
      */
 
-    public abstract LinkedHashMap<String, Object> execute() throws IOException;
-    public void setDbHandler(DatabaseHandler dbHandler) {
-        this.dbHandler = dbHandler;
+    public abstract LinkedHashMap<String, Object> execute() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException;
+    public void setDbHandler(JobsHandler dbHandler) {
+        this.jobsHandler = dbHandler;
     }
     protected void validateArgs(String[] requiredArgs) {
         for(String arg: requiredArgs)

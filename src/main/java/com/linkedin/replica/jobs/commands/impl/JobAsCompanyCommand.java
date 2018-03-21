@@ -3,8 +3,9 @@ package com.linkedin.replica.jobs.commands.impl;
 import com.linkedin.replica.jobs.commands.Command;
 import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
 
+import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 import com.linkedin.replica.jobs.models.Job;
-import models.*;
+import com.linkedin.replica.jobs.models.*;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -20,12 +21,12 @@ public class JobAsCompanyCommand extends Command {
 
             validateArgs(new String[]{"userId"});
             // get notifications from db
-            DatabaseHandler dbHandler = (DatabaseHandler) this.dbHandler;
+            JobsHandler jobsHandler = (JobsHandler) this.jobsHandler;
 
             Job job = new Job(args.get("jobId"),args.get("industryType"),args.get("employementType"), args.get("jobFunctions"),
                 args.get("positionName"), args.get("professionLevel"),args.get("companyID"),args.get("companyName"),
                             args.get("companyLocation"),args.get("companyProfilePicture"),args.get("jobBrief"));
-            dbHandler.createJobAsaCompany(job);
+            jobsHandler.createJobAsaCompany(job);
             LinkedHashMap<String, Object>resutls = new LinkedHashMap<String, Object>();
             resutls.put("response",true);
             return resutls;

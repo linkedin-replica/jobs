@@ -12,11 +12,12 @@ public interface JobsHandler {
      * Initiate a connection with the database
      */
     void connect() throws FileNotFoundException, ClassNotFoundException, IOException, SQLException;
-    public ArrayList<Job> getAppliedJobs(ArrayList<String> Ids);
+    public ArrayList<Job> getAppliedJobs(String userID) throws SQLException;
     public List<Job> getSavedJobs(String userId);
     public void createJobAsaCompany( Job job);
     public void deleteJobAsaCompany(String jobID);
     public Job getJob(String JobID);
+    public boolean RespondToJobsAsCompany(String companyId) throws SQLException;
     /**
      * Send a new notification to the user
      */

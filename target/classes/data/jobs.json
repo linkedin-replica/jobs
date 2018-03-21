@@ -36,14 +36,14 @@
   {
     "positionName": "Junior Researcher",
     "companyName": "DHBW",
-    "companyId": "5",
+    "companyId": "22",
     "requiredSkills": ["Research", "Python", "NLP"],
     "employmentType" : "part-time"
   },
   {
     "positionName": "IT Engineer",
     "companyName": "GUC",
-    "companyId": "4",
+    "companyId": "29",
     "requiredSkills": ["Hardware", "Software"],
     "companyLocation" : "Stuttgart"
 
@@ -51,7 +51,7 @@
   {
     "positionName": "web developer",
     "companyName": "ITWorx",
-    "companyId": "7",
+    "companyId": "30",
     "requiredSkills": ["JS", "AngularJS", "HTML", "CSS"]
   },
   {

@@ -44,6 +44,15 @@ public class ArangoSQLJobsHandler implements JobsHandler {
     public void disconnect() {
         // TODO
     }
+    public boolean RespondToJobsAsCompany(String companyId) throws SQLException {
+        String query = "{CALL view_applied_jobs(?)}";
+        CallableStatement stmt = mysqlConnection.prepareCall(query);
+        stmt.setString(1, companyId);
+        ArrayList<String> Ids = new ArrayList<String>();
+        stmt.executeQuery();
+        return true;
+
+    }
     public ArrayList<String> getAppliedJobsIDs(String userId) throws SQLException {
         String query = "{CALL view_applied_jobs(?)}";
         CallableStatement stmt = mysqlConnection.prepareCall(query);
@@ -76,9 +85,10 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         }
     }
 
-    public ArrayList<Job>  getAppliedJobs(ArrayList<String> Ids){
-        Collection<String> keys = Ids;
-        MultiDocumentEntity<Job> cursor= dbInstance.collection("jobs").getDocuments(keys,Job.class);
+    public ArrayList<Job>  getAppliedJobs( String userID) throws SQLException {
+        Collection<String> keys = this.getAppliedJobsIDs(userID);
+        collectionName = config.getArangoConfig("collection.jobs.name");
+        MultiDocumentEntity<Job> cursor= dbInstance.collection(collectionName).getDocuments(keys,Job.class);
        Collection<Job> jobs = cursor.getDocuments();
 
        return new ArrayList<Job>(jobs);

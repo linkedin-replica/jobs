@@ -3,6 +3,7 @@ package com.linkedin.replica.jobs.services;
 import com.linkedin.replica.jobs.commands.Command;
 import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
 import com.linkedin.replica.jobs.config.Configuration;
+import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -21,10 +22,10 @@ public class JobService {
         Constructor constructor = commandClass.getConstructor(HashMap.class);
         Command command = (Command) constructor.newInstance(args);
 
-        Class<?> dbHandlerClass = config.getHandlerClass(commandName);
-        DatabaseHandler dbHandler = (DatabaseHandler) dbHandlerClass.newInstance();
+        Class<?> noSqlHandlerClass = config.getHandlerClass("j");
+       JobsHandler noSqlHandler = (JobsHandler) noSqlHandlerClass.newInstance();
 
-        command.setDbHandler(dbHandler);
+        command.setDbHandler(noSqlHandler);
 
         return command.execute();
     }
