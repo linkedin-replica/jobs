@@ -1,13 +1,13 @@
-package database;
+package com.linkedin.replica.jobs.database.handlers;
 
-import models.Job;
+import com.linkedin.replica.jobs.models.Job;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface DatabaseHandler {
+public interface JobsHandler {
     /**
      * Initiate a connection with the database
      */

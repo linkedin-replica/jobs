@@ -1,4 +1,4 @@
-package database;
+package com.linkedin.replica.jobs.database.handlers.impl;
 import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -7,17 +7,17 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.List;
 import com.arangodb.entity.MultiDocumentEntity;
-import config.Configuration;
-import models.Job;
+import com.linkedin.replica.jobs.database.handlers.JobsHandler;
+import com.linkedin.replica.jobs.config.Configuration;
+import com.linkedin.replica.jobs.database.DatabaseConnection;
+import com.linkedin.replica.jobs.models.Job;
 import com.arangodb.ArangoCollection;
 import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDBException;
 import com.arangodb.ArangoDatabase;
-import models.User;
-import org.codehaus.jackson.annotate.JsonTypeInfo;
+import com.linkedin.replica.jobs.models.User;
 
-
-public class ArangoSQLJobsHandler implements DatabaseHandler{
+public class ArangoSQLJobsHandler implements JobsHandler {
     ArangoDB arangoDB;
 
     private ArangoDatabase dbInstance;

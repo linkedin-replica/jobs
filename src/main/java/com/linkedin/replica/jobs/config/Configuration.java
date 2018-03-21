@@ -1,7 +1,7 @@
-package config;
+package com.linkedin.replica.jobs.config;
 
-import commands.Command;
-import database.DatabaseHandler;
+import com.linkedin.replica.jobs.commands.Command;
+import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

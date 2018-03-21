@@ -1,4 +1,4 @@
-package models;
+package com.linkedin.replica.jobs.models;
 
 public class lightJobListing {
     private int jobID;

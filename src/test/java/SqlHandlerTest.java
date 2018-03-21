@@ -1,8 +1,7 @@
-import config.Configuration;
-import database.ArangoSQLJobsHandler;
-import database.DatabaseConnection;
+import com.linkedin.replica.jobs.config.Configuration;
+import com.linkedin.replica.jobs.database.handlers.impl.ArangoSQLJobsHandler;
+import com.linkedin.replica.jobs.database.DatabaseConnection;
 //import models.testUser;
-import models.Job;
 import org.junit.*;
 //import utils.ConfigReader;
 //

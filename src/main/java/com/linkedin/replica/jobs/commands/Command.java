@@ -1,10 +1,12 @@
-package commands;
+package com.linkedin.replica.jobs.commands;
 
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import database.DatabaseHandler;
+
+import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
+
 public abstract class Command {
     protected HashMap<String, String> args;
     protected DatabaseHandler dbHandler;
