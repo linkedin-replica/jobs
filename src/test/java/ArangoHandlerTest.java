@@ -2,7 +2,9 @@ import com.arangodb.ArangoDatabase;
 import config.Configuration;
 import database.ArangoSQLJobsHandler;
 import database.DatabaseConnection;
+import database.DatabaseSeed;
 import models.Job;
+import org.json.simple.parser.ParseException;
 import org.junit.*;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,29 +17,31 @@ public class ArangoHandlerTest {
     private static ArangoSQLJobsHandler arangoHandler;
     private static ArangoDatabase arangoDb;
     static Configuration config;
+   static DatabaseSeed databaseSeed;
 
     @BeforeClass
     public static void init() throws IOException, SQLException, ClassNotFoundException {
+        Configuration.getInstance("src/main/resources/config/database.config", "src/main/resources/config/commands.config", "src/main/resources/config/arango.test.config");
         config = Configuration.getInstance();
         arangoHandler = new ArangoSQLJobsHandler();
+        System.out.println("beb");
+         databaseSeed = new DatabaseSeed();
+        arangoHandler.connect();
         arangoDb = DatabaseConnection.getDBConnection().getArangoDriver().db(
                 Configuration.getInstance().getArangoConfig("db.name")
         );
     }
 
-//    @Before
-//    public void initBeforeTest() throws IOException {
-//        arangoDb.createCollection(
-//                config.getArangoConfig("collection.users.name")
-//        );
-//    }
+    @Before
+    public void initBeforeTest() throws IOException, ParseException, SQLException, ClassNotFoundException {
+        databaseSeed.insertJobs();
+    }
 
 
 
     @Test
     public void JobListingTest() throws IOException, SQLException, ClassNotFoundException {
         String collectionName = config.getArangoConfig("collection.jobs.name");
-        ArangoSQLJobsHandler arangoHandler = new ArangoSQLJobsHandler();
         Job results = arangoHandler.getJob("1");
         assertEquals("matching position name" , "Software Developer" ,results.getPositionName());
         assertEquals("matching company Name" , "Ergasti" ,results.getCompanyName());
@@ -77,22 +81,19 @@ public class ArangoHandlerTest {
 //    }
 
 
+
+
     @AfterClass
-    public static void clean() throws IOException, SQLException, ClassNotFoundException {
-        DatabaseConnection.getDBConnection().closeConnections();
+    public static void cleanAfterTest() throws IOException {
+        arangoDb.collection(
+                config.getArangoConfig("collection.users.name")
+        ).drop();
     }
 
-//    @AfterClass
-//    public static void cleanAfterTest() throws IOException {
-//        arangoDb.collection(
-//                config.getArangoConfig("collection.users.name")
-//        ).drop();
-//    }
-//
-//    @AfterClass
-//    public static void clean() throws IOException {
-//        ConfigReader.isTesting = false;
-//        DatabaseConnection.getDBConnection().closeConnections();
-//    }
+    @AfterClass
+    public static void clean() throws IOException, SQLException, ClassNotFoundException {
+
+        DatabaseConnection.getDBConnection().closeConnections();
+    }
 
 }

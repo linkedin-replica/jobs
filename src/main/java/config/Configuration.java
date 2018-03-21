@@ -33,6 +33,7 @@ public class Configuration {
         this.arangoConfigPath = arangoConfigPath;
     }
 
+
     public static Configuration getInstance(String databaseConfigPath, String commandConfigPath,
                                             String arangoNamesConfigPath) {
 
