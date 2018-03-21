@@ -12,8 +12,9 @@ public interface DatabaseHandler {
     void connect();
 //    public List<Job> getAppliedJobs(String userId);
     public List<Job> getSavedJobs(String userId);
-   public void createJobAsaCompany( Job job);
+    public void createJobAsaCompany( Job job);
     public void deleteJobAsaCompany(String jobID);
+    public Job getJob(String JobID);
     /**
      * Send a new notification to the user
      */

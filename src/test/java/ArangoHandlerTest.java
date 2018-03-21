@@ -37,21 +37,15 @@ public class ArangoHandlerTest {
 
 
 
-//    @Test
-//    public void JobListingTest() throws IOException {
-//        String collectionName = config.getArangoConfig("collection.jobs.name");
-//        ArangoHandler arangoHandler = new ArangoHandler();
-//        LinkedHashMap<String, String> args = new LinkedHashMap<>();
-//        args.put("companyLocation", "Berlin" );
-//        args.put("professionLevel", "Senior" );
-//        //ArrayList<Job> results = arangoHandler.JobListing(args);
-//       // assertEquals("matching number of listed jobs" , 1 ,results.size());
-//        args = new LinkedHashMap<>();
-//        args.put("skill1", "Python");
-//        args.put("skill2", "Java");
-//        ArrayList<Job>  results = arangoHandler.JobListing(args);
-//        assertEquals("matching number of listed jobs" , 2 ,results.size());
-//    }
+    @Test
+    public void JobListingTest() throws IOException {
+        String collectionName = config.getArangoConfig("collection.jobs.name");
+        ArangoHandler arangoHandler = new ArangoHandler();
+        Job results = arangoHandler.getJob("1");
+        assertEquals("matching position name" , "Software Developer" ,results.getPositionName());
+        assertEquals("matching company Name" , "Ergasti" ,results.getCompanyName());
+        assertEquals("matching industryType" , "Software" ,results.getIndustryType());
+    }
 
 //    @Test
 //    public void EditJobTest() throws IOException{
@@ -71,6 +65,17 @@ public class ArangoHandlerTest {
         arangoHandler.deleteJobAsaCompany("414595");
         Job newJob = arangoHandler.getJob("414595");
         assertEquals("Job has been deleted" , null , newJob);
+
+    }
+    @Test
+    public void getAppliedjobsTest() throws IOException{
+       ArrayList<String> ids = new ArrayList<String>();
+       ids.add("144616");
+       ids.add("156540");
+       ArrayList<Job> jobs =arangoHandler.getAppliedjobs(ids);
+       System.out.println(jobs.get(0).getCompanyName());
+        System.out.println(jobs.get(1).getCompanyName());
+        assertEquals("Jobs must be of size 2" ,jobs.size() ,2);
 
     }
 
