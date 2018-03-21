@@ -6,19 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.List;
-
-
 import com.arangodb.entity.MultiDocumentEntity;
 import config.Configuration;
 import models.Job;
 import com.arangodb.ArangoCollection;
-//import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDBException;
 import com.arangodb.ArangoDatabase;
 import models.User;
-//import utils.Config;
-//import com.arangodb.ArangoDB;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
+
 
 public class ArangoSQLJobsHandler implements DatabaseHandler{
     ArangoDB arangoDB;
@@ -28,16 +25,17 @@ public class ArangoSQLJobsHandler implements DatabaseHandler{
     private String collectionName;
     Connection mysqlConnection;
     Configuration config;
-    public ArangoSQLJobsHandler()throws IOException {
+    public ArangoSQLJobsHandler() throws IOException, SQLException, ClassNotFoundException {
         Configuration config = Configuration.getInstance();
         ArangoDB arangoDriver = DatabaseConnection.getInstance().getArangoDriver();
-        collectionName = config.getArangoConfig("collection.notifications.name");
+        collectionName = config.getArangoConfig("collection.users.name");
         dbInstance = arangoDriver.db(config.getArangoConfig("db.name"));
         collection = dbInstance.collection(collectionName);
     }
-    public void connect() {
+    public void connect() throws SQLException, IOException, ClassNotFoundException {
         // TODO
         arangoDB = new ArangoDB.Builder().build();
+        mysqlConnection = DatabaseConnection.getInstance().getMysqlConn();
     }
 
   
@@ -45,22 +43,23 @@ public class ArangoSQLJobsHandler implements DatabaseHandler{
         // TODO
     }
     public ArrayList<String> getAppliedJobsIDs(String userId) throws SQLException {
-        String query = "{CALL view_applied_jobs(?);}";
+        String query = "{CALL view_applied_jobs(?)}";
         CallableStatement stmt = mysqlConnection.prepareCall(query);
         stmt.setString(1, userId);
+        ArrayList<String> Ids = new ArrayList<String>();
         ResultSet result = stmt.executeQuery();
         try{
             while (result.next()) {
-                String coffeeName = result.getString("id");
-
-                System.out.println(coffeeName + "\t" );
+                String jobName = result.getString("job_id");
+                System.out.println(jobName + "\t" );
+                Ids.add(jobName);
             }
         } catch (SQLException e ) {
-            System.out.println("Exception ");
+            System.out.println(e.toString());
         } finally {
             if (stmt != null) { stmt.close(); }
         }
-        return null;
+        return Ids;
     }
     public void deleteAll(){
 
@@ -75,7 +74,7 @@ public class ArangoSQLJobsHandler implements DatabaseHandler{
         }
     }
 
-    public ArrayList<Job> getAppliedjobs(ArrayList<String> Ids){
+    public ArrayList<Job>  getAppliedJobs(ArrayList<String> Ids){
         Collection<String> keys = Ids;
         MultiDocumentEntity<Job> cursor= dbInstance.collection("commands").getDocuments(keys,Job.class);
        Collection<Job> jobs = cursor.getDocuments();

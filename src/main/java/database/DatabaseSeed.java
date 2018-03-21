@@ -3,11 +3,12 @@ package database;
 import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDBException;
 import com.arangodb.entity.BaseDocument;
+import config.Configuration;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import utils.ConfigReader;
+
 
 import java.io.*;
 import java.sql.SQLException;
@@ -17,10 +18,10 @@ public class DatabaseSeed {
 
     private ArangoDB arangoDriver;
     private DatabaseHandler dbHandler;
-    private static ConfigReader config;
+    private static Configuration config;
 
     public DatabaseSeed() throws FileNotFoundException, IOException{
-        config = new ConfigReader("arango_names");
+        config = Configuration.getInstance();
     }
 
 
@@ -40,10 +41,10 @@ public class DatabaseSeed {
      * @throws IOException
      * @throws ParseException
      */
-    public static void insertUsers() throws IOException, ParseException {
+    public static void insertUsers() throws IOException, ParseException, SQLException, ClassNotFoundException {
         ArangoDB arangoDB = DatabaseConnection.getDBConnection().getArangoDriver();
-        String dbName = config.getConfig("db.name");
-        String collectionName = config.getConfig("collection.users.name");
+        String dbName = config.getArangoConfig("db.name");
+        String collectionName = config.getArangoConfig("collection.users.name");
 
         try {
             arangoDB.db(dbName).createCollection(collectionName);
@@ -85,8 +86,8 @@ public class DatabaseSeed {
     public static void insertJobs() throws IOException, ClassNotFoundException, SQLException, ParseException {
 
         ArangoDB arangoDB = DatabaseConnection.getDBConnection().getArangoDriver();
-        String dbName = config.getConfig("db.name");
-        String collectionName = config.getConfig("collection.commands.name");
+        String dbName = config.getArangoConfig("db.name");
+        String collectionName = config.getArangoConfig("collection.commands.name");
 
         try{
             arangoDB.db(dbName).createCollection(collectionName);
@@ -130,14 +131,18 @@ public class DatabaseSeed {
      * @throws SQLException
      */
     public static void deleteAllJobs() throws ArangoDBException, IOException{
-        String dbName = config.getConfig("db.name");
-        String collectionName = config.getConfig("collection.commands.name");
+        String dbName = config.getArangoConfig("db.name");
+        String collectionName = config.getArangoConfig("collection.commands.name");
         try {
             DatabaseConnection.getDBConnection().getArangoDriver().db(dbName).collection(collectionName).drop();
         } catch(ArangoDBException exception) {
             if(exception.getErrorNum() == 1228) {
                 System.out.println("Database not found");
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
         System.out.println("Jobs collection is dropped");
     }
@@ -147,7 +152,7 @@ public class DatabaseSeed {
      * @param dbName Database name to be dropped
      * @throws IOException
      */
-    public static void dropDatabase(String dbName) throws IOException {
+    public static void dropDatabase(String dbName) throws IOException, SQLException, ClassNotFoundException {
         try {
             DatabaseConnection.getDBConnection().getArangoDriver().db(dbName).drop();
         } catch(ArangoDBException exception) {
@@ -163,7 +168,7 @@ public class DatabaseSeed {
      * @throws ArangoDBException
      * @throws IOException
      */
-    public static void closeDBConnection() throws ArangoDBException, IOException {
+    public static void closeDBConnection() throws ArangoDBException, IOException, SQLException, ClassNotFoundException {
 
         DatabaseConnection.getDBConnection().getArangoDriver().shutdown();
     }

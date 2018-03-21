@@ -1,7 +1,7 @@
 package commands.impl;
 import commands.Command;
 import database.DatabaseHandler;
-import models.Job;
+import models.*;
 
 import java.io.IOException;
 import java.util.HashMap;
