@@ -1,14 +1,12 @@
 import com.arangodb.ArangoDatabase;
 import database.ArangoHandler;
 import database.DatabaseConnection;
-//import models.testUser;
 import models.Job;
 import org.junit.*;
 import utils.ConfigReader;
-
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 
 import static org.junit.Assert.assertEquals;
@@ -19,7 +17,7 @@ public class ArangoHandlerTest {
     static ConfigReader config;
 
     @BeforeClass
-    public static void init() throws IOException {
+    public static void init() throws IOException, SQLException, ClassNotFoundException {
         ConfigReader.isTesting = true;
         config = ConfigReader.getInstance();
         arangoHandler = new ArangoHandler();
@@ -38,7 +36,7 @@ public class ArangoHandlerTest {
 
 
     @Test
-    public void JobListingTest() throws IOException {
+    public void JobListingTest() throws IOException, SQLException, ClassNotFoundException {
         String collectionName = config.getArangoConfig("collection.jobs.name");
         ArangoHandler arangoHandler = new ArangoHandler();
         Job results = arangoHandler.getJob("1");
@@ -59,7 +57,7 @@ public class ArangoHandlerTest {
 //    }
 
     @Test
-    public void DeletejobTest() throws IOException{
+    public void DeletejobTest() throws IOException, SQLException, ClassNotFoundException {
         String collectionName = config.getArangoConfig("collection.jobs.name");
         ArangoHandler arangoHandler = new ArangoHandler();
         arangoHandler.deleteJobAsaCompany("414595");
@@ -81,7 +79,7 @@ public class ArangoHandlerTest {
 
 
     @AfterClass
-    public static void clean()throws IOException{
+    public static void clean() throws IOException, SQLException, ClassNotFoundException {
         ConfigReader.isTesting = false;
         DatabaseConnection.getDBConnection().closeConnections();
     }

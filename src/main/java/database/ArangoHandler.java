@@ -1,6 +1,9 @@
 package database;
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.List;
 
@@ -22,10 +25,12 @@ public class ArangoHandler implements DatabaseHandler{
     private ArangoDatabase dbInstance;
     private ArangoCollection collection;
     private String collectionName;
+    Connection mySqlConnection;
 
-    public void connect() {
+    public void connect()  throws FileNotFoundException, ClassNotFoundException, IOException, SQLException {
         // TODO
         arangoDB = new ArangoDB.Builder().build();
+        mySqlConnection = DatabaseConnection.getInstance().getMysqlConn();
     }
 
   
@@ -91,7 +96,7 @@ public class ArangoHandler implements DatabaseHandler{
             System.err.println("Failed to Delete document. " + e.getMessage());
         }
     }
-    public ArangoHandler()throws IOException {
+    public ArangoHandler() throws IOException, SQLException, ClassNotFoundException {
         config = new ConfigReader("arango_names");
         // init db
         ArangoDB arangoDriver = DatabaseConnection.getDBConnection().getArangoDriver();
