@@ -1,25 +1,13 @@
 package database;
-import java.awt.*;
-import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 import java.util.List;
 import org.javalite.activejdbc.Base;
-import com.arangodb.entity.MultiDocumentEntity;
 import models.Job;
-import com.arangodb.ArangoCollection;
-import com.arangodb.ArangoCursor;
-//import com.arangodb.ArangoDB;
-import com.arangodb.ArangoDB;
-import com.arangodb.ArangoDBException;
-import com.arangodb.ArangoDatabase;
-import com.arangodb.entity.BaseDocument;
-import models.User;
-import utils.ConfigReader;
 import config.DatabaseConnections;
-import database.DatabaseHandler;
 
 public class MysqlHandler implements DatabaseHandler {
     Connection mySqlConnection;
@@ -38,6 +26,11 @@ public class MysqlHandler implements DatabaseHandler {
 
     public void connect() {
         Base.open(properties.getProperty("development.driver"), properties.getProperty("development.url"), properties.getProperty("development.username"), properties.getProperty("development.password"));
+    }
+
+
+    public Job getJob(String JobID){
+        return null;
     }
 
     @Override

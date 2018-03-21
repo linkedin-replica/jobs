@@ -34,14 +34,14 @@ public class SqlHandlerTest {
         ArrayList<String> ids = new ArrayList<String>();
         ids.add("144616");
         ids.add("156540");
-        ArrayList<String> jobs =mysqlHandler.getAppliedJobsIDs("31");
+        ArrayList<String> jobs = mysqlHandler.getAppliedJobsIDs("31");
         assertEquals("Jobs must be of size 2" ,jobs.size() ,2);
 
     }
 
 
     @AfterClass
-    public static void clean()throws IOException{
+    public static void clean() throws IOException, SQLException, ClassNotFoundException {
         ConfigReader.isTesting = false;
         DatabaseConnection.getDBConnection().closeConnections();
     }
