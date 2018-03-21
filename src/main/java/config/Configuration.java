@@ -1,5 +1,8 @@
 package config;
 
+import commands.Command;
+import database.DatabaseHandler;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -29,6 +32,7 @@ public class Configuration {
         this.commandsConfigPath = commandsConfigPath;
         this.arangoConfigPath = arangoConfigPath;
     }
+
 
     public static Configuration getInstance(String databaseConfigPath, String commandConfigPath,
                                             String arangoNamesConfigPath) {
@@ -113,4 +117,23 @@ public class Configuration {
     public String getArangoConfigPath() {
         return arangoConfigPath;
     }
+    public String getAppConfig(String key) {
+        return appConfig.getProperty(key);
+    }
+    public String getArangoConfig(String key) {
+        return arangoConfig.getProperty(key);
+    }
+
+    public Class getCommandClass(String commandName) throws ClassNotFoundException {
+        String commandsPackageName = Command.class.getPackage().getName() + ".impl";
+        String commandClassPath = commandsPackageName + '.' + commandConfig.get(commandName);
+        return Class.forName(commandClassPath);
+    }
+
+    public Class getHandlerClass(String commandName) throws ClassNotFoundException {
+        String handlerPackageName = DatabaseHandler.class.getPackage().getName() + ".impl";
+        String handlerClassPath = handlerPackageName + "." + commandConfig.get(commandName + ".handler");
+        return Class.forName(handlerClassPath);
+    }
+
 }

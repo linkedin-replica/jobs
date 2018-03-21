@@ -2,10 +2,12 @@ package database;
 
 import com.arangodb.ArangoDB;
 import config.Configuration;
-import config.DatabaseConnections;
-import utils.ConfigReader;
+
+
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,37 +15,49 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- * A singleton class carrying a database instance
+ * A singleton class carrying a com.linkedin.replica.database instance
  */
 public class DatabaseConnection {
     private ArangoDB arangoDriver;
-    private ConfigReader config;
+
+    private Configuration config;
+
     private Connection mysqlConn;
     private static DatabaseConnection instance;
     private Properties properties;
 
 
-    private volatile static DatabaseConnection dbConnection;
+    private static DatabaseConnection dbConnection;
+
 
     private DatabaseConnection() throws IOException, SQLException, ClassNotFoundException {
-        config = new ConfigReader("database_auth");
+            config = Configuration.getInstance();
         properties = new Properties();
-        properties.load(new FileInputStream(Configuration.getInstance().getDatabaseConfigPath()));
+        properties.load(
+                new FileInputStream(
+                        Configuration.getInstance().
+                                getDatabaseConfigPath()));
         mysqlConn = getNewMysqlDB();
         initializeArangoDB();
     }
 
     private void initializeArangoDB() {
         arangoDriver = new ArangoDB.Builder()
-                .user(config.getConfig("arangodb.user"))
-                .password(config.getConfig("arangodb.password"))
+                .user(config.getArangoConfig("arangodb.user"))
+                .password(config.getArangoConfig("arangodb.password"))
                 .build();
+    }
+
+    public static void init() throws IOException, SQLException, ClassNotFoundException {
+        dbConnection = new DatabaseConnection();
     }
 
     /**
      * Get a singleton DB instance
      * @return The DB instance
      */
+
+
     public static DatabaseConnection getDBConnection() throws IOException, SQLException, ClassNotFoundException {
         if(dbConnection == null) {
             synchronized (DatabaseConnection.class) {
@@ -56,7 +70,7 @@ public class DatabaseConnection {
 
     public static DatabaseConnection getInstance() throws FileNotFoundException, IOException, SQLException, ClassNotFoundException{
         if(instance == null){
-            synchronized (DatabaseConnections.class) {
+            synchronized (DatabaseConnection.class) {
                 if(instance == null){
                     instance = new DatabaseConnection();
                 }
@@ -75,6 +89,7 @@ public class DatabaseConnection {
 
     private Connection getNewMysqlDB() throws SQLException, ClassNotFoundException{
         // This will load the MySQL driver, each DB has its own driver
+        System.out.println(properties.getProperty("mysql.database-driver"));
         Class.forName(properties.getProperty("mysql.database-driver"));
         // create new connection and return it
         return DriverManager.getConnection(properties.getProperty("mysql.url"),
@@ -95,4 +110,6 @@ public class DatabaseConnection {
     public ArangoDB getArangoDriver() {
         return arangoDriver;
     }
+
+
 }

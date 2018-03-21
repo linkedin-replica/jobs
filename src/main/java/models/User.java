@@ -3,7 +3,7 @@ package models;
 
 import java.util.HashMap;
 
-public abstract class User {
+public class User {
 
 
     public User() {

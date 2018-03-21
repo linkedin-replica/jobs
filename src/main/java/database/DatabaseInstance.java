@@ -5,6 +5,7 @@ package database;
  */
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -27,8 +28,12 @@ public class DatabaseInstance {
 
     static {
         try {
-            db = new ArangoHandler();
+            db = new ArangoSQLJobsHandler();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

@@ -1,4 +1,4 @@
-package models;
+package commands;
 
 
 import java.io.IOException;
@@ -28,4 +28,8 @@ public abstract class Command {
                 throw new IllegalArgumentException(exceptionMsg);
             }
     }
+    public void setArgs(HashMap<String, String> args) {
+        this.args = args;
+    }
+
 }

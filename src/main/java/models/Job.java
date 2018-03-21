@@ -14,6 +14,7 @@ public class Job {
     private  String companyName;
     private  String companyLocation;
     private   String compnayPicture;
+
     public Job(){
     }
 
