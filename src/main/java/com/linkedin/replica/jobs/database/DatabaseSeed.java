@@ -1,9 +1,10 @@
-package database;
+package com.linkedin.replica.jobs.database;
 
 import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDBException;
 import com.arangodb.entity.BaseDocument;
-import config.Configuration;
+import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
+import com.linkedin.replica.jobs.config.Configuration;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -87,9 +88,11 @@ public class DatabaseSeed {
 
         ArangoDB arangoDB = DatabaseConnection.getDBConnection().getArangoDriver();
         String dbName = config.getArangoConfig("db.name");
-        String collectionName = config.getArangoConfig("collection.commands.name");
+        String collectionName = config.getArangoConfig("collection.jobs.name");
 
         try{
+
+            System.out.println(dbName+" hereee");
             arangoDB.db(dbName).createCollection(collectionName);
 
         }catch(ArangoDBException exception){

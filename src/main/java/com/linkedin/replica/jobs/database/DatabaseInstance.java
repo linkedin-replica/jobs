@@ -1,4 +1,4 @@
-package database;
+package com.linkedin.replica.jobs.database;
 
 /**
  * A singleton class carrying a database instance
@@ -6,25 +6,14 @@ package database;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
 
-import com.arangodb.ArangoCollection;
-import com.arangodb.ArangoCursor;
-import com.arangodb.ArangoDB;
-import com.arangodb.ArangoDBException;
-import com.arangodb.entity.BaseDocument;
-import com.arangodb.entity.CollectionEntity;
-import com.arangodb.model.AqlQueryOptions;
-import com.arangodb.util.MapBuilder;
-import com.arangodb.velocypack.VPackSlice;
-import com.arangodb.velocypack.exception.VPackException;
+import com.linkedin.replica.jobs.database.handlers.JobsHandler;
+import com.linkedin.replica.jobs.database.handlers.impl.ArangoSQLJobsHandler;
 
 public class DatabaseInstance {
 
     // TODO uncouple arango, read from some config file
-    private static DatabaseHandler db;
+    private static JobsHandler db;
 
     static {
         try {
@@ -46,7 +35,7 @@ public class DatabaseInstance {
      *
      * @return The DB instance
      */
-    public static DatabaseHandler getInstance() {
+    public static JobsHandler getInstance() {
         return db;
     }
 }

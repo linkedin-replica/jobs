@@ -1,8 +1,8 @@
-package commands.impl;
+package com.linkedin.replica.jobs.commands.impl;
 
-import commands.Command;
-import database.DatabaseHandler;
-import models.Job;
+import com.linkedin.replica.jobs.commands.Command;
+import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
+import com.linkedin.replica.jobs.models.Job;
 
 import java.io.IOException;
 import java.util.HashMap;

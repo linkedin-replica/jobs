@@ -1,14 +1,13 @@
-package services;
+package com.linkedin.replica.jobs.services;
 
-import config.Configuration;
-import database.DatabaseHandler;
-import commands.Command;
+import com.linkedin.replica.jobs.commands.Command;
+import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
+import com.linkedin.replica.jobs.config.Configuration;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 
 public class JobService {
     private Configuration config;

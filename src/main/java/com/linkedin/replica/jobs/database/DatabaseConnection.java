@@ -1,7 +1,7 @@
-package database;
+package com.linkedin.replica.jobs.database;
 
 import com.arangodb.ArangoDB;
-import config.Configuration;
+import com.linkedin.replica.jobs.config.Configuration;
 
 
 

@@ -1,7 +1,5 @@
-package models;
+package com.linkedin.replica.jobs.models;
 
-
-import java.util.HashMap;
 
 public class User {
 
