@@ -17,15 +17,13 @@ public class JobService {
         config = Configuration.getInstance();
     }
 
-    public Object serve(String commandName, HashMap<String, String> args) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, IOException {
+    public Object serve(String commandName, HashMap<String, String> args) throws Exception {
         Class<?> commandClass = config.getCommandClass(commandName);
         Constructor constructor = commandClass.getConstructor(HashMap.class);
         Command command = (Command) constructor.newInstance(args);
 
-        Class<?> noSqlHandlerClass = config.getHandlerClass("j");
-       JobsHandler noSqlHandler = (JobsHandler) noSqlHandlerClass.newInstance();
-
-        command.setDbHandler(noSqlHandler);
+        Class<?> dbHandlerClass = config.getDatabaseHandlerClass(commandName);
+        command.addDatabaseHandler((DatabaseHandler) dbHandlerClass.newInstance());
 
         return command.execute();
     }

@@ -19,7 +19,9 @@ public class SqlHandlerTest {
 
     @BeforeClass
     public static void init() throws IOException, SQLException, ClassNotFoundException {
-        Configuration.getInstance("src/main/resources/config/database.config", "src/main/resources/config/commands.config", "src/main/resources/config/arango.test.config");
+        Configuration.init("src/main/resources/config/app.config", "src/main/resources/config/arango.config",
+                "src/main/resources/config/database.config","src/main/resources/config/commands.config",
+                "");
         config = Configuration.getInstance();
         mysqlHandler = new ArangoSQLJobsHandler();
         mysqlHandler.connect();
@@ -30,7 +32,7 @@ public class SqlHandlerTest {
     @Test
     public void getAppliedjobsTest() throws IOException, SQLException {
         ArrayList<String> ids = new ArrayList<String>();
-        ids.add("144616");
+        ids.add("1");
 //        ids.add();
         ArrayList<String> jobs = mysqlHandler.getAppliedJobsIDs("32");
         assertEquals("Jobs must be of size 2" ,jobs.size() ,3);
@@ -38,11 +40,11 @@ public class SqlHandlerTest {
     }
 
 
-    @AfterClass
-    public static void clean() throws IOException, SQLException, ClassNotFoundException {
-
-        DatabaseConnection.getDBConnection().closeConnections();
-    }
+//    @AfterClass
+//    public static void clean() throws IOException, SQLException, ClassNotFoundException {
+//
+//        DatabaseConnection.getDBConnection().closeConnections();
+//    }
 
 //    @AfterClass
 //    public static void cleanAfterTest() throws IOException {

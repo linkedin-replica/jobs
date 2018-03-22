@@ -15,12 +15,15 @@ public abstract class Command {
     public Command(HashMap<String, String> args) {
         this.args = args;
     }
+    protected DatabaseHandler dbHandler;
 
     /**
      * Execute the command
      * @return The output (if any) of the command
      */
-
+    public void addDatabaseHandler(DatabaseHandler dbHandler) {
+        this.dbHandler = dbHandler;
+    }
     public abstract LinkedHashMap<String, Object> execute() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException;
     public void setDbHandler(JobsHandler dbHandler) {
         this.jobsHandler = dbHandler;

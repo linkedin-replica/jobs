@@ -20,15 +20,16 @@ public class ArangoHandlerTest {
 
     @BeforeClass
     public static void init() throws IOException, SQLException, ClassNotFoundException {
-        Configuration.getInstance("src/main/resources/config/database.config", "src/main/resources/config/commands.config", "src/main/resources/config/arango.test.config");
-        config = Configuration.getInstance();
+        Configuration.init("src/main/resources/config/app.config", "src/main/resources/config/arango.config",
+                "src/main/resources/config/database.config","src/main/resources/config/commands.config",
+                "src/main/resources/config/controller.config");
+         config = Configuration.getInstance();
+         DatabaseConnection.init();
         arangoHandler = new ArangoSQLJobsHandler();
-        System.out.println("beb");
-         databaseSeed = new DatabaseSeed();
+        databaseSeed = new DatabaseSeed();
         arangoHandler.connect();
-        arangoDb = DatabaseConnection.getDBConnection().getArangoDriver().db(
-                Configuration.getInstance().getArangoConfig("db.name")
-        );
+        arangoDb =DatabaseConnection.getInstance().getArangoDriver().
+                db(config.getAppConfigProp("db.name"));
     }
 
     @Before
@@ -40,10 +41,9 @@ public class ArangoHandlerTest {
 
     @Test
     public void JobListingTest() throws IOException, SQLException, ClassNotFoundException {
-        String collectionName = config.getArangoConfig("collection.jobs.name");
-        Job results = arangoHandler.getJob("1");
-        assertEquals("matching position name" , "Software Developer" ,results.getPositionName());
-        assertEquals("matching company Name" , "Ergasti" ,results.getCompanyName());
+        Job results = arangoHandler.getJob("1067639");
+        assertEquals("matching position name" , "Data Wrangling Engineer" ,results.getPositionName());
+        assertEquals("matching company Name" , "DFKI" ,results.getCompanyName());
         assertEquals("matching industryType" , "Software" ,results.getIndustryType());
     }
 
