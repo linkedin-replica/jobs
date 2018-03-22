@@ -19,10 +19,10 @@ public class SqlHandlerTest {
 
     @BeforeClass
     public static void init() throws IOException, SQLException, ClassNotFoundException {
-        Configuration.getInstance("src/main/resources/config/database.config", "src/main/resources/config/commands.config", "src/main/resources/config/arango.test.config");
-        config = Configuration.getInstance();
-        mysqlHandler = new ArangoSQLJobsHandler();
-        mysqlHandler.connect();
+//        Configuration.getInstance("src/main/resources/config/database.config", "src/main/resources/config/commands.config", "src/main/resources/config/arango.test.config");
+//        config = Configuration.getInstance();
+//        mysqlHandler = new ArangoSQLJobsHandler();
+//        mysqlHandler.connect();
 
     }
 
@@ -41,7 +41,7 @@ public class SqlHandlerTest {
     @AfterClass
     public static void clean() throws IOException, SQLException, ClassNotFoundException {
 
-        DatabaseConnection.getDBConnection().closeConnections();
+//        DatabaseConnection.getDBConnection().closeConnections();
     }
 
 //    @AfterClass

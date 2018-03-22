@@ -22,10 +22,10 @@ public class JobService {
         Constructor constructor = commandClass.getConstructor(HashMap.class);
         Command command = (Command) constructor.newInstance(args);
 
-        Class<?> noSqlHandlerClass = config.getHandlerClass("j");
-       JobsHandler noSqlHandler = (JobsHandler) noSqlHandlerClass.newInstance();
+        Class<?> dbHandlerClass = config.getHandlerClass(commandName);
+        JobsHandler dbHandler = (JobsHandler) dbHandlerClass.newInstance();
 
-        command.setDbHandler(noSqlHandler);
+        command.setDbHandler(dbHandler);
 
         return command.execute();
     }
