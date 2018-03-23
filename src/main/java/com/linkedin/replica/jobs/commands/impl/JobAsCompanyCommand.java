@@ -18,16 +18,13 @@ public class JobAsCompanyCommand extends Command {
             super(args);
         }
 
-        public Object execute() throws IOException {
+        public Object execute() throws IOException, SQLException {
 
             validateArgs(new String[]{});
             // get notifications from db
             JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
-            try {
                 jobsHandler.createJobAsaCompany((Job)args.get("job"),(String)args.get("CompanyId"));
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+
             return "Job Posted";
         }
 

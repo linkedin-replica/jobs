@@ -37,7 +37,6 @@ public class ArangoSQLJobsHandler implements JobsHandler {
     public void connect() throws SQLException, IOException, ClassNotFoundException {
         // TODO
         arangoDB = new ArangoDB.Builder().build();
-
     }
 
   
@@ -58,30 +57,22 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         stmt.setString(1, userId);
         ArrayList<String> Ids = new ArrayList<String>();
         ResultSet result = stmt.executeQuery();
-        try{
+
             while (result.next()) {
                 String jobName = result.getString("job_id");
                 System.out.println(jobName + "\t" );
                 Ids.add(jobName);
             }
-        } catch (SQLException e ) {
-            System.out.println(e.toString());
-        } finally {
-            if (stmt != null) { stmt.close(); }
-        }
         return Ids;
     }
-    public void deleteAll(){
+    public void deleteAll() throws SQLException {
 
         String query = "{CALL Delete_Users()}";
         CallableStatement statement = null;
-        try {
 
             statement = mysqlConnection.prepareCall(query);
             statement.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public ArrayList<Job>  getAppliedJobs( String userID) throws SQLException {
@@ -107,7 +98,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
     }
         public void createJobAsaCompany( Job job,String ComanyId) throws SQLException {
 
-            try {
+
                 String query = "{CALL Insert_Job(?,?,?)}";
                 CallableStatement stmt = mysqlConnection.prepareCall(query);
                 stmt.setString(1, job.getJobID());
@@ -128,9 +119,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
                 document.addAttribute("compnayPicture",job.getCompnayPicture());
                 document.setKey(job.getJobID());
                 collection.insertDocument(document);
-            } catch (ArangoDBException e) {
-                System.err.println("Failed to update document. " + e.getMessage());
-            }
+
     }
 
     public  Job getJob(String JobID){
@@ -158,15 +147,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
     }
 
     public void deleteJobAsaCompany(String jobID){
-
-        String JobsCollectionName = config.getArangoConfigProp("collection.jobs.name");
-
-
-        try {
             collection.deleteDocument(jobID);
-        } catch (ArangoDBException e) {
-            System.err.println("Failed to Delete document. " + e.getMessage());
-        }
     }
 
 

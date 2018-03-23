@@ -27,7 +27,6 @@ public class Configuration {
     private String arangoConfigPath;
     private String mysqlConfigPath;
     private String commandsConfigPath;
-//<<<<<<< HEAD
 
     private Configuration(String appConfigPath, String arangoConfigPath, String mysqlConfigPath, String commandsConfigPath,
                           String controllerConfigPath) throws IOException {

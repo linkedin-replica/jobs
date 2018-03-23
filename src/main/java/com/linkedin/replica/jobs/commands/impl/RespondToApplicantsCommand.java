@@ -13,17 +13,15 @@ public class RespondToApplicantsCommand extends Command {
         super(args);
     }
 
-    public Object execute(){
+    public Object execute() throws SQLException {
         validateArgs(new String[]{"userId", "jobId"});
         // get notifications from db
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
 
         boolean job = false;
-        try {
+
             job = jobsHandler.RespondToJobsAsCompany((String)args.get("userId"), (String)args.get("jobId"));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
 
         return "The respond was delivered";
     }

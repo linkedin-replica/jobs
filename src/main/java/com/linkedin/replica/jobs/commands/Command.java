@@ -3,6 +3,7 @@ package com.linkedin.replica.jobs.commands;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -24,7 +25,7 @@ public abstract class Command {
     public void addDatabaseHandler(DatabaseHandler dbHandler) {
         this.dbHandler = dbHandler;
     }
-    public abstract Object execute() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException;
+    public abstract Object execute() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, SQLException;
     protected void validateArgs(String[] requiredArgs) {
         for(String arg: requiredArgs)
             if(!args.containsKey(arg)) {
