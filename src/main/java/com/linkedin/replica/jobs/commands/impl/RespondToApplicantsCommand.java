@@ -13,10 +13,10 @@ public class RespondToApplicantsCommand extends Command {
         super(args);
     }
 
-    public LinkedHashMap<String, Object> execute(){
+    public Object execute(){
         validateArgs(new String[]{"userId", "jobId"});
         // get notifications from db
-        JobsHandler jobsHandler = (JobsHandler) this.jobsHandler;
+        JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
 
         boolean job = false;
         try {
@@ -24,9 +24,8 @@ public class RespondToApplicantsCommand extends Command {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        LinkedHashMap<String, Object> resutls = new LinkedHashMap<String, Object>();
-        resutls.put("response", true);
-        return resutls;
+
+        return "The respond was delivered";
     }
 }
 

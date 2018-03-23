@@ -17,19 +17,17 @@ public class JobAsCompanyCommand extends Command {
             super(args);
         }
 
-        public LinkedHashMap<String, Object> execute() throws IOException {
+        public Object execute() throws IOException {
 
-            validateArgs(new String[]{"userId"});
+            validateArgs(new String[]{"jobId"});
             // get notifications from db
-            JobsHandler jobsHandler = (JobsHandler) this.jobsHandler;
+            JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
 
             Job job = new Job(args.get("jobId"),args.get("industryType"),args.get("employementType"), args.get("jobFunctions"),
                 args.get("positionName"), args.get("professionLevel"),args.get("companyID"),args.get("companyName"),
                             args.get("companyLocation"),args.get("companyProfilePicture"),args.get("jobBrief"));
             jobsHandler.createJobAsaCompany(job);
-            LinkedHashMap<String, Object>resutls = new LinkedHashMap<String, Object>();
-            resutls.put("response",true);
-            return resutls;
+            return "Job Posted";
 
         }
 

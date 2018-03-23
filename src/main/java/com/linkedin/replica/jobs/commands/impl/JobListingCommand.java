@@ -15,14 +15,12 @@ public class JobListingCommand extends Command {
         super(args);
     }
 
-    public LinkedHashMap<String, Object> execute() throws IOException {
+    public Object execute() throws IOException {
         validateArgs(new String[]{"jobId"});
         // get notifications from db
-        JobsHandler dbHandler = (JobsHandler) this.jobsHandler;
-
-        Job job =  dbHandler.getJob(args.get("jobId"));
-        LinkedHashMap<String, Object> resutls = new LinkedHashMap<String, Object>();
-        resutls.put("response", job);
-        return resutls;
+        JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
+        System.out.println(dbHandler);
+        Job job =  jobsHandler.getJob(args.get("jobId"));
+        return job;
     }
 }

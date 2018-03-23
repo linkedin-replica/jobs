@@ -24,10 +24,7 @@ public abstract class Command {
     public void addDatabaseHandler(DatabaseHandler dbHandler) {
         this.dbHandler = dbHandler;
     }
-    public abstract LinkedHashMap<String, Object> execute() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException;
-    public void setDbHandler(JobsHandler dbHandler) {
-        this.jobsHandler = dbHandler;
-    }
+    public abstract Object execute() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException;
     protected void validateArgs(String[] requiredArgs) {
         for(String arg: requiredArgs)
             if(!args.containsKey(arg)) {

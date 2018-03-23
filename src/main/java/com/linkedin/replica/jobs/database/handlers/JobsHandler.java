@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public interface JobsHandler {
+public interface JobsHandler extends DatabaseHandler{
     /**
      * Initiate a connection with the database
      */

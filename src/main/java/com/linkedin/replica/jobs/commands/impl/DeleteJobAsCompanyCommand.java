@@ -14,13 +14,11 @@ public class DeleteJobAsCompanyCommand extends Command {
         super(args);
     }
 
-    public LinkedHashMap<String, Object> execute() throws IOException {
-       JobsHandler dbHandler = (JobsHandler) this.jobsHandler;
-        validateArgs(new String[]{"userId"});
+    public Object execute() throws IOException {
+       JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
+        validateArgs(new String[]{"jobId"});
         jobsHandler.deleteJobAsaCompany(args.get("jobId"));
-        LinkedHashMap<String, Object>resutls = new LinkedHashMap<String, Object>();
-        resutls.put("response",true);
-        return resutls;
+        return "Job Deleted";
     }
 
 
