@@ -23,7 +23,7 @@ import com.linkedin.replica.jobs.services.Workers;
 public class ControllerCommand extends Command {
     private static Configuration config = Configuration.getInstance();
 
-    public ControllerCommand(HashMap<String, String> args) {
+    public ControllerCommand(HashMap<String, Object> args) {
         super(args);
     }
 

@@ -10,14 +10,14 @@ import java.util.LinkedHashMap;
 
 public class DeleteJobAsCompanyCommand extends Command {
 
-    public DeleteJobAsCompanyCommand(HashMap<String, String> args) {
+    public DeleteJobAsCompanyCommand(HashMap<String, Object> args) {
         super(args);
     }
 
     public Object execute() throws IOException {
        JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
         validateArgs(new String[]{"jobId"});
-        jobsHandler.deleteJobAsaCompany(args.get("jobId"));
+        jobsHandler.deleteJobAsaCompany((String) args.get("jobId"));
         return "Job Deleted";
     }
 

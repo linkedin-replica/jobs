@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class RespondToApplicantsCommand extends Command {
-    public RespondToApplicantsCommand(HashMap<String, String> args) {
+    public RespondToApplicantsCommand(HashMap<String, Object> args) {
         super(args);
     }
 
@@ -20,7 +20,7 @@ public class RespondToApplicantsCommand extends Command {
 
         boolean job = false;
         try {
-            job = jobsHandler.RespondToJobsAsCompany(args.get("userId"), args.get("jobId"));
+            job = jobsHandler.RespondToJobsAsCompany((String)args.get("userId"), (String)args.get("jobId"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

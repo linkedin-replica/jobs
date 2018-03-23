@@ -11,7 +11,7 @@ import java.util.LinkedHashMap;
 
 public class JobListingCommand extends Command {
 
-    public JobListingCommand(HashMap<String, String> args) {
+    public JobListingCommand(HashMap<String, Object> args) {
         super(args);
     }
 
@@ -20,7 +20,7 @@ public class JobListingCommand extends Command {
         // get notifications from db
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
         System.out.println(dbHandler);
-        Job job =  jobsHandler.getJob(args.get("jobId"));
+        Job job =  jobsHandler.getJob((String)args.get("jobId"));
         return job;
     }
 }

@@ -35,6 +35,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
     public void connect() throws SQLException, IOException, ClassNotFoundException {
         // TODO
         arangoDB = new ArangoDB.Builder().build();
+
     }
 
   
@@ -83,7 +84,10 @@ public class ArangoSQLJobsHandler implements JobsHandler {
 
     public ArrayList<Job>  getAppliedJobs( String userID) throws SQLException {
         Collection<String> keys = this.getAppliedJobsIDs(userID);
-        MultiDocumentEntity<Job> cursor= collection.getDocuments(keys,Job.class);
+
+        collectionName = config.getArangoConfigProp("collection.jobs.name");
+        MultiDocumentEntity<Job> cursor= dbInstance.collection(collectionName).getDocuments(keys,Job.class);
+
        Collection<Job> jobs = cursor.getDocuments();
 
        return new ArrayList<Job>(jobs);
@@ -115,6 +119,9 @@ public class ArangoSQLJobsHandler implements JobsHandler {
     }
 
     public void EditJob(String JobID, LinkedHashMap<String, String > args){
+
+        String JobsCollectionName = config.getAppConfigProp("collection.jobs.name");
+
          Job job = getJob(JobID);
         if(args.containsKey("industryType"))
             job.setIndustryType(args.get("industryType"));
@@ -130,6 +137,9 @@ public class ArangoSQLJobsHandler implements JobsHandler {
     }
 
     public void deleteJobAsaCompany(String jobID){
+
+        String JobsCollectionName = config.getArangoConfigProp("collection.jobs.name");
+
 
         try {
             collection.deleteDocument(jobID);

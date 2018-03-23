@@ -17,7 +17,7 @@ public class JobService {
         config = Configuration.getInstance();
     }
 
-    public Object serve(String commandName, HashMap<String, String> args) throws Exception {
+    public Object serve(String commandName, HashMap<String, Object> args) throws Exception {
         Class<?> commandClass = config.getCommandClass(commandName);
         Constructor constructor = commandClass.getConstructor(HashMap.class);
         Command command = (Command) constructor.newInstance(args);

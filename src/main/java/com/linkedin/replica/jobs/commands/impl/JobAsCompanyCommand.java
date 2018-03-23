@@ -13,7 +13,7 @@ import java.util.LinkedHashMap;
 
 public class JobAsCompanyCommand extends Command {
 
-        public JobAsCompanyCommand(HashMap<String, String> args) {
+        public JobAsCompanyCommand(HashMap<String, Object> args) {
             super(args);
         }
 
@@ -23,9 +23,9 @@ public class JobAsCompanyCommand extends Command {
             // get notifications from db
             JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
 
-            Job job = new Job(args.get("jobId"),args.get("industryType"),args.get("employementType"), args.get("jobFunctions"),
-                args.get("positionName"), args.get("professionLevel"),args.get("companyID"),args.get("companyName"),
-                            args.get("companyLocation"),args.get("companyProfilePicture"),args.get("jobBrief"));
+            Job job = new Job((String) args.get("jobId"),(String)args.get("industryType"),(String)(String)args.get("employementType"),(String) args.get("jobFunctions"),
+                    (String) args.get("positionName"),(String) args.get("professionLevel"),(String)args.get("companyID"),(String)args.get("companyName"),
+                    (String)  args.get("companyLocation"),(String)args.get("companyProfilePicture"),(String)args.get("jobBrief"));
             jobsHandler.createJobAsaCompany(job);
             return "Job Posted";
 

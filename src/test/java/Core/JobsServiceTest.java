@@ -48,7 +48,7 @@ public class JobsServiceTest {
 
     @Test
     public void testJobListingService() throws Exception {
-        HashMap<String, String> args = new HashMap<>();
+        HashMap<String, Object> args = new HashMap<>();
         args.put("jobId", "1");
         Job results = (Job) JobService.serve("job.listing",args);
         assertEquals("matching position name" , "Data Wrangling Engineer" ,results.getPositionName());
@@ -58,7 +58,7 @@ public class JobsServiceTest {
 
     @Test
     public void testDeleteJobAsCompanyService() throws Exception {
-        HashMap<String, String> args = new HashMap<>();
+        HashMap<String, Object> args = new HashMap<>();
         args.put("jobId", "3");
         JobService.serve("delete.job.company",args);
         args = new HashMap<>();
@@ -68,7 +68,7 @@ public class JobsServiceTest {
 
     }
 
- 
+
 
 
     @AfterClass

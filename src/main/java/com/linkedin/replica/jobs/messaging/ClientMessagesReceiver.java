@@ -8,6 +8,7 @@ import com.linkedin.replica.jobs.database.DatabaseConnection;
 import com.linkedin.replica.jobs.services.JobService;
 import com.linkedin.replica.jobs.services.Workers;
 import com.rabbitmq.client.*;
+import sun.jvm.hotspot.tools.ObjectHistogram;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -53,7 +54,7 @@ public class ClientMessagesReceiver {
                     // Extract the request arguments
                     JsonObject object = new JsonParser().parse(new String(body)).getAsJsonObject();
                     String commandName = object.get("commandName").getAsString();
-                    HashMap<String, String> args = new HashMap<>();
+                    HashMap<String, Object> args = new HashMap<>();
                     for (String key : object.keySet())
                         if (!key.equals("commandName"))
                             args.put(key, object.get(key).getAsString());

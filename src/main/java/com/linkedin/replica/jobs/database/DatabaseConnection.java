@@ -12,6 +12,7 @@ import java.sql.SQLException;
  * A singleton class for the connections of databases (Arango, Mysql).
  */
 public class DatabaseConnection {
+
     private ArangoDB arangoDriver;
     private Connection mysqlDriver;
     private Configuration config;

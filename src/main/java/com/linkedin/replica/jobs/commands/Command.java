@@ -10,9 +10,9 @@ import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
 import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 
 public abstract class Command {
-    protected HashMap<String, String> args;
+    protected HashMap<String, Object> args;
     protected JobsHandler jobsHandler;
-    public Command(HashMap<String, String> args) {
+    public Command(HashMap<String, Object> args) {
         this.args = args;
     }
     protected DatabaseHandler dbHandler;
@@ -32,7 +32,7 @@ public abstract class Command {
                 throw new IllegalArgumentException(exceptionMsg);
             }
     }
-    public void setArgs(HashMap<String, String> args) {
+    public void setArgs(HashMap<String, Object> args) {
         this.args = args;
     }
 
