@@ -68,6 +68,21 @@ public class JobsServiceTest {
     }
 
     @Test
+    public void testCreateJobAsCompany() throws Exception {
+        Job job  = new Job();
+        job.setJobTitle("Software coder");
+        job.setJobID("30");
+        HashMap<String, Object> args = new HashMap<>();
+        args.put("job", job);
+        args.put("CompanyId", "1");
+        JobService.serve("post.job.company",args);
+        args.put("jobId", "30");
+        job  = (Job) JobService.serve("job.listing",args);
+        assertEquals("Job title match" , "Software coder" ,job.getJobTitle());
+
+    }
+
+    @Test
     public void TestRespondToApplicandService(){
 
     }

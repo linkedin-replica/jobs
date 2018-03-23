@@ -5,6 +5,7 @@ public class Job {
 
 
     private  String jobID ;
+    private  String jobTitle;
     private  String industryType;
     private  String employmentType;
     private  String jobFunctions;
@@ -18,8 +19,10 @@ public class Job {
     public Job(){
     }
 
-    public Job(String jobID, String industryType, String employmentType, String jobFunctions, String positionName, String professionLevel, String companyID, String companyName, String companyLocation, String compnayPicture, String jobBrief) {
+    public Job(String jobID, String jobTitle, String industryType, String employmentType, String jobFunctions, String positionName, String professionLevel, String companyID,
+               String companyName, String companyLocation, String compnayPicture, String jobBrief) {
         this.jobID = jobID;
+        this.jobTitle = jobTitle;
         this.industryType = industryType;
         this.employmentType = employmentType;
         this.jobFunctions = jobFunctions;
@@ -74,6 +77,14 @@ public class Job {
 
     public void setJobBrief(String jobBrief) {
         this.jobBrief = jobBrief;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
     }
 
     public String getJobID() {

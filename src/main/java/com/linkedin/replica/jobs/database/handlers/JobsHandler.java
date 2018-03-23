@@ -15,7 +15,7 @@ public interface JobsHandler extends DatabaseHandler{
     void connect() throws FileNotFoundException, ClassNotFoundException, IOException, SQLException;
     public ArrayList<Job> getAppliedJobs(String userID) throws SQLException;
     public List<Job> getSavedJobs(String userId);
-    public void createJobAsaCompany( Job job);
+    public void createJobAsaCompany( Job job,String CompnayId) throws SQLException ;
     public void deleteJobAsaCompany(String jobID);
     public Job getJob(String JobID);
     public void EditJob(String JobID, LinkedHashMap<String, String > args);

@@ -66,7 +66,7 @@ public class ClientMessagesTest {
         connection = factory.newConnection();
         channel = connection.createChannel();
         DatabaseSeed databaseSeed  = new DatabaseSeed();
-        databaseSeed.insertUsers();
+//        databaseSeed.insertUsers();
         databaseSeed.insertJobs();
     }
 
@@ -102,9 +102,9 @@ public class ClientMessagesTest {
         String resMessage = response.take();
         JsonObject resObject = new JsonParser().parse(resMessage).getAsJsonObject();
 
+System.out.println(resObject);
 
-
-        assertEquals("", "1",  resObject.get("results").getAsJsonObject().get("jobId").getAsString());
+        assertEquals("the two positions should be equal", "Junior Researcher",  resObject.get("results").getAsJsonObject().get("positionName").getAsString());
     }
     @AfterClass
     public static void clean() throws IOException, TimeoutException, SQLException, ClassNotFoundException {

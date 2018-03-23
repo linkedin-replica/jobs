@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.List;
+
+import com.arangodb.entity.BaseDocument;
 import com.arangodb.entity.MultiDocumentEntity;
 import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 import com.linkedin.replica.jobs.config.Configuration;
@@ -103,10 +105,29 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         }
         return null;
     }
-        public void createJobAsaCompany( Job job){
+        public void createJobAsaCompany( Job job,String ComanyId) throws SQLException {
 
             try {
-                collection.insertDocument(job);
+                String query = "{CALL Insert_Job(?,?,?)}";
+                CallableStatement stmt = mysqlConnection.prepareCall(query);
+                stmt.setString(1, job.getJobID());
+                stmt.setString(2, job.getJobTitle());
+                stmt.setString(3, ComanyId);
+                stmt.executeQuery();
+                BaseDocument document = new BaseDocument();
+                document.addAttribute("jobID", job.getJobID());
+                document.addAttribute("jobTitle", job.getJobTitle());
+                document.addAttribute("industryType",job.getIndustryType());
+                document.addAttribute("employmentType",job.getEmploymentType());
+                document.addAttribute("jobFunctions",job.getJobFunctions());
+                document.addAttribute("positionName",job.getPositionName());
+                document.addAttribute("professionLevel",job.getProfessionLevel());
+                document.addAttribute("companyID",job.getCompanyID());
+                document.addAttribute("companyName",job.getCompanyName());
+                document.addAttribute("companyLocation",job.getCompanyLocation());
+                document.addAttribute("compnayPicture",job.getCompnayPicture());
+                document.setKey(job.getJobID());
+                collection.insertDocument(document);
             } catch (ArangoDBException e) {
                 System.err.println("Failed to update document. " + e.getMessage());
             }
