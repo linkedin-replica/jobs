@@ -35,7 +35,6 @@ public class ArangoSQLJobsHandler implements JobsHandler {
     public void connect() throws SQLException, IOException, ClassNotFoundException {
         // TODO
         arangoDB = new ArangoDB.Builder().build();
-       // mysqlConnection = DatabaseConnection.getInstance().getMysqlConn();
     }
 
   

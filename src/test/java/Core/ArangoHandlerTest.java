@@ -1,3 +1,5 @@
+package Core;
+
 import com.arangodb.ArangoDatabase;
 import com.linkedin.replica.jobs.config.Configuration;
 import com.linkedin.replica.jobs.database.handlers.impl.ArangoSQLJobsHandler;
