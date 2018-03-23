@@ -39,10 +39,10 @@ public class SqlHandlerTest {
         assertEquals("Jobs must be of size 1" ,jobs.size() ,1);
 
     }
-    @Test
-    public void RespondToJobTest() {
-
-    }
+//    @Test
+//    public void RespondToJobTest() {
+//        mysqlHandler.RespondToJobsAsCompany()
+//    }
 
     @AfterClass
     public static void clean() throws IOException, SQLException, ClassNotFoundException {

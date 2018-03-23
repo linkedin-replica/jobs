@@ -40,8 +40,9 @@ public class ClientMessagesTest {
     @BeforeClass
     public static void init() throws IOException, TimeoutException, ParseException, SQLException, ClassNotFoundException {
         String rootFolder = "src/main/resources/config/";
-        Configuration.init(rootFolder + "app.config",
-                rootFolder + "arango.test.config",rootFolder+"mysql.config",rootFolder + "commands.config",rootFolder+"controller.config");
+        Configuration.init(rootFolder + "app.config", rootFolder +"arango.config",
+                rootFolder +"database.config",rootFolder + "commands.config",
+                rootFolder +"controller.config");
         DatabaseConnection.init();
         config = Configuration.getInstance();
 
@@ -55,10 +56,7 @@ public class ClientMessagesTest {
         );
 
         arangoDb.createCollection(
-                config.getArangoConfigProp("collection.companies.name")
-        );
-        arangoDb.createCollection(
-                config.getArangoConfigProp("collection.users.name")
+                config.getArangoConfigProp("collection.jobs.name")
         );
 
         arangoHandler = new ArangoSQLJobsHandler();
@@ -76,7 +74,7 @@ public class ClientMessagesTest {
     public void testMessages() throws IOException, InterruptedException {
         JsonObject object = new JsonObject();
         object.addProperty("commandName", "job.listing");
-        object.addProperty("jobId","1");
+        object.addProperty("jobId","3");
         HashMap<String,Object> args = new HashMap<String,Object>();
         byte[] message = object.toString().getBytes();
         final String corrId = UUID.randomUUID().toString();
@@ -116,10 +114,7 @@ public class ClientMessagesTest {
         connection.close();
         // clean db
         arangoDb.collection(
-                config.getArangoConfigProp("collection.companies.name")
-        ).drop();
-        arangoDb.collection(
-                config.getArangoConfigProp("collection.users.name")
+                config.getArangoConfigProp("collection.jobs.name")
         ).drop();
         DatabaseConnection.getInstance().closeConnections();
     }

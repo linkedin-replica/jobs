@@ -65,6 +65,10 @@ public class JobsServiceTest {
         args.put("jobId", "3");
         Job job  = (Job) JobService.serve("job.listing",args);
         assertEquals("Job is deleted" , null ,job);
+    }
+
+    @Test
+    public void TestRespondToApplicandService(){
 
     }
 

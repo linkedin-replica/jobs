@@ -44,6 +44,7 @@ public class DatabaseConnection {
     }
 
     private void initializeMysqlDB() throws SQLException {
+        System.out.println(config.getMysqlConfigProp("mysql.url"));
         mysqlDriver = DriverManager.getConnection(config.getMysqlConfigProp("mysql.url"),
                 config.getMysqlConfigProp("mysql.username"),
                 config.getMysqlConfigProp("mysql.password"));
