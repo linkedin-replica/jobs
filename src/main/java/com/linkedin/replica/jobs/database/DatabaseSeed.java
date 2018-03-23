@@ -112,7 +112,8 @@ public class DatabaseSeed {
         for (Object job : jobs) {
             JSONObject jobObject = (JSONObject) job;
             jobDocument = new BaseDocument();
-            jobDocument.addAttribute("JobID", id++);
+            jobDocument.setKey(id+"");
+            jobDocument.addAttribute("JobID", id);
             jobDocument.addAttribute("positionName", jobObject.get("positionName"));
             jobDocument.addAttribute("companyName", jobObject.get("companyName"));
             jobDocument.addAttribute("companyId", jobObject.get("companyId"));
@@ -122,6 +123,7 @@ public class DatabaseSeed {
             jobDocument.addAttribute("requiredSkills", jobObject.get("requiredSkills"));
             arangoDB.db(dbName).collection(collectionName).insertDocument(jobDocument);
             System.out.println("New job document insert with key = " + jobDocument.getId());
+            id++;
         }
     }
 

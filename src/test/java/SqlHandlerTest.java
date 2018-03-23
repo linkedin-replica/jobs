@@ -33,30 +33,21 @@ public class SqlHandlerTest {
     public void getAppliedjobsTest() throws IOException, SQLException {
         ArrayList<String> ids = new ArrayList<String>();
         ids.add("1");
-//        ids.add();
         ArrayList<String> jobs = mysqlHandler.getAppliedJobsIDs("32");
         assertEquals("Jobs must be of size 2" ,jobs.size() ,3);
 
     }
+    @Test
+    public void RespondToJobTest() {
+
+    }
+
+    @AfterClass
+    public static void clean() throws IOException, SQLException, ClassNotFoundException {
+
+        DatabaseConnection.getInstance().closeConnections();
+    }
 
 
-//    @AfterClass
-//    public static void clean() throws IOException, SQLException, ClassNotFoundException {
-//
-//        DatabaseConnection.getDBConnection().closeConnections();
-//    }
-
-//    @AfterClass
-//    public static void cleanAfterTest() throws IOException {
-//        arangoDb.collection(
-//                config.getArangoConfig("collection.users.name")
-//        ).drop();
-//    }
-//
-//    @AfterClass
-//    public static void clean() throws IOException {
-//        ConfigReader.isTesting = false;
-//        DatabaseConnection.getDBConnection().closeConnections();
-//    }
 
 }

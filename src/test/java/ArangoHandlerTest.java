@@ -8,6 +8,7 @@ import org.json.simple.parser.ParseException;
 import org.junit.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.LinkedHashMap;
 
 
 import static org.junit.Assert.assertEquals;
@@ -19,7 +20,7 @@ public class ArangoHandlerTest {
    static DatabaseSeed databaseSeed;
 
     @BeforeClass
-    public static void init() throws IOException, SQLException, ClassNotFoundException {
+    public static void init() throws IOException, SQLException, ClassNotFoundException, ParseException {
         Configuration.init("src/main/resources/config/app.config", "src/main/resources/config/arango.config",
                 "src/main/resources/config/database.config","src/main/resources/config/commands.config",
                 "src/main/resources/config/controller.config");
@@ -30,43 +31,36 @@ public class ArangoHandlerTest {
         arangoHandler.connect();
         arangoDb =DatabaseConnection.getInstance().getArangoDriver().
                 db(config.getAppConfigProp("db.name"));
-    }
-
-    @Before
-    public void initBeforeTest() throws IOException, ParseException, SQLException, ClassNotFoundException {
         databaseSeed.insertJobs();
+
     }
 
 
 
     @Test
     public void JobListingTest() throws IOException, SQLException, ClassNotFoundException {
-        Job results = arangoHandler.getJob("1067639");
+        Job results = arangoHandler.getJob("1");
         assertEquals("matching position name" , "Data Wrangling Engineer" ,results.getPositionName());
         assertEquals("matching company Name" , "DFKI" ,results.getCompanyName());
         assertEquals("matching industryType" , "Software" ,results.getIndustryType());
     }
 
-//    @Test
-//    public void EditJobTest() throws IOException{
-//        String collectionName = config.getArangoConfig("collection.jobs.name");
-//        ArangoHandler arangoHandler = new ArangoHandler();
-//        LinkedHashMap<String, String> args = new LinkedHashMap<>();
-//        args.put("professionLevel", "Junior");
-//        arangoHandler.EditJob("414592", args);
-//        Job newJob = arangoHandler.getJob("414592");
-//        assertEquals("matching new professional level" , "Junior" , newJob.getProfessionLevel());
-//    }
+    @Test
+    public void EditJobTest() throws IOException{
+        LinkedHashMap<String, String> args = new LinkedHashMap<>();
+        args.put("professionLevel", "Junior");
+        arangoHandler.EditJob("1", args);
+        Job newJob = arangoHandler.getJob("1");
+        assertEquals("matching new professional level" , "Junior" , newJob.getProfessionLevel());
+    }
 //
-//    @Test
-//    public void DeletejobTest() throws IOException, SQLException, ClassNotFoundException {
-//        String collectionName = config.getArangoConfig("collection.jobs.name");
-//        ArangoHandler arangoHandler = new ArangoHandler();
-//        arangoHandler.deleteJobAsaCompany("414595");
-//        Job newJob = arangoHandler.getJob("414595");
-//        assertEquals("Job has been deleted" , null , newJob);
-//
-//    }
+    @Test
+    public void DeletejobTest() throws IOException, SQLException, ClassNotFoundException {
+        arangoHandler.deleteJobAsaCompany("2");
+        Job newJob = arangoHandler.getJob("2");
+        assertEquals("Job has been deleted" , null , newJob);
+
+    }
 //    @Test
 //    public void getAppliedjobsTest() throws IOException{
 //       ArrayList<String> ids = new ArrayList<String>();
@@ -82,17 +76,11 @@ public class ArangoHandlerTest {
 
 
 
-//    @AfterClass
-//    public static void cleanAfterTest() throws IOException {
-//        arangoDb.collection(
-//                config.getArangoConfig("collection.users.name")
-//        ).drop();
-//    }
-//
-//    @AfterClass
-//    public static void clean() throws IOException, SQLException, ClassNotFoundException {
-//
-//        DatabaseConnection.getDBConnection().closeConnections();
-//    }
+    @AfterClass
+    public static void cleanAfterTest() throws IOException, SQLException {
+        databaseSeed.deleteAllJobs();
+    }
+
+
 
 }

@@ -42,14 +42,13 @@ public class ArangoSQLJobsHandler implements JobsHandler {
     public void disconnect() {
         // TODO
     }
-    public boolean RespondToJobsAsCompany(String companyId) throws SQLException {
-        String query = "{CALL view_applied_jobs(?)}";
+    public boolean RespondToJobsAsCompany(String userId,String jobId) throws SQLException {
+        String query = "{respond_to_applicant(?,?)}";
         CallableStatement stmt = mysqlConnection.prepareCall(query);
-        stmt.setString(1, companyId);
-        ArrayList<String> Ids = new ArrayList<String>();
+        stmt.setString(1, userId);
+        stmt.setString(2, jobId);
         stmt.executeQuery();
         return true;
-
     }
     public ArrayList<String> getAppliedJobsIDs(String userId) throws SQLException {
         String query = "{CALL view_applied_jobs(?)}";
@@ -128,7 +127,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
             job.setIndustryType(args.get("positionName"));
         if(args.containsKey("professionLevel"))
             job.setIndustryType(args.get("professionLevel"));
-        collection.updateDocument(job.getJobID(),job);
+        collection.updateDocument(JobID ,job);
     }
 
     public void deleteJobAsaCompany(String jobID){

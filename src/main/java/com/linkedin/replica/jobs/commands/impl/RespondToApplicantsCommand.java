@@ -14,13 +14,13 @@ public class RespondToApplicantsCommand extends Command {
     }
 
     public LinkedHashMap<String, Object> execute(){
-        validateArgs(new String[]{"companyId"});
+        validateArgs(new String[]{"userId", "jobId"});
         // get notifications from db
         JobsHandler jobsHandler = (JobsHandler) this.jobsHandler;
 
         boolean job = false;
         try {
-            job = jobsHandler.RespondToJobsAsCompany(args.get("companyId"));
+            job = jobsHandler.RespondToJobsAsCompany(args.get("userId"), args.get("jobId"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
