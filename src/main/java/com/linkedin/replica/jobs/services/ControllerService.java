@@ -14,7 +14,7 @@ public class ControllerService {
         // iterate over request JSON body
         Iterator<?> keySetIter = body.keySet().iterator();
         String key, methodName;
-        HashMap<String, String> args = new HashMap<String, String>();
+        HashMap<String, Object> args = new HashMap<String, Object>();
         ControllerCommand controllerCommand = new ControllerCommand(args);
 
         while(keySetIter.hasNext()){
@@ -22,7 +22,7 @@ public class ControllerService {
             methodName = getControllerServiceMethodName(key);
 
             args.put("methodName", methodName);
-            args.put("param", String.valueOf(body.get(key)));
+            args.put("param", body.get(key));
             controllerCommand.execute();
         }
 

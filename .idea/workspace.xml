@@ -1,8 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d60d0ee7-40ad-49ec-8995-99fe2c777065" name="Default" comment="">
+    <list default="true" id="245b1e24-e993-4584-aed6-0c852f48791b" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/emacs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/Core/ArangoHandlerTest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/Core/JobsServiceTest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/Core/SqlHandlerTest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/Core/ArangoHandlerTest.class" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/Core/JobsServiceTest.class" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/Core/SqlHandlerTest.class" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_6_0_6.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_core_asl_1_9_13.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_mapper_asl_1_9_13.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javalite_activejdbc_1_4_13.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javalite_app_config_1_4_13.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javalite_javalite_common_1_4_13.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/jobs.iml" afterPath="$PROJECT_DIR$/jobs.iml" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/Command.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/Command.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/ControllerCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/ControllerCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/DeleteJobAsCompanyCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/DeleteJobAsCompanyCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/JobAsCompanyCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/JobAsCompanyCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/JobListingCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/JobListingCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/RespondToApplicantsCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/RespondToApplicantsCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/ViewAppliedJobsCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/ViewAppliedJobsCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/config/Configuration.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/config/Configuration.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/DatabaseConnection.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/DatabaseConnection.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/DatabaseSeed.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/DatabaseSeed.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/JobsHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/JobsHandler.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/impl/ArangoSQLJobsHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/impl/ArangoSQLJobsHandler.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/messaging/ClientMessagesReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/messaging/ClientMessagesReceiver.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/services/ControllerService.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/services/ControllerService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/services/JobService.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/services/JobService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/app.config" afterPath="$PROJECT_DIR$/src/main/resources/config/app.config" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/commands.config" afterPath="$PROJECT_DIR$/src/main/resources/config/commands.config" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/database.config" afterPath="$PROJECT_DIR$/src/main/resources/config/database.config" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ClientMessagesTest.java" afterPath="$PROJECT_DIR$/src/test/java/ClientMessagesTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SqlHandlerTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/RequestProcessingHandlerTest.java" afterPath="$PROJECT_DIR$/src/test/java/controller/RequestProcessingHandlerTest.java" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/commands/Command.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/commands/Command.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/commands/impl/ControllerCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/commands/impl/ControllerCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/commands/impl/DeleteJobAsCompanyCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/commands/impl/DeleteJobAsCompanyCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/commands/impl/JobAsCompanyCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/commands/impl/JobAsCompanyCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/commands/impl/JobListingCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/commands/impl/JobListingCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/commands/impl/RespondToApplicantsCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/commands/impl/RespondToApplicantsCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/commands/impl/ViewAppliedJobsCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/commands/impl/ViewAppliedJobsCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/config/Configuration.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/config/Configuration.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/database/DatabaseConnection.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/database/DatabaseConnection.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/database/DatabaseSeed.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/database/DatabaseSeed.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/database/handlers/JobsHandler.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/database/handlers/JobsHandler.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/database/handlers/impl/ArangoSQLJobsHandler.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/database/handlers/impl/ArangoSQLJobsHandler.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/messaging/ClientMessagesReceiver$1.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/messaging/ClientMessagesReceiver$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/messaging/ClientMessagesReceiver.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/messaging/ClientMessagesReceiver.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/services/ControllerService.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/services/ControllerService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/services/JobService.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/services/JobService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/app.config" afterPath="$PROJECT_DIR$/target/classes/config/app.config" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/commands.config" afterPath="$PROJECT_DIR$/target/classes/config/commands.config" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/database.config" afterPath="$PROJECT_DIR$/target/classes/config/database.config" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/ClientMessagesTest$1.class" afterPath="$PROJECT_DIR$/target/test-classes/ClientMessagesTest$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/ClientMessagesTest.class" afterPath="$PROJECT_DIR$/target/test-classes/ClientMessagesTest.class" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/SqlHandlerTest.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/controller/RequestProcessingHandlerTest.class" afterPath="$PROJECT_DIR$/target/test-classes/controller/RequestProcessingHandlerTest.class" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,124 +73,77 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="commands.config" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/config/commands.config">
+      <file leaf-file-name="app.config" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/config/app.config">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="14" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JobListingCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/JobListingCommand.java">
+      <file leaf-file-name="ClientMessagesReceiver.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/messaging/ClientMessagesReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="22" />
-              <folding>
-                <element signature="e#845#861#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="controller.config" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/config/controller.config">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" column="64" lean-forward="false" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
+            <state relative-caret-position="162">
+              <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.config" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="35" column="21" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientMessagesTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ClientMessagesTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1602">
+              <caret line="115" column="58" lean-forward="false" selection-start-line="115" selection-start-column="58" selection-end-line="115" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseConnection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/DatabaseConnection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="684">
+              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mysql.config" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/config/mysql.config">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database.config" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/config/database.config">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="arango.config" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/config/arango.config">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="20" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="arango_names" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/config/arango_names">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeleteJobAsCompanyCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/DeleteJobAsCompanyCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="17" column="41" lean-forward="false" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SqlHandlerTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/SqlHandlerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArangoHandlerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ArangoHandlerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-877">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1521759753952" expanded="true" signature="3850:3855" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArangoSQLJobsHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/impl/ArangoSQLJobsHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="62" column="52" lean-forward="true" selection-start-line="62" selection-start-column="52" selection-end-line="62" selection-end-column="52" />
+              <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>getAr</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -144,57 +156,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/models/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/DatabaseConnection.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/config/database.config" />
-        <option value="$PROJECT_DIR$/src/main/resources/config/arango.test.config" />
-        <option value="$PROJECT_DIR$/src/main/java/config/Configuration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/DatabaseSeed.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/ArangoSQLJobsHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/handlers/ArangoSQLJobsHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/handlers/impl/ArangoSQLJobsHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/handlers/impl/DatabaseHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/handlers/DatabaseHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/handlers/JobsHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/database/handlers/JobsHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/database/handlers/JobsHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/database/handlers/JobsHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/DatabaseInstance.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/Command.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/ViewAppliedJobsCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/JobAsCompanyCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/DeleteJobAsCompanyCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/ViewSavedJobsCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/data/jobs.json" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/JobsHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/RespondToApplicantsCommand.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/services/Workers.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/messaging/ClientMessagesReceiver.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/controller/server.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/exceptions/BadRequestException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/ControllerCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/services/ControllerService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/controller/handlers/RequestDecoderHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/controller/handlers/RequestProcessingHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/controller/handlers/ResponseEncoderHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/controller/Server.java" />
-        <option value="$PROJECT_DIR$/src/test/java/controller/RequestDecoderHandlerTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/controller/ResponseEncoderHandlerTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/controller/RequestProcessingHandlerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/impl/ArangoSQLJobsHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/config/Configuration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/services/JobService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/DatabaseConnection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/DatabaseSeed.java" />
-        <option value="$PROJECT_DIR$/src/test/java/SqlHandlerTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ArangoHandlerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/config/controller.config" />
-        <option value="$PROJECT_DIR$/src/main/resources/config/app.config" />
-        <option value="$PROJECT_DIR$/src/main/resources/config/mysql.config" />
-        <option value="$PROJECT_DIR$/src/main/resources/config/commands.config" />
         <option value="$PROJECT_DIR$/src/test/java/ClientMessagesTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/JobListingCommand.java" />
       </list>
     </option>
   </component>
@@ -203,7 +167,6 @@
     <option name="width" value="1280" />
     <option name="height" value="746" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -219,6 +182,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -229,6 +193,11 @@
             <path>
               <item name="jobs" type="b2602c69:ProjectViewProjectNode" />
               <item name="jobs" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jobs" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -251,82 +220,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="jobs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jobs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jobs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jobs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jobs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jobs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="handlers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jobs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="handlers" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jobs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="messaging" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jobs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jobs" type="b2602c69:ProjectViewProjectNode" />
@@ -347,14 +240,6 @@
               <item name="jobs" type="b2602c69:ProjectViewProjectNode" />
               <item name="jobs" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jobs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jobs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -370,7 +255,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="Core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jobs" type="b2602c69:ProjectViewProjectNode" />
@@ -383,28 +268,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
-  </component>
-  <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources" />
-      <recent name="$PROJECT_DIR$/src" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="utils" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/data" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -460,70 +327,20 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="RequestDecoderHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Core in jobs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="controller.*" />
+          <option name="PATTERN" value="Core.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="jobs" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.RequestDecoderHandlerTest" />
+      <option name="PACKAGE_NAME" value="Core" />
+      <option name="MAIN_CLASS_NAME" />
       <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
-    <configuration name="RequestProcessingHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="jobs" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.RequestProcessingHandlerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
-    <configuration name="ResponseEncoderHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="jobs" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.ResponseEncoderHandlerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -536,12 +353,17 @@
       <patterns />
     </configuration>
     <configuration name="SqlHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <module name="jobs" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SqlHandlerTest" />
+      <option name="PACKAGE_NAME" value="Core" />
+      <option name="MAIN_CLASS_NAME" value="Core.SqlHandlerTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -615,20 +437,16 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.ResponseEncoderHandlerTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.RequestDecoderHandlerTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.RequestProcessingHandlerTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ClientMessagesTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.SqlHandlerTest" />
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.Core in jobs" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ClientMessagesTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.SqlHandlerTest" />
     </list>
     <recent_temporary>
-      <list size="5">
+      <list size="3">
         <item index="0" class="java.lang.String" itemvalue="JUnit.SqlHandlerTest" />
         <item index="1" class="java.lang.String" itemvalue="JUnit.ClientMessagesTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ResponseEncoderHandlerTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.RequestProcessingHandlerTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.RequestDecoderHandlerTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.Core in jobs" />
       </list>
     </recent_temporary>
   </component>
@@ -640,43 +458,28 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d60d0ee7-40ad-49ec-8995-99fe2c777065" name="Default" comment="" />
-      <created>1520190309292</created>
+      <changelist id="245b1e24-e993-4584-aed6-0c852f48791b" name="Default" comment="" />
+      <created>1521824999852</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1520190309292</updated>
+      <updated>1521824999852</updated>
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ClientMessagesTest - 2018.03.23 at 17h 28m 30s.xml">
+    <history-entry file="ClientMessagesTest - 2018.03.23 at 19h 13m 41s.xml">
       <configuration name="ClientMessagesTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ControllerTestSuite - 2018.03.23 at 01h 09m 55s.xml">
-      <configuration name="ControllerTestSuite" configurationId="JUnit" />
+    <history-entry file="ClientMessagesTest - 2018.03.23 at 19h 17m 45s.xml">
+      <configuration name="ClientMessagesTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RequestDecoderHandlerTest - 2018.03.23 at 01h 09m 59s.xml">
-      <configuration name="RequestDecoderHandlerTest" configurationId="JUnit" />
+    <history-entry file="ClientMessagesTest - 2018.03.23 at 19h 18m 47s.xml">
+      <configuration name="ClientMessagesTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RequestProcessingHandlerTest - 2018.03.23 at 01h 04m 09s.xml">
-      <configuration name="RequestProcessingHandlerTest" configurationId="JUnit" />
+    <history-entry file="SqlHandlerTest - 2018.03.23 at 19h 19m 03s.xml">
+      <configuration name="SqlHandlerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RequestProcessingHandlerTest - 2018.03.23 at 01h 08m 16s.xml">
-      <configuration name="RequestProcessingHandlerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RequestProcessingHandlerTest - 2018.03.23 at 01h 09m 10s.xml">
-      <configuration name="RequestProcessingHandlerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RequestProcessingHandlerTest - 2018.03.23 at 01h 09m 49s.xml">
-      <configuration name="RequestProcessingHandlerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RequestProcessingHandlerTest - 2018.03.23 at 01h 10m 02s.xml">
-      <configuration name="RequestProcessingHandlerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ResponseEncoderHandlerTest - 2018.03.23 at 01h 10m 06s.xml">
-      <configuration name="ResponseEncoderHandlerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SqlHandlerTest - 2018.03.23 at 17h 29m 13s.xml">
+    <history-entry file="SqlHandlerTest - 2018.03.23 at 19h 19m 40s.xml">
       <configuration name="SqlHandlerTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -684,32 +487,32 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284055" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3284055" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22989747" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24986508" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -720,380 +523,106 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/models/Job.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/models/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="6" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jobs.iml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/app.config">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/database_auth">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/models/Company.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/models/lightJobListing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/models/lightPost.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/models/Media.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/Command.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="24" column="24" lean-forward="false" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/ViewAppliedJobsCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/JobAsCompanyCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="28" column="28" lean-forward="false" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/arango.test.config">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/ViewSavedJobsCommand.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/JobsHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="80" lean-forward="false" selection-start-line="19" selection-start-column="80" selection-end-line="19" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/services/Workers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="38" lean-forward="true" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/controller/handlers/server.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/exceptions/BadRequestException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/ControllerCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/controller/handlers/RequestDecoderHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/controller/handlers/RequestProcessingHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-680">
-          <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/controller/handlers/ResponseEncoderHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/controller/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-918">
-          <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/services/ControllerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="34" column="21" lean-forward="false" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/DatabaseInstance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="32" column="7" lean-forward="false" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/controller/ControllerTestSuite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/messaging/ClientMessagesReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="87" column="13" lean-forward="true" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/services/JobService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/DatabaseConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="784">
-          <caret line="72" column="4" lean-forward="false" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="4" />
-          <folding>
-            <element signature="e#966#967#0" expanded="false" />
-            <element signature="e#1005#1006#0" expanded="false" />
-            <element signature="e#1906#1907#0" expanded="false" />
-            <element signature="e#1949#1950#0" expanded="false" />
-            <element signature="e#1995#1996#0" expanded="false" />
-            <element signature="e#2037#2038#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/controller/RequestProcessingHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="34" column="45" lean-forward="false" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/DatabaseSeed.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2898">
-          <caret line="174" column="1" lean-forward="false" selection-start-line="174" selection-start-column="1" selection-end-line="174" selection-end-column="1" />
+        <state relative-caret-position="162">
+          <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/controller/RequestDecoderHandlerTest.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/controller/ResponseEncoderHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="45" column="63" lean-forward="false" selection-start-line="45" selection-start-column="63" selection-end-line="45" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/config/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2101#2102#0" expanded="false" />
-            <element signature="e#2132#2133#0" expanded="false" />
-            <element signature="e#3102#3103#0" expanded="false" />
-            <element signature="e#3151#3152#0" expanded="false" />
-            <element signature="e#3204#3205#0" expanded="false" />
-            <element signature="e#3256#3257#0" expanded="false" />
-            <element signature="e#3308#3309#0" expanded="false" />
-            <element signature="e#3359#3360#0" expanded="false" />
-            <element signature="e#3748#3749#0" expanded="false" />
-            <element signature="e#3804#3805#0" expanded="false" />
-            <element signature="e#3858#3859#0" expanded="false" />
-            <element signature="e#3911#3912#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/mysql.config">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/app.config">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+        <state relative-caret-position="630">
+          <caret line="35" column="21" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ClientMessagesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="76" column="57" lean-forward="false" selection-start-line="76" selection-start-column="57" selection-end-line="76" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/data/jobs.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="19" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="19" />
+        <state relative-caret-position="1602">
+          <caret line="115" column="58" lean-forward="false" selection-start-line="115" selection-start-column="58" selection-end-line="115" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/RespondToApplicantsCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/DatabaseConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="684">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/JobListingCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="22" />
-          <folding>
-            <element signature="e#845#861#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ArangoHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-877">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1521759753952" expanded="true" signature="3850:3855" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/DeleteJobAsCompanyCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="17" column="41" lean-forward="false" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/impl/ArangoSQLJobsHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="62" column="52" lean-forward="true" selection-start-line="62" selection-start-column="52" selection-end-line="62" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/arango.config">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="20" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/arango_names">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/commands.config">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/mysql.config">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="14" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/controller.config">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/database.config">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="64" lean-forward="false" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="35" column="21" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/messaging/ClientMessagesReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ClientMessagesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1602">
+          <caret line="115" column="58" lean-forward="false" selection-start-line="115" selection-start-column="58" selection-end-line="115" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/mysql.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/app.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/DatabaseConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1101,94 +630,10 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/config/database.config">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/SqlHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>jobs</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: com.arangodb:arangodb-java-driver:4.3.0</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

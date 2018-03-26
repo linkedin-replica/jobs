@@ -27,6 +27,7 @@ public class Configuration {
     private String arangoConfigPath;
     private String mysqlConfigPath;
     private String commandsConfigPath;
+//<<<<<<< HEAD
 
     private Configuration(String appConfigPath, String arangoConfigPath, String mysqlConfigPath, String commandsConfigPath,
                           String controllerConfigPath) throws IOException {
@@ -79,6 +80,7 @@ public class Configuration {
     public String getMysqlConfigProp(String key) {
         return mysqlConfig.getProperty(key);
     }
+
     public Class getHandlerClass(String commandName) throws ClassNotFoundException {
         String handlerPackageName = JobsHandler.class.getPackage().getName() + ".impl";
         String handlerClassPath = handlerPackageName + "." + commandConfig.get(commandName + ".handler");

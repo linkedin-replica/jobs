@@ -5,8 +5,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.linkedin.replica.jobs.config.Configuration;
 import com.linkedin.replica.jobs.database.DatabaseConnection;
+import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 import com.linkedin.replica.jobs.services.JobService;
 import com.linkedin.replica.jobs.services.Workers;
+
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
@@ -53,7 +55,7 @@ public class ClientMessagesReceiver {
                     // Extract the request arguments
                     JsonObject object = new JsonParser().parse(new String(body)).getAsJsonObject();
                     String commandName = object.get("commandName").getAsString();
-                    HashMap<String, String> args = new HashMap<>();
+                    HashMap<String, Object> args = new HashMap<>();
                     for (String key : object.keySet())
                         if (!key.equals("commandName"))
                             args.put(key, object.get(key).getAsString());

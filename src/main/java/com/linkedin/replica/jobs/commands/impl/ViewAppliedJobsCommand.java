@@ -12,29 +12,25 @@ import java.util.List;
 
 public class ViewAppliedJobsCommand extends Command {
 
-    public ViewAppliedJobsCommand(HashMap<String, String> args) {
+    public ViewAppliedJobsCommand(HashMap<String, Object> args) {
         super(args);
     }
 
-    public LinkedHashMap<String, Object> execute() throws IOException {
+    public Object execute() throws IOException {
 
         validateArgs(new String[]{"userId"});
         // get notifications from db
-        JobsHandler jobsHandler = (JobsHandler) this.jobsHandler;
+        JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
         LinkedHashMap<String, Object> resutls = new LinkedHashMap<String, Object>();
         try {
-
-
-            ArrayList<Job> jobs = jobsHandler.getAppliedJobs(args.get("userId"));
-
-
+            ArrayList<Job> jobs = jobsHandler.getAppliedJobs((String)args.get("userId"));
             resutls.put("response", jobs);
-
+            return jobs;
         }
         catch (Exception e){
             System.out.println(e);
         }
-    return resutls;
+       return null;
     }
 
 

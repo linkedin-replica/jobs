@@ -9,24 +9,23 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class RespondToApplicantsCommand extends Command {
-    public RespondToApplicantsCommand(HashMap<String, String> args) {
+    public RespondToApplicantsCommand(HashMap<String, Object> args) {
         super(args);
     }
 
-    public LinkedHashMap<String, Object> execute(){
-        validateArgs(new String[]{"companyId"});
+    public Object execute(){
+        validateArgs(new String[]{"userId", "jobId"});
         // get notifications from db
-        JobsHandler jobsHandler = (JobsHandler) this.jobsHandler;
+        JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
 
         boolean job = false;
         try {
-            job = jobsHandler.RespondToJobsAsCompany(args.get("companyId"));
+            job = jobsHandler.RespondToJobsAsCompany((String)args.get("userId"), (String)args.get("jobId"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        LinkedHashMap<String, Object> resutls = new LinkedHashMap<String, Object>();
-        resutls.put("response", true);
-        return resutls;
+
+        return "The respond was delivered";
     }
 }
 

@@ -10,21 +10,21 @@ import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
 import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 
 public abstract class Command {
-    protected HashMap<String, String> args;
+    protected HashMap<String, Object> args;
     protected JobsHandler jobsHandler;
-    public Command(HashMap<String, String> args) {
+    public Command(HashMap<String, Object> args) {
         this.args = args;
     }
+    protected DatabaseHandler dbHandler;
 
     /**
      * Execute the command
      * @return The output (if any) of the command
      */
-
-    public abstract LinkedHashMap<String, Object> execute() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException;
-    public void setDbHandler(JobsHandler dbHandler) {
-        this.jobsHandler = dbHandler;
+    public void addDatabaseHandler(DatabaseHandler dbHandler) {
+        this.dbHandler = dbHandler;
     }
+    public abstract Object execute() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException;
     protected void validateArgs(String[] requiredArgs) {
         for(String arg: requiredArgs)
             if(!args.containsKey(arg)) {
@@ -32,7 +32,7 @@ public abstract class Command {
                 throw new IllegalArgumentException(exceptionMsg);
             }
     }
-    public void setArgs(HashMap<String, String> args) {
+    public void setArgs(HashMap<String, Object> args) {
         this.args = args;
     }
 

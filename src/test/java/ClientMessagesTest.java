@@ -17,6 +17,7 @@ import javax.print.DocFlavor;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.UUID;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -53,11 +54,9 @@ public class ClientMessagesTest {
                 Configuration.getInstance().getArangoConfigProp("db.name")
         );
 
+
         arangoDb.createCollection(
-                config.getArangoConfigProp("collection.companies.name")
-        );
-        arangoDb.createCollection(
-                config.getArangoConfigProp("collection.users.name")
+                config.getArangoConfigProp("collection.jobs.name")
         );
 
         arangoHandler = new ArangoSQLJobsHandler();
@@ -67,14 +66,15 @@ public class ClientMessagesTest {
         connection = factory.newConnection();
         channel = connection.createChannel();
         DatabaseSeed databaseSeed  = new DatabaseSeed();
-        databaseSeed.insertUsers();
         databaseSeed.insertJobs();
     }
 
     @Test
     public void testMessages() throws IOException, InterruptedException {
         JsonObject object = new JsonObject();
-        object.addProperty("commandName", "joblisting.get");
+        object.addProperty("commandName", "job.listing");
+        object.addProperty("jobId","1");
+        HashMap<String,Object> args = new HashMap<String,Object>();
         byte[] message = object.toString().getBytes();
         final String corrId = UUID.randomUUID().toString();
 
@@ -103,7 +103,7 @@ public class ClientMessagesTest {
 
 
 
-        assertEquals("", "Ergasti",  resObject.get("results").getAsJsonObject().get("companyName").getAsString());
+        assertEquals("", "1",  resObject.get("results").getAsJsonObject().get("jobId").getAsString());
     }
     @AfterClass
     public static void clean() throws IOException, TimeoutException, SQLException, ClassNotFoundException {
@@ -113,11 +113,9 @@ public class ClientMessagesTest {
         connection.close();
         // clean db
         arangoDb.collection(
-                config.getArangoConfigProp("collection.companies.name")
+                config.getArangoConfigProp("collection.jobs.name")
         ).drop();
-        arangoDb.collection(
-                config.getArangoConfigProp("collection.users.name")
-        ).drop();
+
         DatabaseConnection.getInstance().closeConnections();
     }
 }
