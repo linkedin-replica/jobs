@@ -1,0 +1,13 @@
+#Jobsss
+(deleted it was not in the project's requierements)relatedConnections is list of IDs for corresponding connections working in this compnany.
+(deleted it was not in the project's requierements)job Brief is a small text describing the job.
+(deleted it was not in the project's requierements)requiredSkills is list of string and IDs describing the requiredSkills for this job postion.
+(deleted it was not in the project's requierements)note is an extra string if the company required to leave a note.
+(deleted it was not in the project's requierements)similarJobs is a list of IDS, name, companies for the similar jobs if exists.
+#company
+(deleted it was not in the project's requierements)relatedConnections is list of IDs for corresponding connections working in this compnany.
+(deleted it was not in the project's requierements)recentUpdates is a list of events that this company have just created.
+(deleted it was not in the project's requierements)aboutUs is a text describing a brief about the company.
+(deleted it was not in the project's requierements)companytype is  string that represents the main industry of this company.
+(deleted it was not in the project's requierements)specialities is a list of company specialities.
+#
