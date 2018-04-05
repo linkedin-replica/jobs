@@ -60,5 +60,5 @@ public class RedisJobsHandler implements JobsHandler{
         }
         return null;
     }
-    
+
     }
