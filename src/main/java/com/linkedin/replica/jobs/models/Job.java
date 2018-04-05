@@ -2,9 +2,7 @@ package com.linkedin.replica.jobs.models;
 
 public class Job {
 
-
-
-    private  String jobID ;
+    private  String jobId;
     private  String industryType;
     private  String employmentType;
     private  String jobFunctions;
@@ -13,13 +11,13 @@ public class Job {
     private  String companyID;
     private  String companyName;
     private  String companyLocation;
-    private   String compnayPicture;
+    private  String companyPicture;
 
     public Job(){
     }
 
     public Job(String jobID, String industryType, String employmentType, String jobFunctions, String positionName, String professionLevel, String companyID, String companyName, String companyLocation, String compnayPicture, String jobBrief) {
-        this.jobID = jobID;
+        this.jobId = jobID;
         this.industryType = industryType;
         this.employmentType = employmentType;
         this.jobFunctions = jobFunctions;
@@ -28,12 +26,12 @@ public class Job {
         this.companyID = companyID;
         this.companyName = companyName;
         this.companyLocation = companyLocation;
-        this.compnayPicture = compnayPicture;
+        this.companyPicture = compnayPicture;
         this.jobBrief = jobBrief;
     }
 
-    public void setJobID(String jobID) {
-        this.jobID = jobID;
+    public void setJobId(String jobId) {
+        this.jobId = jobId;
     }
 
     public void setIndustryType(String industryType) {
@@ -69,16 +67,16 @@ public class Job {
     }
 
     public void setCompnayPicture(String compnayPicture) {
-        this.compnayPicture = compnayPicture;
+        this.companyPicture = compnayPicture;
     }
 
     public void setJobBrief(String jobBrief) {
         this.jobBrief = jobBrief;
     }
 
-    public String getJobID() {
+    public String getJobId() {
 
-        return jobID;
+        return jobId;
     }
 
     public String getIndustryType() {
@@ -114,7 +112,7 @@ public class Job {
     }
 
     public String getCompnayPicture() {
-        return compnayPicture;
+        return companyPicture;
     }
 
     public String getJobBrief() {
