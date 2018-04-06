@@ -4,16 +4,17 @@ public class Job {
 
 
 
-    private  String jobID ;
-    private  String industryType;
-    private  String employmentType;
-    private  String jobFunctions;
-    private  String positionName;
-    private  String professionLevel;
-    private  String companyID;
-    private  String companyName;
-    private  String companyLocation;
-    private   String compnayPicture;
+    public  String jobID ;
+    public   String industryType;
+    public  String employmentType;
+    public String jobFunctions;
+    public  String positionName;
+    public  String professionLevel;
+    public  String companyID;
+    public  String companyName;
+    public  String companyLocation;
+    public  String jobBrief;
+    public   String compnayPicture;
 
     public Job(){
     }
@@ -121,6 +122,5 @@ public class Job {
         return jobBrief;
     }
 
-    String jobBrief;
 
 }
