@@ -75,7 +75,8 @@ public class JobsCacheHandlerTest {
         Job  job = new Job("1","","", "","Data Wrangling Engineer","Junior", "1","DFKI", "Stuttgart","","");
         jobs.add(job);
         jobsHandler.saveJobListing(ids,jobs);
-        args.put("positionName","Data Engineer");
+        String new_Position  = gson.toJson("Data Engineer");
+        args.put("positionName",new_Position);
         jobsHandler.editJobListing("1",args);
         Job tempjob =(Job)jobsHandler.getJobListingFromCache("1",Job.class);
         System.out.println(tempjob);

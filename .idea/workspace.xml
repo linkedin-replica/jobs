@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="245b1e24-e993-4584-aed6-0c852f48791b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/handlers/impl/JedisCacheHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/handlers/impl/JedisCacheHandler.java" />
       <change beforePath="$PROJECT_DIR$/src/test/java/cache/JobsCacheHandlerTest.java" afterPath="$PROJECT_DIR$/src/test/java/cache/JobsCacheHandlerTest.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/cache/handlers/impl/JedisCacheHandler.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/cache/handlers/impl/JedisCacheHandler.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/cache.config" afterPath="$PROJECT_DIR$/target/classes/config/cache.config" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/cache/JobsCacheHandlerTest.class" afterPath="$PROJECT_DIR$/target/test-classes/cache/JobsCacheHandlerTest.class" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JobsCacheHandlerTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="JobsCacheHandlerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/cache/JobsCacheHandlerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="75" column="22" lean-forward="true" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
+            <state relative-caret-position="-136">
+              <caret line="78" column="44" lean-forward="false" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3054#3069#0" expanded="true" />
@@ -86,14 +80,14 @@
       <file leaf-file-name="JedisCacheHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/handlers/impl/JedisCacheHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-374">
-              <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+            <state relative-caret-position="364">
+              <caret line="92" column="35" lean-forward="true" selection-start-line="92" selection-start-column="35" selection-end-line="92" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="432">
@@ -140,8 +134,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/models/Job.java" />
         <option value="$PROJECT_DIR$/src/main/resources/config/cache.config" />
         <option value="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/handlers/impl/JedisCacheHandler.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cache/JobsCacheHandlerTest.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/test/java/cache/JobsCacheHandlerTest.java" />
       </list>
     </option>
   </component>
@@ -586,12 +580,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="JobsCacheHandlerTest - 2018.04.06 at 16h 30m 51s.xml">
-      <configuration name="JobsCacheHandlerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JobsCacheHandlerTest - 2018.04.06 at 16h 31m 40s.xml">
-      <configuration name="JobsCacheHandlerTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="JobsCacheHandlerTest - 2018.04.06 at 16h 31m 54s.xml">
       <configuration name="JobsCacheHandlerTest" configurationId="JUnit" />
     </history-entry>
@@ -616,6 +604,12 @@
     <history-entry file="JobsCacheHandlerTest - 2018.04.06 at 16h 40m 35s.xml">
       <configuration name="JobsCacheHandlerTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="JobsCacheHandlerTest - 2018.04.06 at 16h 56m 35s.xml">
+      <configuration name="JobsCacheHandlerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JobsCacheHandlerTest - 2018.04.06 at 16h 57m 05s.xml">
+      <configuration name="JobsCacheHandlerTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -630,7 +624,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -981,14 +975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/CacheConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-176">
-          <caret line="11" column="69" lean-forward="false" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/DatabaseSeed.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="461">
@@ -1021,30 +1007,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cache/JobsCacheHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="75" column="22" lean-forward="true" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3054#3069#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/handlers/impl/JedisCacheHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-374">
-          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/CacheConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-176">
+          <caret line="11" column="69" lean-forward="false" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/handlers/impl/JedisCacheHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="92" column="35" lean-forward="true" selection-start-line="92" selection-start-column="35" selection-end-line="92" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cache/JobsCacheHandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="78" column="44" lean-forward="false" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3054#3069#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
