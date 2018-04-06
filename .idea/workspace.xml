@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="245b1e24-e993-4584-aed6-0c852f48791b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/config/cache.config" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/cache/JobsCacheHandlerTest.java" />
+    <list default="true" id="245b1e24-e993-4584-aed6-0c852f48791b" name="Default" comment="Merge branch 'Redis' of https://github.com/linkedin-replica/jobs into Redis&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/com/linkedin/replica/jobs/models/Job.java">
       <change beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/cache/CacheConnection.class" />
       <change beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/cache/handlers/CacheHandler.class" />
       <change beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/cache/handlers/impl/JedisCacheHandler.class" />
@@ -12,24 +9,7 @@
       <change beforePath="" afterPath="$PROJECT_DIR$/target/classes/config/cache.config" />
       <change beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/cache/JobsCacheHandlerTest.class" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/CacheConnection.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/CacheConnection.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/handlers/impl/JedisCacheHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/handlers/impl/JedisCacheHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/handlers/impl/JobsHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/handlers/JobsCacheHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/Command.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/Command.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/DeleteJobAsCompanyCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/DeleteJobAsCompanyCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/JobAsCompanyCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/JobAsCompanyCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/JobListingCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/JobListingCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/RespondToApplicantsCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/RespondToApplicantsCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/config/Configuration.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/config/Configuration.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/JobsHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/JobsHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/impl/ArangoSQLJobsHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/impl/ArangoSQLJobsHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/models/Job.java" afterPath="$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/models/Job.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ArangoHandlerTest.java" afterPath="$PROJECT_DIR$/src/test/java/ArangoHandlerTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ClientMessagesTest.java" afterPath="$PROJECT_DIR$/src/test/java/ClientMessagesTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Core/ArangoHandlerTest.java" afterPath="$PROJECT_DIR$/src/test/java/Core/ArangoHandlerTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Core/JobsServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/Core/JobsServiceTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Core/SqlHandlerTest.java" afterPath="$PROJECT_DIR$/src/test/java/Core/SqlHandlerTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controller/RequestProcessingHandlerTest.java" afterPath="$PROJECT_DIR$/src/test/java/controller/RequestProcessingHandlerTest.java" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/config/Configuration.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/config/Configuration.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/models/Job.class" afterPath="$PROJECT_DIR$/target/classes/com/linkedin/replica/jobs/models/Job.class" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/ArangoHandlerTest.class" afterPath="$PROJECT_DIR$/target/test-classes/ArangoHandlerTest.class" />
@@ -49,30 +29,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="JedisCacheHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/handlers/impl/JedisCacheHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="99" column="46" lean-forward="false" selection-start-line="99" selection-start-column="46" selection-end-line="99" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JobsCacheHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/cache/handlers/JobsCacheHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ArangoSQLJobsHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/database/handlers/impl/ArangoSQLJobsHandler.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -138,11 +94,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewAppliedJobsCommand.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ViewAppliedJobsCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/linkedin/replica/jobs/commands/impl/ViewAppliedJobsCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
               <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="8" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArangoHandlerTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/Core/ArangoHandlerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -666,6 +642,14 @@
       <option name="presentableId" value="Default" />
       <updated>1521824999852</updated>
     </task>
+    <task id="LOCAL-00001" summary="Merge branch 'Redis' of https://github.com/linkedin-replica/jobs into Redis&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/com/linkedin/replica/jobs/models/Job.java">
+      <created>1523030630661</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1523030630661</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -702,7 +686,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="959" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -710,10 +693,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936978" sideWeight="0.502442" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936978" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936978" sideWeight="0.497558" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -754,6 +737,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge branch 'Redis' of https://github.com/linkedin-replica/jobs into Redis&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/com/linkedin/replica/jobs/models/Job.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'Redis' of https://github.com/linkedin-replica/jobs into Redis&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/com/linkedin/replica/jobs/models/Job.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -897,6 +884,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -965,6 +953,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="35" column="58" lean-forward="false" selection-start-line="35" selection-start-column="58" selection-end-line="35" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1013,13 +1002,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1076,14 +1059,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Core/ArangoHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1173,6 +1148,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="8" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Core/ArangoHandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
         </state>
       </provider>
