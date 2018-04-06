@@ -6,6 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+import com.linkedin.replica.jobs.cache.handlers.CacheHandler;
 import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
 import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 
@@ -16,6 +17,8 @@ public abstract class Command {
         this.args = args;
     }
     protected DatabaseHandler dbHandler;
+    protected CacheHandler cacheHandler;
+
 
     /**
      * Execute the command

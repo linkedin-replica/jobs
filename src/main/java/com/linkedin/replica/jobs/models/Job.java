@@ -2,22 +2,25 @@ package com.linkedin.replica.jobs.models;
 
 public class Job {
 
-    private  String jobId;
-    private  String industryType;
-    private  String employmentType;
-    private  String jobFunctions;
-    private  String positionName;
-    private  String professionLevel;
-    private  String companyID;
-    private  String companyName;
-    private  String companyLocation;
-    private  String companyPicture;
+
+
+    public  String jobID ;
+    public   String industryType;
+    public  String employmentType;
+    public String jobFunctions;
+    public  String positionName;
+    public  String professionLevel;
+    public  String companyID;
+    public  String companyName;
+    public  String companyLocation;
+    public  String jobBrief;
+    public   String compnayPicture;
 
     public Job(){
     }
 
     public Job(String jobID, String industryType, String employmentType, String jobFunctions, String positionName, String professionLevel, String companyID, String companyName, String companyLocation, String compnayPicture, String jobBrief) {
-        this.jobId = jobID;
+        this.jobID = jobID;
         this.industryType = industryType;
         this.employmentType = employmentType;
         this.jobFunctions = jobFunctions;
@@ -26,12 +29,12 @@ public class Job {
         this.companyID = companyID;
         this.companyName = companyName;
         this.companyLocation = companyLocation;
-        this.companyPicture = compnayPicture;
+        this.compnayPicture = compnayPicture;
         this.jobBrief = jobBrief;
     }
 
-    public void setJobId(String jobId) {
-        this.jobId = jobId;
+    public void setJobID(String jobID) {
+        this.jobID = jobID;
     }
 
     public void setIndustryType(String industryType) {
@@ -67,16 +70,16 @@ public class Job {
     }
 
     public void setCompnayPicture(String compnayPicture) {
-        this.companyPicture = compnayPicture;
+        this.compnayPicture = compnayPicture;
     }
 
     public void setJobBrief(String jobBrief) {
         this.jobBrief = jobBrief;
     }
 
-    public String getJobId() {
+    public String getJobID() {
 
-        return jobId;
+        return jobID;
     }
 
     public String getIndustryType() {
@@ -112,13 +115,12 @@ public class Job {
     }
 
     public String getCompnayPicture() {
-        return companyPicture;
+        return compnayPicture;
     }
 
     public String getJobBrief() {
         return jobBrief;
     }
 
-    String jobBrief;
 
 }

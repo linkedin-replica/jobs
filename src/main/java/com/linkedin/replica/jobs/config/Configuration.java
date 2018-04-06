@@ -13,6 +13,7 @@ public class Configuration {
     private Properties commandConfig = new Properties();
     private Properties appConfig = new Properties();
     private Properties arangoConfig = new Properties();
+    private Properties redisConfig = new Properties();
     private Properties mysqlConfig = new Properties();
     private Properties controllerConfig = new Properties();
 
@@ -27,24 +28,26 @@ public class Configuration {
     private String arangoConfigPath;
     private String mysqlConfigPath;
     private String commandsConfigPath;
-
+    private String redisConfigPath;
 
     private Configuration(String appConfigPath, String arangoConfigPath, String mysqlConfigPath, String commandsConfigPath,
-                          String controllerConfigPath) throws IOException {
+                          String controllerConfigPath,String redisConfigPath) throws IOException {
         populateWithConfig(this.appConfigPath = appConfigPath, appConfig);
         populateWithConfig(this.arangoConfigPath = arangoConfigPath, arangoConfig);
         populateWithConfig(this.mysqlConfigPath = mysqlConfigPath, mysqlConfig);
         populateWithConfig(this.commandsConfigPath = commandsConfigPath, commandConfig);
         populateWithConfig(controllerConfigPath, controllerConfig);
+        populateWithConfig(redisConfigPath, redisConfig);
 
         this.appConfigPath = appConfigPath;
         this.arangoConfigPath = arangoConfigPath;
         this.mysqlConfigPath = mysqlConfigPath;
         this.commandsConfigPath = commandsConfigPath;
+        this.redisConfigPath = redisConfigPath;
     }
 
-    public static void init(String appConfigPath, String arangoConfigPath, String mysqlConfigPath, String commandsConfigPath, String controllerConfigPath) throws IOException {
-        instance = new Configuration(appConfigPath, arangoConfigPath, mysqlConfigPath, commandsConfigPath, controllerConfigPath);
+    public static void init(String appConfigPath, String arangoConfigPath, String mysqlConfigPath, String commandsConfigPath, String controllerConfigPath,String redisConfigPath) throws IOException {
+        instance = new Configuration(appConfigPath, arangoConfigPath, mysqlConfigPath, commandsConfigPath, controllerConfigPath,redisConfigPath);
     }
 
     public static Configuration getInstance() {
@@ -73,7 +76,7 @@ public class Configuration {
         return appConfig.getProperty(key);
     }
     public String getRedisConfigProp(String key) {
-        return appConfig.getProperty(key);
+        return redisConfig.getProperty(key);
     }
     public String getArangoConfigProp(String key) {
         return arangoConfig.getProperty(key);

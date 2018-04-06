@@ -32,8 +32,8 @@ public class RequestProcessingHandlerTest {
                 "src/main/resources/config/arango.test.config",
                 "src/main/resources/config/mysql.config",
                 "src/main/resources/config/commands.config",
-                "src/main/resources/config/controller.config"};
-        Configuration.init(a[0], a[1], a[2], a[3],a[4]);
+                "src/main/resources/config/controller.config","src/main/resources/config/cache.config"};
+        Configuration.init(a[0], a[1], a[2], a[3],a[4],a[5]);
     }
 
     @Test

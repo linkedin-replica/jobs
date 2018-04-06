@@ -41,7 +41,7 @@ public class ClientMessagesTest {
     public static void init() throws IOException, TimeoutException, ParseException, SQLException, ClassNotFoundException {
         String rootFolder = "src/main/resources/config/";
         Configuration.init(rootFolder + "app.config",
-                rootFolder + "arango.test.config",rootFolder+"mysql.config",rootFolder + "commands.config",rootFolder+"controller.config");
+                rootFolder + "arango.test.config",rootFolder+"mysql.config",rootFolder + "commands.config",rootFolder+"controller.config",rootFolder+"cache.config");
         DatabaseConnection.init();
         config = Configuration.getInstance();
 

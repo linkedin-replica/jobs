@@ -9,8 +9,8 @@ import java.io.IOException;
 
 public class CacheConnection {
     private Configuration configuration = Configuration.getInstance();
-    private final String REDIS_IP = configuration.getAppConfigProp("redis.ip");
-    private final int REDIS_PORT = Integer.parseInt(configuration.getAppConfigProp("redis.port"));
+    private final String REDIS_IP = configuration.getRedisConfigProp("redis.ip");
+    private final int REDIS_PORT = Integer.parseInt(configuration.getRedisConfigProp("redis.port"));
     private JedisPool redisPool;
     private static CacheConnection cache;
     private static Gson gson;

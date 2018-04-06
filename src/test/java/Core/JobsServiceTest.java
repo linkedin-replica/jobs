@@ -31,7 +31,7 @@ public class JobsServiceTest {
         String rootFolder = "src/main/resources/config/";
         Configuration.init(rootFolder + "app.config", rootFolder +"arango.config",
                 rootFolder +"database.config",rootFolder + "commands.config",
-                rootFolder +"controller.config");
+                rootFolder +"controller.config",rootFolder+"cache.config");
         DatabaseConnection.init();
         mysqlDBInstance = DatabaseConnection.getInstance().getMysqlDriver();
         config = Configuration.getInstance();

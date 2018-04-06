@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.List;
 import com.arangodb.entity.MultiDocumentEntity;
+import com.linkedin.replica.jobs.cache.CacheConnection;
 import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 import com.linkedin.replica.jobs.config.Configuration;
 import com.linkedin.replica.jobs.database.DatabaseConnection;
@@ -47,8 +48,8 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         CallableStatement stmt = mysqlConnection.prepareCall(query);
         stmt.setString(1, userId);
         stmt.setString(2, jobId);
-        stmt.executeQuery();
-        return true;
+//        stmt.executeQuery();
+        return stmt.execute();
     }
     public ArrayList<String> getAppliedJobsIDs(String userId) throws SQLException {
         String query = "{CALL view_applied_jobs(?)}";
@@ -120,9 +121,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
 
     public void EditJob(String JobID, LinkedHashMap<String, String > args){
 
-        String JobsCollectionName = config.getAppConfigProp("collection.jobs.name");
-
-         Job job = getJob(JobID);
+        Job job = getJob(JobID);
         if(args.containsKey("industryType"))
             job.setIndustryType(args.get("industryType"));
         if(args.containsKey("employmentType"))

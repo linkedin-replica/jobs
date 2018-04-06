@@ -22,7 +22,7 @@ public class ArangoHandlerTest {
     public static void init() throws IOException, SQLException, ClassNotFoundException {
         Configuration.init("src/main/resources/config/app.config", "src/main/resources/config/arango.config",
                 "src/main/resources/config/database.config","src/main/resources/config/commands.config",
-                "src/main/resources/config/controller.config");
+                "src/main/resources/config/controller.config","src/main/resources/config/cache.config");
         config = Configuration.getInstance();
         DatabaseConnection.init();
         arangoHandler = new ArangoSQLJobsHandler();
