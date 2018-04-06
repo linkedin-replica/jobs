@@ -63,7 +63,7 @@ public class JedisCacheHandler implements JobsHandler {
 
         try {
             Jedis cacheInstance = cachePool.getResource();
-            cacheInstance.select(Integer.parseInt(configuration.getRedisConfigProp("cache.jobs.index2")));
+            cacheInstance.select(Integer.parseInt(configuration.getRedisConfigProp("cache.jobs.index")));
             if(!cacheInstance.exists(key))
                 return null;
             Class jobClass = tClass;
@@ -103,7 +103,7 @@ public class JedisCacheHandler implements JobsHandler {
             cacheInstance.select(databaseIndex);
             if(!cacheInstance.exists(key))
                 return;
-            String [] fieldNames = (String[]) cacheInstance.hgetAll(key).keySet().toArray();
+            String [] fieldNames = cacheInstance.hgetAll(key).keySet().toArray(new String[cacheInstance.hgetAll(key).keySet().size()]);
             cacheInstance.hdel(key, fieldNames);
         } catch(JedisException e) {
             e.printStackTrace();

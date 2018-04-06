@@ -23,6 +23,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+
 import static org.junit.Assert.assertEquals;
 public class JobsCacheHandlerTest {
 
@@ -49,7 +51,7 @@ public class JobsCacheHandlerTest {
         }
 
         @Test
-        public void testJobsCache() throws Exception {
+        public void testgetJobsCache() throws Exception {
             String [] ids = new String[1];
             ids [0] = "1";
             ArrayList<Job> jobs = new ArrayList<Job>();
@@ -59,10 +61,43 @@ public class JobsCacheHandlerTest {
             Job tempjob =(Job)jobsHandler.getJobListingFromCache("1",Job.class);
             System.out.println(tempjob);
             assertEquals("the two companies must have the same id","1",tempjob.getCompanyID());
+            assertEquals("the two companies must have the same position name","Data Wrangling Engineer",tempjob.getPositionName());
+
 
         }
+    @Test
+    public void testeditJobsCache() throws Exception {
+        LinkedHashMap<String,String> args = new LinkedHashMap<String,String>();
+
+        String [] ids = new String[1];
+        ids [0] = "1";
+        ArrayList<Job> jobs = new ArrayList<Job>();
+        Job  job = new Job("1","","", "","Data Wrangling Engineer","Junior", "1","DFKI", "Stuttgart","","");
+        jobs.add(job);
+        jobsHandler.saveJobListing(ids,jobs);
+        args.put("positionName","Data Engineer");
+        jobsHandler.editJobListing("1",args);
+        Job tempjob =(Job)jobsHandler.getJobListingFromCache("1",Job.class);
+        System.out.println(tempjob);
+        assertEquals("the company must have the new name","Data Engineer",tempjob.getPositionName());
+
+    }
 
 
+    @Test
+    public void testdeleteJobsCache() throws Exception {
+        String [] ids = new String[1];
+        ids [0] = "1";
+        ArrayList<Job> jobs = new ArrayList<Job>();
+        Job  job = new Job("1","","", "","Data Wrangling Engineer","Junior", "1","DFKI", "Stuttgart","","");
+        jobs.add(job);
+        jobsHandler.saveJobListing(ids,jobs);
+         jobsHandler.deleteJobListing("1");
+        Job tempjob =(Job)jobsHandler.getJobListingFromCache("1",Job.class);
+        System.out.println(tempjob);
+        assertEquals("the two companies must have the same id",null,tempjob);
+
+    }
 
         @AfterClass
         public static void teardown() throws IOException, SQLException, ClassNotFoundException {
