@@ -27,8 +27,7 @@ public class JobAsCompanyCommand extends Command {
             // get notifications from db
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;
         String jobId = (String) args.get("jobId");
-        // TODO: edit typo!
-        Job job = new Job(jobId,(String)args.get("industryType"),(String)(String)args.get("employementType"),(String) args.get("jobFunctions"),
+        Job job = new Job(jobId,(String)args.get("industryType"),(String) args.get("employmentType"),(String) args.get("jobFunctions"),
                 (String) args.get("positionName"),(String) args.get("professionLevel"),(String)args.get("companyID"),(String)args.get("companyName"),
                 (String)  args.get("companyLocation"),(String)args.get("companyProfilePicture"),(String)args.get("jobBrief"));
         jobsCacheHandler = (JobsCacheHandler) cacheHandler;
