@@ -40,7 +40,7 @@ public class ArangoHandlerTest {
 
 
     @Test
-    public void JobListingTest() throws IOException, SQLException, ClassNotFoundException {
+    public void jobListingTest() throws IOException, SQLException, ClassNotFoundException {
         Job results = arangoHandler.getJob("1");
         assertEquals("matching position name" , "Data Wrangling Engineer" ,results.getPositionName());
         assertEquals("matching company Name" , "DFKI" ,results.getCompanyName());
@@ -48,7 +48,7 @@ public class ArangoHandlerTest {
     }
 
     @Test
-    public void EditJobTest() throws IOException{
+    public void editJobTest() throws IOException{
         LinkedHashMap<String, String> args = new LinkedHashMap<>();
         args.put("professionLevel", "Junior");
         arangoHandler.EditJob("1", args);
@@ -57,7 +57,7 @@ public class ArangoHandlerTest {
     }
 //
     @Test
-    public void DeletejobTest() throws IOException, SQLException, ClassNotFoundException {
+    public void deleteJobTest() throws IOException, SQLException, ClassNotFoundException {
         arangoHandler.deleteJobAsaCompany("2");
         Job newJob = arangoHandler.getJob("2");
         assertEquals("Job has been deleted" , null , newJob);

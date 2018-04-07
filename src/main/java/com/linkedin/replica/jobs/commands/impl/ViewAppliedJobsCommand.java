@@ -21,11 +21,8 @@ public class ViewAppliedJobsCommand extends Command {
         validateArgs(new String[]{"userId"});
         // get notifications from db
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
-        LinkedHashMap<String, Object> resutls = new LinkedHashMap<String, Object>();
         try {
-            ArrayList<Job> jobs = jobsHandler.getAppliedJobs((String)args.get("userId"));
-            resutls.put("response", jobs);
-            return jobs;
+            return jobsHandler.getAppliedJobs((String)args.get("userId"));
         }
         catch (Exception e){
             System.out.println(e);

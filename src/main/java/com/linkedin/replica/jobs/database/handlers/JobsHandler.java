@@ -13,13 +13,22 @@ public interface JobsHandler extends DatabaseHandler{
      * Initiate a connection with the database
      */
     void connect() throws FileNotFoundException, ClassNotFoundException, IOException, SQLException;
-    public ArrayList<Job> getAppliedJobs(String userID) throws SQLException;
-    public List<Job> getSavedJobs(String userId);
-    public void createJobAsaCompany( Job job);
-    public void deleteJobAsaCompany(String jobID);
-    public Job getJob(String JobID);
-    public void EditJob(String JobID, LinkedHashMap<String, String > args);
-    public boolean RespondToJobsAsCompany(String userId,String jobId) throws SQLException;    /**
+
+    ArrayList<Job> getAppliedJobs(String userID) throws SQLException;
+
+    List<Job> getSavedJobs(String userId);
+
+    void createJobAsaCompany( Job job);
+
+    void deleteJobAsaCompany(String jobID);
+
+    Job getJob(String JobID);
+
+    void EditJob(String JobID, LinkedHashMap<String, String > args);
+
+    boolean RespondToJobsAsCompany(String userId,String jobId) throws SQLException;
+
+    /**
      * Send a new notification to the user
      */
     void disconnect();

@@ -13,6 +13,9 @@ public class RespondToApplicantsCommand extends Command {
         super(args);
     }
 
+    /*
+     * Respond to job and return true or false as the result of query.
+     */
     public Object execute(){
         validateArgs(new String[]{"userId", "jobId"});
         // get notifications from db
@@ -24,8 +27,7 @@ public class RespondToApplicantsCommand extends Command {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return "The respond was delivered";
+        return job;
     }
 }
 

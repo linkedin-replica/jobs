@@ -2,8 +2,8 @@ package com.linkedin.replica.jobs.cache.handlers.impl;
 
 import com.google.gson.Gson;
 import com.linkedin.replica.jobs.cache.CacheConnection;
+import com.linkedin.replica.jobs.cache.handlers.JobsCacheHandler;
 import com.linkedin.replica.jobs.config.Configuration;
-import com.linkedin.replica.jobs.models.Job;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.Pipeline;
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.*;
 
-public class JedisCacheHandler implements JobsHandler {
+public class JedisCacheHandler implements JobsCacheHandler {
 
     private static JedisPool cachePool;
     private Configuration configuration = Configuration.getInstance();

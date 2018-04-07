@@ -2,24 +2,17 @@ package cache;
 
 import com.google.gson.Gson;
 import com.linkedin.replica.jobs.cache.CacheConnection;
-import com.linkedin.replica.jobs.cache.handlers.CacheHandler;
 import com.linkedin.replica.jobs.cache.handlers.impl.JedisCacheHandler;
-import com.linkedin.replica.jobs.cache.handlers.impl.JobsHandler;
 import com.linkedin.replica.jobs.config.Configuration;
 import com.linkedin.replica.jobs.models.Job;
-import com.linkedin.replica.jobs.models.User;
 import com.linkedin.replica.jobs.services.JobService;
 import  com.linkedin.replica.jobs.database.DatabaseSeed;
 import org.json.simple.parser.ParseException;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,7 +44,7 @@ public class JobsCacheHandlerTest {
         }
 
         @Test
-        public void testgetJobsCache() throws Exception {
+        public void testGetJobsCache() throws Exception {
             String [] ids = new String[1];
             ids [0] = "1";
             ArrayList<Job> jobs = new ArrayList<Job>();
@@ -66,7 +59,7 @@ public class JobsCacheHandlerTest {
 
         }
     @Test
-    public void testeditJobsCache() throws Exception {
+    public void testEditJobsCache() throws Exception {
         LinkedHashMap<String,String> args = new LinkedHashMap<String,String>();
 
         String [] ids = new String[1];
@@ -86,7 +79,7 @@ public class JobsCacheHandlerTest {
 
 
     @Test
-    public void testdeleteJobsCache() throws Exception {
+    public void testDeleteJobsCache() throws Exception {
         String [] ids = new String[1];
         ids [0] = "1";
         ArrayList<Job> jobs = new ArrayList<Job>();

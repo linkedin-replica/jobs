@@ -1,5 +1,6 @@
 package com.linkedin.replica.jobs.services;
 
+import com.linkedin.replica.jobs.cache.handlers.CacheHandler;
 import com.linkedin.replica.jobs.commands.Command;
 import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
 import com.linkedin.replica.jobs.config.Configuration;
@@ -23,7 +24,9 @@ public class JobService {
         Command command = (Command) constructor.newInstance(args);
 
         Class<?> dbHandlerClass = config.getDatabaseHandlerClass(commandName);
-        command.addDatabaseHandler((DatabaseHandler) dbHandlerClass.newInstance());
+        Class<?> cacheHandlerClass = config.getCacheHandlerClass(commandName);
+        command.setDbHandler((DatabaseHandler) dbHandlerClass.newInstance());
+        command.setCacheHandler((CacheHandler) cacheHandlerClass.newInstance());
 
         return command.execute();
     }
