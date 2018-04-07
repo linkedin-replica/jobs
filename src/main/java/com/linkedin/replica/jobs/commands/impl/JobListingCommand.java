@@ -1,27 +1,36 @@
 package com.linkedin.replica.jobs.commands.impl;
 
+import com.linkedin.replica.jobs.cache.handlers.CacheHandler;
+import com.linkedin.replica.jobs.cache.handlers.JobsCacheHandler;
 import com.linkedin.replica.jobs.commands.Command;
-import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
+import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 import com.linkedin.replica.jobs.models.Job;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 
 public class JobListingCommand extends Command {
 
-    public JobListingCommand(HashMap<String, String> args) {
+    private JobsCacheHandler jobsCacheHandler;
+    public JobListingCommand(HashMap<String, Object> args) {
         super(args);
     }
 
-    public LinkedHashMap<String, Object> execute() throws IOException {
+    /*
+     * Get jobListing from database if it is not cache, otherwise get from database and cache it.
+     */
+    public Object execute() throws IOException {
         validateArgs(new String[]{"jobId"});
         // get notifications from db
-        DatabaseHandler dbHandler = (DatabaseHandler) this.dbHandler;
-
-        Job job =  dbHandler.getJob(args.get("jobId"));
-        LinkedHashMap<String, Object> resutls = new LinkedHashMap<String, Object>();
-        resutls.put("response", job);
-        return resutls;
+        JobsHandler jobsHandler = (JobsHandler) this.dbHandler;
+        jobsCacheHandler = (JobsCacheHandler) cacheHandler;
+        String jobId = (String)args.get("jobId");
+        Object job = jobsCacheHandler.getJobListingFromCache(jobId);
+        if(job == null) {
+            job = jobsHandler.getJob(jobId);
+            jobsCacheHandler.saveJobListing(new String[] {jobId}, new ArrayList<>().add(job));
+        }
+        return job;
     }
 }

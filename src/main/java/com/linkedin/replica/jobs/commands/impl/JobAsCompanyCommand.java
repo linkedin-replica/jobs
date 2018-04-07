@@ -1,38 +1,41 @@
 package com.linkedin.replica.jobs.commands.impl;
 
+import com.linkedin.replica.jobs.cache.handlers.JobsCacheHandler;
 import com.linkedin.replica.jobs.commands.Command;
 import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
 
+import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 import com.linkedin.replica.jobs.models.Job;
-import models.*;
+import com.linkedin.replica.jobs.models.*;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class JobAsCompanyCommand extends Command {
-
-        public JobAsCompanyCommand(HashMap<String, String> args) {
+    private JobsCacheHandler jobsCacheHandler;
+    public JobAsCompanyCommand(HashMap<String, Object> args) {
             super(args);
-        }
-
-        public LinkedHashMap<String, Object> execute() throws IOException {
-
-            validateArgs(new String[]{"userId"});
-            // get notifications from db
-            DatabaseHandler dbHandler = (DatabaseHandler) this.dbHandler;
-
-            Job job = new Job(args.get("jobId"),args.get("industryType"),args.get("employementType"), args.get("jobFunctions"),
-                args.get("positionName"), args.get("professionLevel"),args.get("companyID"),args.get("companyName"),
-                            args.get("companyLocation"),args.get("companyProfilePicture"),args.get("jobBrief"));
-            dbHandler.createJobAsaCompany(job);
-            LinkedHashMap<String, Object>resutls = new LinkedHashMap<String, Object>();
-            resutls.put("response",true);
-            return resutls;
-
-        }
-
-
     }
+
+    /*
+     * add job to the database and cache it.
+     */
+    public Object execute() throws IOException {
+
+        validateArgs(new String[]{"jobId"});
+            // get notifications from db
+        JobsHandler jobsHandler = (JobsHandler) this.dbHandler;
+        String jobId = (String) args.get("jobId");
+        Job job = new Job(jobId,(String)args.get("industryType"),(String) args.get("employmentType"),(String) args.get("jobFunctions"),
+                (String) args.get("positionName"),(String) args.get("professionLevel"),(String)args.get("companyID"),(String)args.get("companyName"),
+                (String)  args.get("companyLocation"),(String)args.get("companyProfilePicture"),(String)args.get("jobBrief"));
+        jobsCacheHandler = (JobsCacheHandler) cacheHandler;
+        jobsHandler.createJobAsaCompany(job);
+        jobsCacheHandler.saveJobListing(new String[] {jobId}, Job.class);
+        return "Job Posted";
+    }
+}
+
 
 

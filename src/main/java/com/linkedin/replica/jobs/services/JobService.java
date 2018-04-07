@@ -1,8 +1,10 @@
 package com.linkedin.replica.jobs.services;
 
+import com.linkedin.replica.jobs.cache.handlers.CacheHandler;
 import com.linkedin.replica.jobs.commands.Command;
 import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
 import com.linkedin.replica.jobs.config.Configuration;
+import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -16,15 +18,15 @@ public class JobService {
         config = Configuration.getInstance();
     }
 
-    public Object serve(String commandName, HashMap<String, String> args) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, IOException {
+    public Object serve(String commandName, HashMap<String, Object> args) throws Exception {
         Class<?> commandClass = config.getCommandClass(commandName);
         Constructor constructor = commandClass.getConstructor(HashMap.class);
         Command command = (Command) constructor.newInstance(args);
 
-        Class<?> dbHandlerClass = config.getHandlerClass(commandName);
-        DatabaseHandler dbHandler = (DatabaseHandler) dbHandlerClass.newInstance();
-
-        command.setDbHandler(dbHandler);
+        Class<?> dbHandlerClass = config.getDatabaseHandlerClass(commandName);
+        Class<?> cacheHandlerClass = config.getCacheHandlerClass(commandName);
+        command.setDbHandler((DatabaseHandler) dbHandlerClass.newInstance());
+        command.setCacheHandler((CacheHandler) cacheHandlerClass.newInstance());
 
         return command.execute();
     }

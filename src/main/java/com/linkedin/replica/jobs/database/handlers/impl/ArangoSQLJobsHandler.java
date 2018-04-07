@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.List;
 import com.arangodb.entity.MultiDocumentEntity;
+import com.linkedin.replica.jobs.cache.CacheConnection;
 import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 import com.linkedin.replica.jobs.config.Configuration;
 import com.linkedin.replica.jobs.database.DatabaseConnection;
@@ -26,23 +27,29 @@ public class ArangoSQLJobsHandler implements JobsHandler {
     Connection mysqlConnection;
     Configuration config;
     public ArangoSQLJobsHandler() throws IOException, SQLException, ClassNotFoundException {
-        Configuration config = Configuration.getInstance();
-        System.out.println(config);
-        System.out.println("beboo");
-        ArangoDB arangoDriver = DatabaseConnection.getInstance().getArangoDriver();
-        collectionName = config.getArangoConfig("collection.jobs.name");
-        dbInstance = arangoDriver.db(config.getArangoConfig("db.name"));
-        collection = dbInstance.collection(collectionName);
+        mysqlConnection = DatabaseConnection.getInstance().getMysqlDriver();
+        config = Configuration.getInstance();
+        dbInstance = DatabaseConnection.getInstance().getArangoDriver().
+                db(config.getArangoConfigProp("db.name"));
+        collection = dbInstance.collection(config.getArangoConfigProp("collection.jobs.name"));
     }
     public void connect() throws SQLException, IOException, ClassNotFoundException {
         // TODO
         arangoDB = new ArangoDB.Builder().build();
-        mysqlConnection = DatabaseConnection.getInstance().getMysqlConn();
+
     }
 
   
     public void disconnect() {
         // TODO
+    }
+    public boolean RespondToJobsAsCompany(String userId,String jobId) throws SQLException {
+        String query = "{respond_to_applicant(?,?)}";
+        CallableStatement stmt = mysqlConnection.prepareCall(query);
+        stmt.setString(1, userId);
+        stmt.setString(2, jobId);
+//        stmt.executeQuery();
+        return stmt.execute();
     }
     public ArrayList<String> getAppliedJobsIDs(String userId) throws SQLException {
         String query = "{CALL view_applied_jobs(?)}";
@@ -76,9 +83,12 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         }
     }
 
-    public ArrayList<Job>  getAppliedJobs(ArrayList<String> Ids){
-        Collection<String> keys = Ids;
-        MultiDocumentEntity<Job> cursor= dbInstance.collection("jobs").getDocuments(keys,Job.class);
+    public ArrayList<Job>  getAppliedJobs( String userID) throws SQLException {
+        Collection<String> keys = this.getAppliedJobsIDs(userID);
+
+        collectionName = config.getArangoConfigProp("collection.jobs.name");
+        MultiDocumentEntity<Job> cursor= dbInstance.collection(collectionName).getDocuments(keys,Job.class);
+
        Collection<Job> jobs = cursor.getDocuments();
 
        return new ArrayList<Job>(jobs);
@@ -87,7 +97,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
 
     public List<Job> getSavedJobs(String userID){
         try {
-            User user= dbInstance.collection("jobs").getDocument(userID,User.class);
+            User user = dbInstance.collection("jobs").getDocument(userID,User.class);
 
         } catch (ArangoDBException e) {
             System.err.println("Failed to retrieve document. " + e.getMessage());
@@ -97,21 +107,21 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         public void createJobAsaCompany( Job job){
 
             try {
-                dbInstance.collection(collectionName).insertDocument(job);
+                collection.insertDocument(job);
             } catch (ArangoDBException e) {
                 System.err.println("Failed to update document. " + e.getMessage());
             }
     }
 
     public  Job getJob(String JobID){
-        Job job = dbInstance.collection(collectionName).getDocument(JobID,
+        Job job = collection.getDocument(JobID,
                 Job.class);
         return job;
     }
 
     public void EditJob(String JobID, LinkedHashMap<String, String > args){
-        String JobsCollectionName = config.getAppConfig("collection.jobs.name");
-         Job job = getJob(JobID);
+
+        Job job = getJob(JobID);
         if(args.containsKey("industryType"))
             job.setIndustryType(args.get("industryType"));
         if(args.containsKey("employmentType"))
@@ -122,14 +132,16 @@ public class ArangoSQLJobsHandler implements JobsHandler {
             job.setIndustryType(args.get("positionName"));
         if(args.containsKey("professionLevel"))
             job.setIndustryType(args.get("professionLevel"));
-        dbInstance.collection(JobsCollectionName).updateDocument(job.getJobID(),job);
+        collection.updateDocument(JobID ,job);
     }
 
     public void deleteJobAsaCompany(String jobID){
-        String JobsCollectionName = config.getArangoConfig("collection.jobs.name");
+
+        String JobsCollectionName = config.getArangoConfigProp("collection.jobs.name");
+
 
         try {
-            dbInstance.collection(JobsCollectionName).deleteDocument(jobID);
+            collection.deleteDocument(jobID);
         } catch (ArangoDBException e) {
             System.err.println("Failed to Delete document. " + e.getMessage());
         }
