@@ -1,6 +1,7 @@
 
 package com.linkedin.replica.jobs.config;
 
+import com.linkedin.replica.jobs.cache.handlers.JobsCacheHandler;
 import com.linkedin.replica.jobs.commands.Command;
 import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 
@@ -69,6 +70,12 @@ public class Configuration {
     public Class getDatabaseHandlerClass(String commandName) throws ClassNotFoundException {
         String handlerPackageName = JobsHandler.class.getPackage().getName() + ".impl";
         String handlerClassPath = handlerPackageName + "." + commandConfig.get(commandName + ".handler");
+        return Class.forName(handlerClassPath);
+    }
+
+    public Class getCacheHandlerClass(String commandName) throws ClassNotFoundException {
+        String handlerPackageName = JobsCacheHandler.class.getPackage().getName() + ".impl";
+        String handlerClassPath = handlerPackageName + "." + commandConfig.get(commandName + ".cache.handler");
         return Class.forName(handlerClassPath);
     }
 
@@ -169,4 +176,6 @@ public class Configuration {
         properties.store(out, "");
         out.close();
     }
+
+
 }
