@@ -28,8 +28,7 @@ public class JedisCacheHandler implements JobsCacheHandler {
     @Override
     public void saveJobListing(String[] jobIds, Object jobs) throws IOException {
 
-        try {
-        Jedis cacheInstance = cachePool.getResource();
+        try (Jedis cacheInstance = cachePool.getResource()){
         cacheInstance.select(databaseIndex);
         Pipeline pipeline = cacheInstance.pipelined();
         ArrayList<Object> jobsList = (ArrayList<Object>) jobs;
@@ -61,8 +60,7 @@ public class JedisCacheHandler implements JobsCacheHandler {
     @Override
     public Object getJobListingFromCache(String key, Class<?> tClass) throws IOException {
 
-        try {
-            Jedis cacheInstance = cachePool.getResource();
+        try (Jedis cacheInstance = cachePool.getResource()){
             cacheInstance.select(Integer.parseInt(configuration.getRedisConfigProp("cache.jobs.index")));
             if(!cacheInstance.exists(key))
                 return null;
@@ -98,8 +96,7 @@ public class JedisCacheHandler implements JobsCacheHandler {
 
     @Override
     public void deleteJobListing(String key) {
-        try {
-            Jedis cacheInstance = cachePool.getResource();
+        try (Jedis cacheInstance = cachePool.getResource()){
             cacheInstance.select(databaseIndex);
             if(!cacheInstance.exists(key))
                 return;
@@ -111,8 +108,7 @@ public class JedisCacheHandler implements JobsCacheHandler {
     }
 
     public void editJobListing(String key, LinkedHashMap<String, String> args) {
-        try {
-            Jedis cacheInstance = cachePool.getResource();
+        try (Jedis cacheInstance = cachePool.getResource()){
             cacheInstance.select(databaseIndex);
             if(!cacheInstance.exists(key))
                 return;
