@@ -40,7 +40,6 @@ public class JobsCacheHandlerTest {
             jobService = new JobService();
             jobsHandler = new JedisCacheHandler();
             args = new HashMap<>();
-
         }
 
         @Test

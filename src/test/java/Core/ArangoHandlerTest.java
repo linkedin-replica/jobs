@@ -34,7 +34,6 @@ public class ArangoHandlerTest {
         arangoDb =DatabaseConnection.getInstance().getArangoDriver().
                 db(config.getAppConfigProp("db.name"));
         databaseSeed.insertJobs();
-
     }
 
 
