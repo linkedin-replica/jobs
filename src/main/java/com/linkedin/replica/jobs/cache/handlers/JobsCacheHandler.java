@@ -9,7 +9,7 @@ public interface JobsCacheHandler extends CacheHandler{
 
     void saveJobListing(String [] jobIds, Object jobs) throws IOException;
 
-    Object getJobListingFromCache(String key, Class<?> tClass) throws IOException;
+    Object getJobListingFromCache(String key);
 
     void deleteJobListing(String key);
 

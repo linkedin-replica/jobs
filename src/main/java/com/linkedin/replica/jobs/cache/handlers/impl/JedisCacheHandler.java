@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.linkedin.replica.jobs.cache.CacheConnection;
 import com.linkedin.replica.jobs.cache.handlers.JobsCacheHandler;
 import com.linkedin.replica.jobs.config.Configuration;
+import com.linkedin.replica.jobs.models.Job;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.Pipeline;
@@ -58,13 +59,13 @@ public class JedisCacheHandler implements JobsCacheHandler {
     }
 
     @Override
-    public Object getJobListingFromCache(String key, Class<?> tClass) throws IOException {
+    public Object getJobListingFromCache(String key) {
 
         try (Jedis cacheInstance = cachePool.getResource()){
             cacheInstance.select(Integer.parseInt(configuration.getRedisConfigProp("cache.jobs.index")));
             if(!cacheInstance.exists(key))
                 return null;
-            Class jobClass = tClass;
+            Class jobClass = Job.class;
             Object job = null;
             try {
                 job = jobClass.newInstance();

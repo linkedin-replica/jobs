@@ -26,11 +26,10 @@ public class JobListingCommand extends Command {
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;
         jobsCacheHandler = (JobsCacheHandler) cacheHandler;
         String jobId = (String)args.get("jobId");
-        // TODO: check reflection issues.
-        Object job = jobsCacheHandler.getJobListingFromCache(jobId, Job.class);
+        Object job = jobsCacheHandler.getJobListingFromCache(jobId);
         if(job == null) {
             job = jobsHandler.getJob(jobId);
-            jobsCacheHandler.saveJobListing(new String[] {jobId}, new ArrayList<Object>().add(job));
+            jobsCacheHandler.saveJobListing(new String[] {jobId}, new ArrayList<>().add(job));
         }
         return job;
     }
