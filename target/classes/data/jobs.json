@@ -2,7 +2,7 @@
   {
     "positionName": "Software Developer",
     "companyName": "Ergasti",
-    "companyId": "3",
+    "companyId": "2",
     "requiredSkills": ["NodeJS", "HTML", "CSS", "Java"],
     "companyLocation" : "Berlin",
     "industryType" : "Software",
@@ -12,7 +12,7 @@
   {
     "positionName": "Data Wrangling Engineer",
     "companyName": "DFKI",
-    "companyId": "1",
+    "companyId": "2",
     "requiredSkills": ["Python", "Java"],
     "companyLocation" : "Stuttgart",
     "industryType" : "Software",
@@ -36,14 +36,14 @@
   {
     "positionName": "Junior Researcher",
     "companyName": "DHBW",
-    "companyId": "22",
+    "companyId": "2",
     "requiredSkills": ["Research", "Python", "NLP"],
     "employmentType" : "part-time"
   },
   {
     "positionName": "IT Engineer",
     "companyName": "GUC",
-    "companyId": "29",
+    "companyId": "2",
     "requiredSkills": ["Hardware", "Software"],
     "companyLocation" : "Stuttgart"
 
@@ -51,13 +51,13 @@
   {
     "positionName": "web developer",
     "companyName": "ITWorx",
-    "companyId": "30",
+    "companyId": "2",
     "requiredSkills": ["JS", "AngularJS", "HTML", "CSS"]
   },
   {
     "positionName": "Driver",
     "companyName": "Juhayna",
-    "companyId": "8",
+    "companyId": "2",
     "requiredSkills": ["License", "Driving Experience"]
   }
 ]

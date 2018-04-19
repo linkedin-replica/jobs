@@ -15,10 +15,10 @@ public class DeleteJobAsCompanyCommand extends Command {
     }
 
     public Object execute() throws IOException {
-       JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
-        validateArgs(new String[]{"jobId"});
-        jobsHandler.deleteJobAsaCompany((String) args.get("jobId"));
-        return "Job Deleted";
+       JobsHandler jobsHandler = (JobsHandler) this.dbHandler;
+        validateArgs(new String[]{"userId","jobId"});
+        jobsHandler.deleteJobAsaCompany((String) args.get("userId"),(String) args.get("jobId"));
+        return null;
     }
 
 

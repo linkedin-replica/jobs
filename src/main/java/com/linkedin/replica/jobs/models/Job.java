@@ -1,78 +1,37 @@
 package com.linkedin.replica.jobs.models;
 
+import com.arangodb.entity.DocumentField;
+
 public class Job {
-
-
-
-    private  String jobID ;
+    private  String jobId;
+    @DocumentField(DocumentField.Type.KEY)
+    private  String jobID;
     private  String jobTitle;
     private  String industryType;
-    private  String employmentType;
-    private  String jobFunctions;
-    private  String positionName;
-    private  String professionLevel;
-    private  String companyID;
-    private  String companyName;
-    private  String companyLocation;
-    private   String compnayPicture;
+    private  String companyId;
+    private  String jobBrief;
+    private  String[] requiredSkills;
+
 
     public Job(){
     }
 
-    public Job(String jobID, String jobTitle, String industryType, String employmentType, String jobFunctions, String positionName, String professionLevel, String companyID,
-               String companyName, String companyLocation, String compnayPicture, String jobBrief) {
-        this.jobID = jobID;
-        this.jobTitle = jobTitle;
-        this.industryType = industryType;
-        this.employmentType = employmentType;
-        this.jobFunctions = jobFunctions;
-        this.positionName = positionName;
-        this.professionLevel = professionLevel;
-        this.companyID = companyID;
-        this.companyName = companyName;
-        this.companyLocation = companyLocation;
-        this.compnayPicture = compnayPicture;
-        this.jobBrief = jobBrief;
+    public String[] getRequiredSkills() {
+        return requiredSkills;
     }
 
+    public void setRequiredSkills(String[] requiredSkills) {
+        this.requiredSkills = requiredSkills;
+    }
+
+
     public void setJobID(String jobID) {
+        this.jobId = jobID;
         this.jobID = jobID;
     }
 
     public void setIndustryType(String industryType) {
         this.industryType = industryType;
-    }
-
-    public void setEmploymentType(String employmentType) {
-        this.employmentType = employmentType;
-    }
-
-    public void setJobFunctions(String jobFunctions) {
-        this.jobFunctions = jobFunctions;
-    }
-
-    public void setPositionName(String positionName) {
-        this.positionName = positionName;
-    }
-
-    public void setProfessionLevel(String professionLevel) {
-        this.professionLevel = professionLevel;
-    }
-
-    public void setCompanyID(String companyID) {
-        this.companyID = companyID;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public void setCompanyLocation(String companyLocation) {
-        this.companyLocation = companyLocation;
-    }
-
-    public void setCompnayPicture(String compnayPicture) {
-        this.compnayPicture = compnayPicture;
     }
 
     public void setJobBrief(String jobBrief) {
@@ -88,50 +47,29 @@ public class Job {
     }
 
     public String getJobID() {
-
-        return jobID;
+        return jobId;
     }
 
     public String getIndustryType() {
         return industryType;
     }
 
-    public String getEmploymentType() {
-        return employmentType;
-    }
-
-    public String getJobFunctions() {
-        return jobFunctions;
-    }
-
-    public String getPositionName() {
-        return positionName;
-    }
-
-    public String getProfessionLevel() {
-        return professionLevel;
-    }
 
     public String getCompanyID() {
-        return companyID;
+        return companyId;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getCompanyId() {
+        return companyId;
     }
 
-    public String getCompanyLocation() {
-        return companyLocation;
-    }
-
-    public String getCompnayPicture() {
-        return compnayPicture;
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 
     public String getJobBrief() {
         return jobBrief;
     }
 
-    String jobBrief;
 
 }

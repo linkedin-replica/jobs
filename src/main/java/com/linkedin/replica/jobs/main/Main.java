@@ -4,7 +4,9 @@ package com.linkedin.replica.jobs.main;
 import com.linkedin.replica.jobs.config.Configuration;
 import com.linkedin.replica.jobs.controller.Server;
 import com.linkedin.replica.jobs.database.DatabaseConnection;
+import com.linkedin.replica.jobs.database.DatabaseSeed;
 import com.linkedin.replica.jobs.messaging.ClientMessagesReceiver;
+import org.json.simple.parser.ParseException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -32,8 +34,8 @@ public class Main {
         DatabaseConnection.init();
     }
 
-    public static void start(String... args) throws FileNotFoundException, ClassNotFoundException, IOException, SQLException, InterruptedException, TimeoutException{
-        if(args.length != 4)
+    public static void start(String... args) throws FileNotFoundException, ClassNotFoundException, IOException, SQLException, InterruptedException, TimeoutException, ParseException {
+        if(args.length != 5)
             throw new IllegalArgumentException("Expected three arguments. 1- app config file path \n "
                     + "2- database config file path \n  3- commands config file path \n 4- controller config file path");
 
@@ -63,8 +65,8 @@ public class Main {
         DatabaseConnection.getInstance().closeConnections();
     }
 
-    public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException, SQLException, InterruptedException, TimeoutException {
-        String[] arr = {"src/main/resources/app.config","src/main/resources/arango.test.config", "src/main/resources/commands.config", "src/main/resources/controller.config"};
+    public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException, SQLException, InterruptedException, TimeoutException, ParseException {
+        String[] arr = {"src/main/resources/config/app.config","src/main/resources/config/arango.test.config","src/main/resources/config/database.config", "src/main/resources/config/commands.config", "src/main/resources/config/controller.config"};
         start(arr);
     }
 }

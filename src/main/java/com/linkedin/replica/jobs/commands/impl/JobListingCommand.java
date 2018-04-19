@@ -17,7 +17,6 @@ public class JobListingCommand extends Command {
 
     public Object execute() throws IOException {
         validateArgs(new String[]{"jobId"});
-        // get notifications from db
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
         Job job =  jobsHandler.getJob((String)args.get("jobId"));
         return job;

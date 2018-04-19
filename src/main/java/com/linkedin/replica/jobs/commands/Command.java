@@ -9,6 +9,7 @@ import java.util.LinkedHashMap;
 
 import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
 import com.linkedin.replica.jobs.database.handlers.JobsHandler;
+import com.linkedin.replica.jobs.exceptions.BadRequestException;
 
 public abstract class Command {
     protected HashMap<String, Object> args;
@@ -30,11 +31,7 @@ public abstract class Command {
         for(String arg: requiredArgs)
             if(!args.containsKey(arg)) {
                 String exceptionMsg = String.format("Cannot execute command. %s argument is missing", arg);
-                throw new IllegalArgumentException(exceptionMsg);
+                throw new BadRequestException(exceptionMsg);
             }
     }
-    public void setArgs(HashMap<String, Object> args) {
-        this.args = args;
-    }
-
 }

@@ -1,11 +1,17 @@
 package com.linkedin.replica.jobs.models;
 
+import com.arangodb.entity.DocumentField;
+
 public class lightUser {
+    @DocumentField(DocumentField.Type.KEY)
     private int UserID;
     private String firstName;
     private String lastName;
     private String currentPosition;
     private String profilePictureURL;
+
+    public lightUser(){};
+
 
     public void setUserID(int userID) {
         UserID = userID;
@@ -28,7 +34,6 @@ public class lightUser {
     }
 
     public int getUserID() {
-
         return UserID;
     }
 

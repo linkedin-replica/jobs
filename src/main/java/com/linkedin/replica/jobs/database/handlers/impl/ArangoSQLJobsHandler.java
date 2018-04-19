@@ -7,24 +7,24 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.List;
 
+import com.arangodb.*;
 import com.arangodb.entity.BaseDocument;
 import com.arangodb.entity.MultiDocumentEntity;
 import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 import com.linkedin.replica.jobs.config.Configuration;
 import com.linkedin.replica.jobs.database.DatabaseConnection;
+import com.linkedin.replica.jobs.models.Company;
 import com.linkedin.replica.jobs.models.Job;
-import com.arangodb.ArangoCollection;
-import com.arangodb.ArangoDB;
-import com.arangodb.ArangoDBException;
-import com.arangodb.ArangoDatabase;
-import com.linkedin.replica.jobs.models.User;
+import com.linkedin.replica.jobs.models.ReturnedJob;
+import org.json.simple.JSONObject;
 
 public class ArangoSQLJobsHandler implements JobsHandler {
     ArangoDB arangoDB;
-
     private ArangoDatabase dbInstance;
-    private ArangoCollection collection;
-    private String collectionName;
+    private ArangoCollection jobsCollection;
+    private ArangoCollection companyCollection;
+    private String jobsCollectionName;
+    private String companyCollectionName;
     Connection mysqlConnection;
     Configuration config;
     public ArangoSQLJobsHandler() throws IOException, SQLException, ClassNotFoundException {
@@ -32,19 +32,66 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         config = Configuration.getInstance();
         dbInstance = DatabaseConnection.getInstance().getArangoDriver().
                 db(config.getArangoConfigProp("db.name"));
-        collection = dbInstance.collection(config.getArangoConfigProp("collection.jobs.name"));
-    }
-    public void connect() throws SQLException, IOException, ClassNotFoundException {
-        // TODO
+        jobsCollection = dbInstance.collection(config.getArangoConfigProp("collection.jobs.name"));
+        companyCollection = dbInstance.collection(config.getArangoConfigProp("collection.companies.name"));
         arangoDB = new ArangoDB.Builder().build();
+        jobsCollectionName = config.getArangoConfigProp("collection.jobs.name");
+        companyCollectionName = config.getArangoConfigProp("collection.companies.name");
     }
 
-  
-    public void disconnect() {
-        // TODO
+    public boolean RespondToJobsAsCompany(String userId,String jobId,String applicantId, int status) throws SQLException {
+         if(validateJob(userId,jobId)){
+            String query = "{CALL respond_to_applicant(?,?,?)}";
+            CallableStatement stmt = mysqlConnection.prepareCall(query);
+            stmt.setString(1, applicantId);
+            stmt.setString(2, jobId);
+            stmt.setInt(3, status);
+            stmt.executeQuery();
+            return true;
+        }else
+            return false;
     }
-    public boolean RespondToJobsAsCompany(String userId,String jobId) throws SQLException {
-        String query = "{respond_to_applicant(?,?)}";
+    public boolean validateJob(String userId, String jobId){
+        String query = "For t in " + jobsCollectionName + " FILTER " +
+                "t.jobId == @jobId" +
+                " RETURN t.companyId";
+        Map<String, Object> bindVars = new HashMap<>();
+        bindVars.put("jobId", jobId);
+        ArangoCursor<String> cursor = dbInstance.query(query, bindVars, null, String.class);
+        System.out.println(cursor);
+        System.out.println(cursor.getCount());
+        String CompanyId = cursor.next();
+        String query1 = "For t in " + companyCollectionName + " FILTER " +
+                "t.companyId == @CompanyId" +
+                " RETURN t.adminUserID";
+        bindVars = new HashMap<>();
+        bindVars.put("CompanyId", CompanyId);
+        System.out.println(CompanyId);
+        cursor = dbInstance.query(query1, bindVars, null, String.class);
+        String user = cursor.next();
+        if(user.equals(userId))
+            return true;
+            return false;
+    }
+
+
+    public boolean ValidateCompany(String userId, String companyId){
+        Map<String, Object> bindVars = new HashMap<>();
+        String query = "For t in " + companyCollectionName + " FILTER " +
+                "t.companyId == @CompanyId" +
+                " RETURN t.adminUserID";
+        bindVars = new HashMap<>();
+        bindVars.put("CompanyId", companyId);
+        ArangoCursor<String> cursor = dbInstance.query(query, bindVars, null, String.class);
+        String user = cursor.next();
+        System.out.println("userId" + user);
+        if(user.equals(userId))
+            return true;
+        return false;
+    }
+
+    public boolean userApplyForJob(String userId, String jobId) throws SQLException {
+        String query = "{CALL user_apply_to_job(?,?)}";
         CallableStatement stmt = mysqlConnection.prepareCall(query);
         stmt.setString(1, userId);
         stmt.setString(2, jobId);
@@ -57,7 +104,6 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         stmt.setString(1, userId);
         ArrayList<String> Ids = new ArrayList<String>();
         ResultSet result = stmt.executeQuery();
-
             while (result.next()) {
                 String jobName = result.getString("job_id");
                 System.out.println(jobName + "\t" );
@@ -65,89 +111,110 @@ public class ArangoSQLJobsHandler implements JobsHandler {
             }
         return Ids;
     }
-    public void deleteAll() throws SQLException {
-
-        String query = "{CALL Delete_Users()}";
-        CallableStatement statement = null;
-
-            statement = mysqlConnection.prepareCall(query);
-            statement.executeQuery();
-
-    }
-
-    public ArrayList<Job>  getAppliedJobs( String userID) throws SQLException {
-        Collection<String> keys = this.getAppliedJobsIDs(userID);
-
-        collectionName = config.getArangoConfigProp("collection.jobs.name");
-        MultiDocumentEntity<Job> cursor= dbInstance.collection(collectionName).getDocuments(keys,Job.class);
-
-       Collection<Job> jobs = cursor.getDocuments();
-
+    public ArrayList<Job> getAppliedJobs( String userId) throws SQLException {
+        Collection<String> keys = this.getAppliedJobsIDs(userId);
+        MultiDocumentEntity<Job> cursor = dbInstance.collection(jobsCollectionName).getDocuments(keys,Job.class);
+        Collection<Job> jobs = cursor.getDocuments();
        return new ArrayList<Job>(jobs);
-
     }
 
-    public List<Job> getSavedJobs(String userID){
-        try {
-            User user = dbInstance.collection("jobs").getDocument(userID,User.class);
 
-        } catch (ArangoDBException e) {
-            System.err.println("Failed to retrieve document. " + e.getMessage());
-        }
+    public ArrayList<ReturnedJob> getReturnedJobs( ArrayList<String> ids){
+        String Query = "FOR job in jobs\n" +
+                "filter job._key in @jobIds\n" +
+                "let companys = (" +
+                "    for company in companies\n" +
+                "    filter company._key == job.companyId\n" +
+                "    return {company.companyName, companyProfilePicture}\n" +
+                ")\n" +
+                "return { [ \"companies\" ]:companys,[\"jobs\" ]: job}";
+        Map<String, Object>  bindVars = new HashMap<>();
+        bindVars.put("jobIds",ids);
+        ArangoCursor<String> cursor = dbInstance.query(Query, bindVars, null, String.class);
+        System.out.println(cursor.next());
         return null;
     }
-        public void createJobAsaCompany( Job job,String ComanyId) throws SQLException {
+    public void user_save_job(String userId,String jobId) throws SQLException {
+        String query = "{CALL Save_Job(?,?)}";
+        CallableStatement stmt = mysqlConnection.prepareCall(query);
+        stmt.setString(1, userId);
+        stmt.setString(1, jobId);
+        stmt.executeQuery();
+    }
 
 
+    public  ArrayList<Job> getSavedJobs(String userId) throws SQLException {
+        String query = "{CALL Get_Saved_Job(?)}";
+        CallableStatement stmt = mysqlConnection.prepareCall(query);
+        ResultSet result = stmt.executeQuery();
+        ArrayList<String> Ids = new ArrayList<String>();
+        while (result.next()) {
+            String jobId = result.getString("job_id");
+            Ids.add(jobId);
+        }
+        Collection<String> keys = this.getAppliedJobsIDs(userId);
+        MultiDocumentEntity<Job> cursor= dbInstance.collection(jobsCollectionName).getDocuments(keys,Job.class);
+        Collection<Job> jobs = cursor.getDocuments();
+        return new ArrayList<Job>(jobs);
+    }
+
+        public void createJobAsaCompany(HashMap<String, Object> args) throws SQLException {
+            String userId = (String)args.get("userId");
+            String companyId = (String) args.get("companyId");
+            System.out.println(userId + " " + companyId);
+            if(ValidateCompany(userId,companyId)) {
                 String query = "{CALL Insert_Job(?,?,?)}";
                 CallableStatement stmt = mysqlConnection.prepareCall(query);
-                stmt.setString(1, job.getJobID());
-                stmt.setString(2, job.getJobTitle());
-                stmt.setString(3, ComanyId);
+                String jobId = UUID.randomUUID().toString();
+                System.out.println("job Id" + jobId);
+                stmt.setString(1, jobId);
+                stmt.setString(2, (String)args.get("jobTitle"));
+                stmt.setString(3, companyId);
                 stmt.executeQuery();
-                BaseDocument document = new BaseDocument();
-                document.addAttribute("jobID", job.getJobID());
-                document.addAttribute("jobTitle", job.getJobTitle());
-                document.addAttribute("industryType",job.getIndustryType());
-                document.addAttribute("employmentType",job.getEmploymentType());
-                document.addAttribute("jobFunctions",job.getJobFunctions());
-                document.addAttribute("positionName",job.getPositionName());
-                document.addAttribute("professionLevel",job.getProfessionLevel());
-                document.addAttribute("companyID",job.getCompanyID());
-                document.addAttribute("companyName",job.getCompanyName());
-                document.addAttribute("companyLocation",job.getCompanyLocation());
-                document.addAttribute("compnayPicture",job.getCompnayPicture());
-                document.setKey(job.getJobID());
-                collection.insertDocument(document);
+                Job job = new Job();
+                job.setJobID(jobId);
+                job.setCompanyId(companyId);
+                job.setJobTitle((String)args.get("jobTitle"));
+                if(args.containsKey("industryType"))
+                    job.setJobTitle((String)args.get("industryType"));
+                if(args.containsKey("jobBrief"))
+                    job.setJobBrief((String)args.get("jobBrief"));
+                if(args.containsKey("requiredSkills"))
+                    job.setRequiredSkills((String[])args.get("requiredSkills"));
+                jobsCollection.insertDocument(job);
+            }
 
     }
 
-    public  Job getJob(String JobID){
-        Job job = collection.getDocument(JobID,
-                Job.class);
-        return job;
+        public  Job getJob(String jobId){
+            Job job = jobsCollection.getDocument(jobId,
+                    Job.class);
+            return job;
+        }
+//
+    public void editJob(HashMap<String, Object > args){
+        String query ="For t in " + jobsCollectionName + " FILTER " +
+                "t._key == @jobId" + " UPDATE t " + "WITH{";
+        String fields;
+        Map<String, Object>  bindVars = new HashMap<>();
+        bindVars.put("jobId",args.get("jobId").toString());
+        int counter = 0;
+        for (String key : args.keySet()) {
+            if (!key.equals("jobId") && !key.equals("userId")) {
+                query += key + ":@field" + counter + " ,";
+                bindVars.put("field" + counter, args.get(key));
+                counter++;
+            }
+        }
+        query = query.substring(0,query.length()-1);
+        query += "} IN " + jobsCollectionName;
+        System.out.println("Query opa " + query);
+        dbInstance.query(query, bindVars, null, Job.class);
     }
-
-    public void EditJob(String JobID, LinkedHashMap<String, String > args){
-
-        String JobsCollectionName = config.getAppConfigProp("collection.jobs.name");
-
-         Job job = getJob(JobID);
-        if(args.containsKey("industryType"))
-            job.setIndustryType(args.get("industryType"));
-        if(args.containsKey("employmentType"))
-            job.setIndustryType(args.get("employmentType"));
-        if(args.containsKey("jobFunctions"))
-            job.setIndustryType(args.get("jobFunctions"));
-        if(args.containsKey("positionName"))
-            job.setIndustryType(args.get("positionName"));
-        if(args.containsKey("professionLevel"))
-            job.setIndustryType(args.get("professionLevel"));
-        collection.updateDocument(JobID ,job);
-    }
-
-    public void deleteJobAsaCompany(String jobID){
-            collection.deleteDocument(jobID);
+//
+    public void deleteJobAsaCompany(String userId,String jobId){
+        if(validateJob(userId,jobId))
+            jobsCollection.deleteDocument(jobId);
     }
 
 

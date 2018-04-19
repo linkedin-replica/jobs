@@ -1,18 +1,13 @@
 package com.linkedin.replica.jobs.models;
 
+import com.arangodb.entity.DocumentField;
+
 public class Company {
+    @DocumentField(DocumentField.Type.KEY)
+    private String companyID;
+    private String companyId;
     private String companyName;
     private String companyProfilePicture;
-    private String companyID;
-
-    public String getCompanyID() {
-        return companyID;
-    }
-
-    public String getCompanytype() {
-        return companytype;
-    }
-
     private String adminUserName;
     private String adminUserID;
     private String industryType;
@@ -20,23 +15,16 @@ public class Company {
     private String companytype;
     private String[] posts;
     private String[] jobListings;
-    public Company(String companyName,String companyID,String companyProfilePicture,String adminUserName,String adminUserID,
-                   String industryType,String companyLocation,String companytype,String[] posts,String [] lightJobListings) {
-        this.companyName = companyName;
-        this.adminUserName=adminUserName;
-        this.companyID = companyID;
-        this.companyProfilePicture = companyProfilePicture;
-        this.adminUserID = adminUserID;
-        this.industryType = industryType;
-        this.companyLocation = companyLocation;
-        this.companytype = companytype;
-        this.posts = posts;
-        this.jobListings = lightJobListings;
 
-    }
+
     public Company(){
 
     }
+
+    public void setCompanyID(String companyID) {
+        this.companyID = companyID;
+    }
+
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
@@ -62,23 +50,16 @@ public class Company {
     public void setCompanyLocation(String companyLocation) {
         this.companyLocation = companyLocation;
     }
-
-
     public void setCompanytype(String companytype) {
         this.companytype = companytype;
     }
-
-
     public void setPosts(String[] posts) {
         this.posts = posts;
     }
-
     public void setJobListings(String[] jobListings) {
         this.jobListings = jobListings;
     }
-
     public String getCompanyName() {
-
         return companyName;
     }
 
@@ -103,6 +84,13 @@ public class Company {
         return companyLocation;
     }
 
+    public String getCompanyID() {
+        return companyID;
+    }
+
+    public String getCompanytype() {
+        return companytype;
+    }
 
     public String[] getPosts() {
         return posts;
@@ -110,5 +98,13 @@ public class Company {
 
     public String[] getJobListings() {
         return jobListings;
+    }
+    public String getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
+        this.companyID = companyId;
     }
 }

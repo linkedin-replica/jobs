@@ -106,7 +106,7 @@ public class DatabaseSeed {
                 throw exception;
             }
         }
-        int id = 0;
+        int id = 20;
         BaseDocument jobDocument;
         JSONArray jobs = getJSONData("src/main/resources/data/jobs.json");
         for (Object job : jobs) {
@@ -127,6 +127,28 @@ public class DatabaseSeed {
         }
     }
 
+    public static void insertCompanies() throws IOException, ClassNotFoundException, SQLException, ParseException {
+
+        ArangoDB arangoDB = DatabaseConnection.getInstance().getArangoDriver();
+        String dbName = config.getArangoConfigProp("db.name");
+        String collectionName = config.getArangoConfigProp("collection.companies.name");
+        try{
+
+            System.out.println(dbName+" hereee");
+            arangoDB.db(dbName).createCollection(collectionName);
+
+        }catch(ArangoDBException exception){
+            //database not found exception
+            if(exception.getErrorNum() == 1228){
+                arangoDB.createDatabase(dbName);
+                arangoDB.db(dbName).createCollection(collectionName);
+            } else if(exception.getErrorNum() == 1207) { // duplicate name error
+                // NoOP
+            }else {
+                throw exception;
+            }
+        }
+    }
     /**
      * Delete commands collection from the database if it exists
      * @throws ArangoDBException
@@ -149,6 +171,19 @@ public class DatabaseSeed {
         System.out.println("Jobs collection is dropped");
     }
 
+    public static void deleteAllCompanies() throws ArangoDBException, IOException,SQLException{
+        ArangoDB arangoDB = DatabaseConnection.getInstance().getArangoDriver();
+        String dbName = config.getArangoConfigProp("db.name");
+        String collectionName = config.getArangoConfigProp("collection.companies.name");
+        try {
+            DatabaseConnection.getInstance().getArangoDriver().db(dbName).collection(collectionName).drop();
+        } catch(ArangoDBException exception) {
+            if(exception.getErrorNum() == 1228) {
+                System.out.println("Database not found");
+            }
+        }
+        System.out.println("Jobs collection is dropped");
+    }
     /**
      * Drop specified database from Arango Driver
      * @param dbName Database name to be dropped
