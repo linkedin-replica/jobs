@@ -3,6 +3,7 @@ package com.linkedin.replica.jobs.commands.impl;
 import com.linkedin.replica.jobs.commands.Command;
 import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 import com.linkedin.replica.jobs.models.Job;
+import com.linkedin.replica.jobs.models.ReturnedJob;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ public class GetSavedJobCommand extends Command {
     public Object execute() throws IOException, SQLException {
         validateArgs(new String[]{"userId"});
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
-        ArrayList<Job> jobs =  jobsHandler.getSavedJobs((String) args.get("userId"));
+        ArrayList<ReturnedJob> jobs =  jobsHandler.getSavedJobs((String) args.get("userId"));
         return jobs;
     }
 }

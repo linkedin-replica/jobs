@@ -7,6 +7,7 @@ import com.linkedin.replica.jobs.database.DatabaseConnection;
 import com.linkedin.replica.jobs.database.DatabaseSeed;
 import com.linkedin.replica.jobs.models.Company;
 import com.linkedin.replica.jobs.models.Job;
+import com.linkedin.replica.jobs.models.ReturnedJob;
 import com.linkedin.replica.jobs.services.JobService;
 import org.json.simple.parser.ParseException;
 import org.junit.AfterClass;
@@ -15,6 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -55,46 +57,43 @@ public class JobsServiceTest {
     }
 
 
-//
-//    @Test
-//    public void testJobListingService() throws Exception {
-//        HashMap<String, Object> args = new HashMap<>();
-//        args.put("jobId", "1");
-//        Job results = (Job) JobService.serve("job.listing",args);
-//        assertEquals("matching position name" , "Data Wrangling Engineer" ,results.getPositionName());
-//        assertEquals("matching company Name" , "DFKI" ,results.getCompanyName());
-//        assertEquals("matching industryType" , "Software" ,results.getIndustryType());
-//    }
-//
-//    @Test
-//    public void testDeleteJobAsCompanyService() throws Exception {
-//        HashMap<String, Object> args = new HashMap<>();
-//        args.put("jobId", "3");
-//        JobService.serve("delete.job.company",args);
-//        args = new HashMap<>();
-//        args.put("jobId", "3");
-//        Job job  = (Job) JobService.serve("job.listing",args);
-//        assertEquals("Job is deleted" , null ,job);
-//    }
-//
-//    @Test
-//    public void testCreateJobAsCompany() throws Exception {
-//        Job job  = new Job();
-//        job.setJobTitle("Software coder");
-//        job.setJobID("30");
-//        HashMap<String, Object> args = new HashMap<>();
-//        args.put("job", job);
-//        args.put("CompanyId", "1");
-//        JobService.serve("post.job.company",args);
-//        args.put("jobId", "30");
-//        job  = (Job) JobService.serve("job.listing",args);
-//        assertEquals("Job title match" , "Software coder" ,job.getJobTitle());
-//    }
-//
-//    @Test
-//    public void TestRespondToApplicandService(){
-//
-//    }
+
+    @Test
+    public void testJobListingService() throws Exception {
+        HashMap<String, Object> args = new HashMap<>();
+        args.put("jobId", "1");
+        Job results = (Job) JobService.serve("job.listing",args);
+        assertEquals("matching industryType" , "Software" ,results.getIndustryType());
+    }
+
+    @Test
+    public void testDeleteJobAsCompanyService() throws Exception {
+        HashMap<String, Object> args = new HashMap<>();
+        args.put("jobId", "3");
+        JobService.serve("delete.job.company",args);
+        args = new HashMap<>();
+        args.put("jobId", "3");
+        Job job  = (Job) JobService.serve("job.listing",args);
+        assertEquals("Job is deleted" , null ,job);
+    }
+
+    @Test
+    public void testCreateJobAsCompany() throws Exception {
+        Job job  = new Job();
+        job.setJobTitle("Software coder");
+        HashMap<String, Object> args = new HashMap<>();
+        args.put("job", job);
+        args.put("CompanyId", "1");
+        JobService.serve("post.job.company",args);
+        args.put("jobId", "30");
+        job  = (Job) JobService.serve("job.listing",args);
+        assertEquals("Job title match" , "Software coder" ,job.getJobTitle());
+    }
+
+    @Test
+    public void TestRespondToApplicandService(){
+
+    }
 
 
     @Test
@@ -112,10 +111,28 @@ public class JobsServiceTest {
 
     @Test
     public void TestGetAppliedJobs() throws Exception {
+        Job job = new Job();
+        Company comp = new Company();
+        comp.setAdminUserID("1");
+        comp.setCompanyId("203");
+        comp.setCompanyName("face");
+        job.setJobId("52");
+        job.setCompanyId("203");
+        job.setJobTitle("ACMER1");
+        jobsCollection.insertDocument(job);
         HashMap<String, Object> args = new HashMap<>();
         args.put("userId", "1");
-        ArrayList<Job> appliedJobs = (ArrayList<Job>) JobService.serve("view.applied.jobs", args);
-        assertEquals("size equal 2" , 2 ,appliedJobs.size());
+        args.put("jobId","52");
+        String query = "{CALL Insert_Job(?,?,?)}";
+        Connection mysqlConnection = DatabaseConnection.getInstance().getMysqlDriver();
+        CallableStatement stmt = mysqlConnection.prepareCall(query);
+        stmt.setString(1, "52");
+        stmt.setString(2, (String)args.get("jobTitle"));
+        stmt.setString(3, "203");
+        stmt.executeQuery();
+        JobService.serve("user.apply.job",args);
+        ArrayList<ReturnedJob> appliedJobs = (ArrayList<ReturnedJob>) JobService.serve("view.applied.jobs", args);
+        assertEquals("CompanyName is face" , "face" ,appliedJobs.get(0).getCompanyName());
     }
 
     @Test
@@ -125,7 +142,7 @@ public class JobsServiceTest {
         comp.setAdminUserID("1");
         comp.setCompanyId("214");
         companyCollection.insertDocument(comp);
-        job.setJobID("308");
+        job.setJobId("308");
         job.setCompanyId("213");
         job.setJobTitle("ACMER");
         jobsCollection.insertDocument(job);
@@ -142,7 +159,7 @@ public class JobsServiceTest {
 
     @AfterClass
     public static void cleanAfterTest() throws IOException, SQLException {
-        //databaseSeed.deleteAllJobs();
+        databaseSeed.deleteAllJobs();
     }
 
 }

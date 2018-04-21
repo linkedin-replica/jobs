@@ -1,6 +1,8 @@
 package com.linkedin.replica.jobs.database.handlers;
 
 import com.linkedin.replica.jobs.models.Job;
+import com.linkedin.replica.jobs.models.ReturnedJob;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -11,8 +13,8 @@ import java.util.List;
 
 public interface JobsHandler extends DatabaseHandler{
 
-    public ArrayList<Job> getAppliedJobs(String userID) throws SQLException;
-    public  ArrayList<Job> getSavedJobs(String userId) throws SQLException;
+    public ArrayList<ReturnedJob> getAppliedJobs(String userID) throws SQLException;
+    public  ArrayList<ReturnedJob> getSavedJobs(String userId) throws SQLException;
     public void createJobAsaCompany(HashMap<String, Object > args) throws SQLException;
     public void deleteJobAsaCompany(String userId,String jobId);
     public Job getJob(String JobID);

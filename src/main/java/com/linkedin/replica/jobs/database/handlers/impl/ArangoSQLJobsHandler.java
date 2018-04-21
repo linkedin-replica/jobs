@@ -10,6 +10,7 @@ import java.util.List;
 import com.arangodb.*;
 import com.arangodb.entity.BaseDocument;
 import com.arangodb.entity.MultiDocumentEntity;
+import com.arangodb.velocypack.VPackSlice;
 import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 import com.linkedin.replica.jobs.config.Configuration;
 import com.linkedin.replica.jobs.database.DatabaseConnection;
@@ -111,29 +112,31 @@ public class ArangoSQLJobsHandler implements JobsHandler {
             }
         return Ids;
     }
-    public ArrayList<Job> getAppliedJobs( String userId) throws SQLException {
-        Collection<String> keys = this.getAppliedJobsIDs(userId);
-        MultiDocumentEntity<Job> cursor = dbInstance.collection(jobsCollectionName).getDocuments(keys,Job.class);
-        Collection<Job> jobs = cursor.getDocuments();
-       return new ArrayList<Job>(jobs);
+    public ArrayList<ReturnedJob> getAppliedJobs( String userId) throws SQLException {
+        ArrayList<String> keys = this.getAppliedJobsIDs(userId);
+        return (getReturnedJobs(keys));
     }
 
 
     public ArrayList<ReturnedJob> getReturnedJobs( ArrayList<String> ids){
         String Query = "FOR job in jobs\n" +
                 "filter job._key in @jobIds\n" +
-                "let companys = (" +
                 "    for company in companies\n" +
                 "    filter company._key == job.companyId\n" +
-                "    return {company.companyName, companyProfilePicture}\n" +
-                ")\n" +
-                "return { [ \"companies\" ]:companys,[\"jobs\" ]: job}";
+                "   return MERGE_RECURSIVE(\n" +
+                "                job,\n" +
+                "                {\"companyName\": company.companyName, \"companyPicture\": company.companyPicture}\n" +
+                "                    \n" +
+                "                )";
         Map<String, Object>  bindVars = new HashMap<>();
         bindVars.put("jobIds",ids);
-        ArangoCursor<String> cursor = dbInstance.query(Query, bindVars, null, String.class);
-        System.out.println(cursor.next());
-        return null;
+        ArangoCursor<ReturnedJob> cursor = dbInstance.query(Query, bindVars, null, ReturnedJob.class);
+        ArrayList<ReturnedJob>jobs = new ArrayList<>();
+          while (cursor.hasNext())
+            jobs.add(cursor.next());
+        return jobs;
     }
+
     public void user_save_job(String userId,String jobId) throws SQLException {
         String query = "{CALL Save_Job(?,?)}";
         CallableStatement stmt = mysqlConnection.prepareCall(query);
@@ -143,7 +146,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
     }
 
 
-    public  ArrayList<Job> getSavedJobs(String userId) throws SQLException {
+    public  ArrayList<ReturnedJob> getSavedJobs(String userId) throws SQLException {
         String query = "{CALL Get_Saved_Job(?)}";
         CallableStatement stmt = mysqlConnection.prepareCall(query);
         ResultSet result = stmt.executeQuery();
@@ -152,16 +155,12 @@ public class ArangoSQLJobsHandler implements JobsHandler {
             String jobId = result.getString("job_id");
             Ids.add(jobId);
         }
-        Collection<String> keys = this.getAppliedJobsIDs(userId);
-        MultiDocumentEntity<Job> cursor= dbInstance.collection(jobsCollectionName).getDocuments(keys,Job.class);
-        Collection<Job> jobs = cursor.getDocuments();
-        return new ArrayList<Job>(jobs);
+        return (getReturnedJobs(Ids));
     }
 
         public void createJobAsaCompany(HashMap<String, Object> args) throws SQLException {
             String userId = (String)args.get("userId");
             String companyId = (String) args.get("companyId");
-            System.out.println(userId + " " + companyId);
             if(ValidateCompany(userId,companyId)) {
                 String query = "{CALL Insert_Job(?,?,?)}";
                 CallableStatement stmt = mysqlConnection.prepareCall(query);
@@ -172,7 +171,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
                 stmt.setString(3, companyId);
                 stmt.executeQuery();
                 Job job = new Job();
-                job.setJobID(jobId);
+                job.setJobId(jobId);
                 job.setCompanyId(companyId);
                 job.setJobTitle((String)args.get("jobTitle"));
                 if(args.containsKey("industryType"))
@@ -191,27 +190,29 @@ public class ArangoSQLJobsHandler implements JobsHandler {
                     Job.class);
             return job;
         }
-//
+
     public void editJob(HashMap<String, Object > args){
-        String query ="For t in " + jobsCollectionName + " FILTER " +
-                "t._key == @jobId" + " UPDATE t " + "WITH{";
-        String fields;
-        Map<String, Object>  bindVars = new HashMap<>();
-        bindVars.put("jobId",args.get("jobId").toString());
-        int counter = 0;
-        for (String key : args.keySet()) {
-            if (!key.equals("jobId") && !key.equals("userId")) {
-                query += key + ":@field" + counter + " ,";
-                bindVars.put("field" + counter, args.get(key));
-                counter++;
+        if(validateJob((String)args.get("userId"),(String)args.get("jobId"))) {
+            String query = "For t in " + jobsCollectionName + " FILTER " +
+                    "t._key == @jobId" + " UPDATE t " + "WITH{";
+            String fields;
+            Map<String, Object> bindVars = new HashMap<>();
+            bindVars.put("jobId", args.get("jobId").toString());
+            int counter = 0;
+            for (String key : args.keySet()) {
+                if (!key.equals("jobId") && !key.equals("userId")) {
+                    query += key + ":@field" + counter + " ,";
+                    bindVars.put("field" + counter, args.get(key));
+                    counter++;
+                }
             }
+            query = query.substring(0, query.length() - 1);
+            query += "} IN " + jobsCollectionName;
+            System.out.println("Query opa " + query);
+            dbInstance.query(query, bindVars, null, Job.class);
         }
-        query = query.substring(0,query.length()-1);
-        query += "} IN " + jobsCollectionName;
-        System.out.println("Query opa " + query);
-        dbInstance.query(query, bindVars, null, Job.class);
     }
-//
+
     public void deleteJobAsaCompany(String userId,String jobId){
         if(validateJob(userId,jobId))
             jobsCollection.deleteDocument(jobId);

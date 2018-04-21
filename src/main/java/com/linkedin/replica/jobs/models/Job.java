@@ -25,7 +25,7 @@ public class Job {
     }
 
 
-    public void setJobID(String jobID) {
+    public void setJobId(String jobID) {
         this.jobId = jobID;
         this.jobID = jobID;
     }
@@ -46,7 +46,7 @@ public class Job {
         this.jobTitle = jobTitle;
     }
 
-    public String getJobID() {
+    public String getJobId() {
         return jobId;
     }
 
@@ -55,13 +55,11 @@ public class Job {
     }
 
 
-    public String getCompanyID() {
-        return companyId;
-    }
-
     public String getCompanyId() {
         return companyId;
     }
+
+   
 
     public void setCompanyId(String companyId) {
         this.companyId = companyId;

@@ -52,11 +52,11 @@ public class SqlHandlerTest {
     }
 
 
-//    @Test
-//    public void getAppliedjobsTest() throws IOException, SQLException {
-//        ArrayList<String> jobs = mysqlHandler.getAppliedJobsIDs("1");
-//        assertEquals("Jobs must be of size 1" ,jobs.size() ,2);
-//    }
+    @Test
+    public void getAppliedjobsTest() throws IOException, SQLException {
+        ArrayList<String> jobs = mysqlHandler.getAppliedJobsIDs("1");
+        assertEquals("Jobs must be of size 1" ,jobs.size() ,2);
+    }
 //
     @Test
     public void respondToApplicantTest() throws SQLException {
@@ -65,15 +65,13 @@ public class SqlHandlerTest {
         comp.setCompanyId("103");
         companyCollection.insertDocument(comp);
         Job job = new Job();
-        job.setJobID("102");
+        job.setJobId("102");
         job.setCompanyId("103");
         jobsCollection.insertDocument(job);
         mysqlHandler.userApplyForJob("5","102");
         mysqlHandler.RespondToJobsAsCompany("100","102","5",1);
     }
-//
-//
-//
+
     @Test
     public void userAppliedForJobTest() throws SQLException {
         mysqlHandler.userApplyForJob("4","20");
@@ -86,12 +84,12 @@ public class SqlHandlerTest {
         comp.setCompanyId("102");
         companyCollection.insertDocument(comp);
         Job job = new Job();
-        job.setJobID("101");
+        job.setJobId("101");
         job.setCompanyId("102");
         jobsCollection.insertDocument(job);
         Company compTest = companyCollection.getDocument("102",Company.class);
         Job jobTest = jobsCollection.getDocument("101",Job.class);
-        assertEquals("company id = 102" ,jobTest.getCompanyID() ,"102");
+        assertEquals("company id = 102" ,jobTest.getCompanyId() ,"102");
         assertEquals("user id = 100 " ,compTest.getAdminUserID() ,"100");
         mysqlHandler.deleteJobAsaCompany("100","101");
         Job jobTest1 = jobsCollection.getDocument("101",Job.class);
