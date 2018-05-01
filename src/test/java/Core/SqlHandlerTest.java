@@ -69,7 +69,7 @@ public class SqlHandlerTest {
         job.setCompanyId("103");
         jobsCollection.insertDocument(job);
         mysqlHandler.userApplyForJob("5","102");
-        mysqlHandler.RespondToJobsAsCompany("100","102","5",1);
+        mysqlHandler.respondToJobsAsCompany("100","102","5",1);
     }
 
     @Test

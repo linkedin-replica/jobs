@@ -40,7 +40,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         companyCollectionName = config.getArangoConfigProp("collection.companies.name");
     }
 
-    public boolean RespondToJobsAsCompany(String userId,String jobId,String applicantId, int status) throws SQLException {
+    public boolean respondToJobsAsCompany(String userId,String jobId,String applicantId, int status) throws SQLException {
          if(validateJob(userId,jobId)){
             String query = "{CALL respond_to_applicant(?,?,?)}";
             CallableStatement stmt = mysqlConnection.prepareCall(query);
@@ -76,7 +76,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
     }
 
 
-    public boolean ValidateCompany(String userId, String companyId){
+    public boolean validateCompany(String userId, String companyId){
         Map<String, Object> bindVars = new HashMap<>();
         String query = "For t in " + companyCollectionName + " FILTER " +
                 "t.companyId == @CompanyId" +
@@ -137,7 +137,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         return jobs;
     }
 
-    public void user_save_job(String userId,String jobId) throws SQLException {
+    public void userSaveJob(String userId,String jobId) throws SQLException {
         String query = "{CALL Save_Job(?,?)}";
         CallableStatement stmt = mysqlConnection.prepareCall(query);
         stmt.setString(1, userId);
@@ -161,7 +161,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         public void createJobAsaCompany(HashMap<String, Object> args) throws SQLException {
             String userId = (String)args.get("userId");
             String companyId = (String) args.get("companyId");
-            if(ValidateCompany(userId,companyId)) {
+            if(validateCompany(userId,companyId)) {
                 String query = "{CALL Insert_Job(?,?,?)}";
                 CallableStatement stmt = mysqlConnection.prepareCall(query);
                 String jobId = UUID.randomUUID().toString();

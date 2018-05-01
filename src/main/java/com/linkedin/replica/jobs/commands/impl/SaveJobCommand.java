@@ -14,7 +14,7 @@ public class SaveJobCommand  extends Command {
     public Object execute() throws IOException, SQLException {
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;
         validateArgs(new String[]{"userId","jobId"});
-        jobsHandler.user_save_job((String)args.get("userId"), (String)args.get("jobId"));
+        jobsHandler.userSaveJob((String)args.get("userId"), (String)args.get("jobId"));
         return null;
     }
 }

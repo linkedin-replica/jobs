@@ -16,9 +16,8 @@ public class UserApplyForJobCommand extends Command {
 
     public Object execute() throws IOException, SQLException {
         validateArgs(new String[]{"userId","jobId"});
-        // get notifications from db
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;
-        boolean applied = jobsHandler.userApplyForJob((String)args.get("userId"), (String)args.get("jobId"));
+        jobsHandler.userApplyForJob((String)args.get("userId"), (String)args.get("jobId"));
         return  null;
     }
 }
