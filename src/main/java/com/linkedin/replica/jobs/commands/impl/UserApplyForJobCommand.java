@@ -18,8 +18,9 @@ public class UserApplyForJobCommand extends Command {
     public Object execute() throws IOException, SQLException {
         validateArgs(new String[]{"userId","jobId"});
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;
-        String userId = ((JsonObject) args.get("userId")).getAsString();
-        String jobId = ((JsonObject) args.get("jobId")).getAsString();
+        JsonObject request = (JsonObject) args.get("request");
+        String userId = (request.get("userId")).getAsString();
+        String jobId = (request.get("jobId")).getAsString();
         jobsHandler.userApplyForJob(userId, jobId);
         return  null;
     }

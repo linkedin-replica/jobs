@@ -70,7 +70,6 @@ public class ArangoSQLJobsHandler implements JobsHandler {
                     " RETURN t.userId";
             bindVars = new HashMap<>();
             bindVars.put("CompanyId", CompanyId);
-            System.out.println(CompanyId);
             cursor = dbInstance.query(query1, bindVars, null, String.class);
             String user = cursor.next();
             if (user.equals(userId))
@@ -120,7 +119,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
             }
         return Ids;
     }
-    public ArrayList<ReturnedJob> getAppliedJobs( String userId) throws SQLException {
+    public ArrayList<ReturnedJob> getAppliedJobs(String userId) throws SQLException {
         ArrayList<String> keys = this.getAppliedJobsIDs(userId);
         return (getReturnedJobs(keys));
     }
@@ -167,15 +166,15 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         return (getReturnedJobs(Ids));
     }
 
-        public void createJobAsaCompany(HashMap<String, Object> args) throws SQLException {
-            String userId = ((JsonObject) args.get("userId")).getAsString();
-            String companyId = ((JsonObject) args.get("companyId")).getAsString();
+        public void createJobAsaCompany(JsonObject args) throws SQLException {
+            String userId =  args.get("userId").getAsString();
+            String companyId =  args.get("companyId").getAsString();
             if(validateCompany(userId,companyId)) {
                 String query = "{CALL Insert_Job(?,?,?)}";
                 CallableStatement stmt = mysqlConnection.prepareCall(query);
                 String jobId = UUID.randomUUID().toString();
                 stmt.setString(1, jobId);
-                String jobTitle = ((JsonObject) args.get("jobTitle")).getAsString();
+                String jobTitle =  args.get("jobTitle").getAsString();
                 stmt.setString(2, jobTitle);
                 stmt.setString(3, companyId);
                 stmt.executeQuery();
@@ -183,16 +182,17 @@ public class ArangoSQLJobsHandler implements JobsHandler {
                 job.setJobId(jobId);
                 job.setCompanyId(companyId);
                 job.setJobTitle(jobTitle);
-                if(args.containsKey("industryType")) {
-                    String industryType = ((JsonObject) args.get("industryType")).getAsString();
+
+                if(args.get("industryType") != null) {
+                    String industryType =  args.get("industryType").getAsString();
                     job.setJobTitle(industryType);
                 }
-                if(args.containsKey("jobBrief")) {
-                    String jobBrief = ((JsonObject) args.get("jobBrief")).getAsString();
+                if(args.get("jobBrief") != null) {
+                    String jobBrief = (args.get("jobBrief")).getAsString();
                     job.setJobBrief(jobBrief);
                 }
-                if(args.containsKey("requiredSkills")) {
-                    JsonArray requiredSkills = ((JsonObject) args.get("requiredSkills")).getAsJsonArray();
+                if(args.get("requiredSkills") != null) {
+                    JsonArray requiredSkills =  args.get("requiredSkills").getAsJsonArray();
                     String[] skills = new String[requiredSkills.size()];
                     for (int i = 0; i < skills.length; i++){
                         skills[i] = requiredSkills.get(i).toString();
@@ -210,9 +210,9 @@ public class ArangoSQLJobsHandler implements JobsHandler {
             return job;
         }
 
-    public void editJob(HashMap<String, Object > args){
-        String userId = ((JsonObject) args.get("userId")).getAsString();
-        String jobId = ((JsonObject) args.get("jobId")).getAsString();
+    public void editJob(JsonObject args){
+        String userId = (args.get("userId")).getAsString();
+        String jobId = (args.get("jobId")).getAsString();
         if(validateJob(userId,jobId)){
             String query = "For t in " + jobsCollectionName + " FILTER " +
                     "t._key == @jobId" + " UPDATE t " + "WITH{";

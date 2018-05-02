@@ -19,7 +19,8 @@ public class JobListingCommand extends Command {
     public Object execute() throws IOException {
         validateArgs(new String[]{"jobId"});
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
-        String jobId = ((JsonObject) args.get("jobId")).getAsString();
+        JsonObject request = (JsonObject) args.get("request");
+        String jobId = (request.get("jobId")).getAsString();
         Job job =  jobsHandler.getJob(jobId);
         return job;
     }

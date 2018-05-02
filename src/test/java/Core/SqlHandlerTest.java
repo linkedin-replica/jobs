@@ -78,7 +78,7 @@ public class SqlHandlerTest {
     }
 
     @Test
-    public void deletejob(){
+    public void deletejob() throws SQLException {
         Company comp = new Company();
         comp.setAdminUserID("100");
         comp.setCompanyId("102");

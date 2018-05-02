@@ -53,12 +53,11 @@ public class ClientMessagesReceiver {
                             .build();
 
                     // Extract the request arguments
+                    // Extract the request arguments that have a value of type string
                     JsonObject object = new JsonParser().parse(new String(body)).getAsJsonObject();
                     String commandName = object.get("commandName").getAsString();
                     HashMap<String, Object> args = new HashMap<>();
-                    for (String key : object.keySet())
-                        if (!key.equals("commandName"))
-                            args.put(key, object.get(key));
+                    args.put("request",object);
 
                     // Call the service and form the response
                     LinkedHashMap<String, Object> response = new LinkedHashMap<>();

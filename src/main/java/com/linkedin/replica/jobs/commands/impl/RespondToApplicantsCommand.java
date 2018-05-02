@@ -17,11 +17,11 @@ public class RespondToApplicantsCommand extends Command {
     public Object execute() throws SQLException {
         validateArgs(new String[]{"userId", "jobId", "applicantId", "response"});
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;
-
-        String userId = ((JsonObject) args.get("userId")).getAsString();
-        String jobId = ((JsonObject) args.get("userId")).getAsString();
-        String applicantId = ((JsonObject) args.get("userId")).getAsString();
-        int response = ((JsonObject) args.get("response")).getAsInt();
+        JsonObject request = (JsonObject) args.get("request");
+        String userId = (request.get("userId")).getAsString();
+        String jobId = (request.get("userId")).getAsString();
+        String applicantId = (request.get("userId")).getAsString();
+        int response = (request.get("response")).getAsInt();
         jobsHandler.respondToJobsAsCompany(userId, jobId, applicantId, response);
         return null;
     }

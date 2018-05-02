@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+import com.google.gson.JsonObject;
 import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
 import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 import com.linkedin.replica.jobs.exceptions.BadRequestException;
@@ -27,11 +28,14 @@ public abstract class Command {
         this.dbHandler = dbHandler;
     }
     public abstract Object execute() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, SQLException;
+
     protected void validateArgs(String[] requiredArgs) {
+        JsonObject object = (JsonObject) args.get("request");
         for(String arg: requiredArgs)
-            if(!args.containsKey(arg)) {
+            if(!object.keySet().contains(arg)) {
                 String exceptionMsg = String.format("Cannot execute command. %s argument is missing", arg);
                 throw new BadRequestException(exceptionMsg);
             }
     }
+
 }

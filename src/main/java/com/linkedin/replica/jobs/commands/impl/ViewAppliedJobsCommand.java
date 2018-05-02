@@ -22,7 +22,8 @@ public class ViewAppliedJobsCommand extends Command {
     public Object execute() throws IOException, SQLException {
         validateArgs(new String[]{"userId"});
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;
-        String userId = ((JsonObject) args.get("userId")).getAsString();
+        JsonObject request = (JsonObject) args.get("request");
+        String userId = (request.get("userId")).getAsString();
         ArrayList<ReturnedJob> jobs = jobsHandler.getAppliedJobs(userId);
         return jobs;
     }
