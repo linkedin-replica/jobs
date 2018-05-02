@@ -1,5 +1,6 @@
 package com.linkedin.replica.jobs.commands.impl;
 
+import com.google.gson.JsonObject;
 import com.linkedin.replica.jobs.commands.Command;
 import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 import com.linkedin.replica.jobs.models.Job;
@@ -17,7 +18,9 @@ public class UserApplyForJobCommand extends Command {
     public Object execute() throws IOException, SQLException {
         validateArgs(new String[]{"userId","jobId"});
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;
-        jobsHandler.userApplyForJob((String)args.get("userId"), (String)args.get("jobId"));
+        String userId = ((JsonObject) args.get("userId")).getAsString();
+        String jobId = ((JsonObject) args.get("jobId")).getAsString();
+        jobsHandler.userApplyForJob(userId, jobId);
         return  null;
     }
 }

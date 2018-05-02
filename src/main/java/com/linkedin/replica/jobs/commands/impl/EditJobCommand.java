@@ -14,7 +14,7 @@ public class EditJobCommand extends Command {
 
     public Object execute() throws IOException, SQLException {
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;
-        validateArgs(new String[]{"userId"});
+        validateArgs(new String[]{"userId","jobId"});
         jobsHandler.editJob(args);
         return null;
     }

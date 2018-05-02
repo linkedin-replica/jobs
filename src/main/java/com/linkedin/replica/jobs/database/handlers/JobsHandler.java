@@ -16,7 +16,7 @@ public interface JobsHandler extends DatabaseHandler{
     public ArrayList<ReturnedJob> getAppliedJobs(String userID) throws SQLException;
     public  ArrayList<ReturnedJob> getSavedJobs(String userId) throws SQLException;
     public void createJobAsaCompany(HashMap<String, Object > args) throws SQLException;
-    public void deleteJobAsaCompany(String userId,String jobId);
+    public void deleteJobAsaCompany(String userId,String jobId) throws SQLException;
     public Job getJob(String JobID);
     public void userSaveJob(String userId,String jobId) throws SQLException;
     public void editJob(HashMap<String, Object > args);
