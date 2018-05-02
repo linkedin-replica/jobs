@@ -19,8 +19,8 @@ public class RespondToApplicantsCommand extends Command {
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;
         JsonObject request = (JsonObject) args.get("request");
         String userId = (request.get("userId")).getAsString();
-        String jobId = (request.get("userId")).getAsString();
-        String applicantId = (request.get("userId")).getAsString();
+        String jobId = (request.get("jobId")).getAsString();
+        String applicantId = (request.get("applicantId")).getAsString();
         int response = (request.get("response")).getAsInt();
         jobsHandler.respondToJobsAsCompany(userId, jobId, applicantId, response);
         return null;

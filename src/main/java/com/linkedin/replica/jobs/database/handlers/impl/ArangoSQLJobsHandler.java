@@ -58,7 +58,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
     }
     public boolean validateJob(String userId, String jobId){
         String query = "For t in " + jobsCollectionName + " FILTER " +
-                "t.jobId == @jobId" +
+                "t._key == @jobId" +
                 " RETURN t.companyId";
         Map<String, Object> bindVars = new HashMap<>();
         bindVars.put("jobId", jobId);
@@ -66,31 +66,33 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         if(cursor.hasNext()) {
             String CompanyId = cursor.next();
             String query1 = "For t in " + companyCollectionName + " FILTER " +
-                    "t.companyId == @CompanyId" +
+                    "t._key == @CompanyId" +
                     " RETURN t.userId";
             bindVars = new HashMap<>();
             bindVars.put("CompanyId", CompanyId);
-            cursor = dbInstance.query(query1, bindVars, null, String.class);
-            String user = cursor.next();
-            if (user.equals(userId))
-                return true;
-            return false;
+            if(cursor.hasNext()) {
+                cursor = dbInstance.query(query1, bindVars, null, String.class);
+                String user = cursor.next();
+                if (user.equals(userId))
+                    return true;
+                return false;
+            }else
+                throw new BadRequestException("Invalid User");
         }
-        return false;
+        throw new BadRequestException("Invalid User");
     }
 
 
     public boolean validateCompany(String userId, String companyId){
         Map<String, Object> bindVars = new HashMap<>();
         String query = "For t in " + companyCollectionName + " FILTER " +
-                "t.companyId == @CompanyId" +
-                " RETURN t.adminUserID";
+                "t._key == @CompanyId" +
+                " RETURN t.userId";
         bindVars = new HashMap<>();
         bindVars.put("CompanyId", companyId);
         ArangoCursor<String> cursor = dbInstance.query(query, bindVars, null, String.class);
         if(cursor.hasNext()){
         String user = cursor.next();
-        System.out.println("userId" + user);
         if(user.equals(userId))
             return true;
         return false;
@@ -204,10 +206,14 @@ public class ArangoSQLJobsHandler implements JobsHandler {
 
     }
 
-        public  Job getJob(String jobId){
-            Job job = jobsCollection.getDocument(jobId,
-                    Job.class);
-            return job;
+        public  ReturnedJob getJob(String jobId){
+        ArrayList<String> ids = new ArrayList<>();
+        ids.add(jobId);
+        ArrayList<ReturnedJob> jobs = getReturnedJobs(ids);
+        if(jobs.size() >= 0)
+            return jobs.get(0);
+        else
+            return null;
         }
 
     public void editJob(JsonObject args){
@@ -221,10 +227,21 @@ public class ArangoSQLJobsHandler implements JobsHandler {
             bindVars.put("jobId",jobId);
             int counter = 0;
             for (String key : args.keySet()) {
-                if (!key.equals("jobId") && !key.equals("userId")) {
-                    query += key + ":@field" + counter + " ,";
-                    bindVars.put("field" + counter, args.get(key));
-                    counter++;
+                if (!key.equals("jobId") && !key.equals("userId") && !key.equals("commandName")) {
+                    if(key.equals("requiredSkills")){
+                        JsonArray requiredSkills =  args.get("requiredSkills").getAsJsonArray();
+                        String[] skills = new String[requiredSkills.size()];
+                        for (int i = 0; i < skills.length; i++){
+                            skills[i] = requiredSkills.get(i).toString();
+                        }
+                        query += key + ":@field" + counter + " ,";
+                        bindVars.put("field" + counter, skills);
+                        counter++;
+                    }else {
+                        query += key + ":@field" + counter + " ,";
+                        bindVars.put("field" + counter, args.get(key));
+                        counter++;
+                    }
                 }
             }
             query = query.substring(0, query.length() - 1);

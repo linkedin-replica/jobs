@@ -30,7 +30,7 @@ public class RequestProcessingHandlerTest {
         // initialize configuration
         String[] a = {"src/main/resources/config/app.config",
                 "src/main/resources/config/arango.test.config",
-                "src/main/resources/config/mysql.config",
+                "src/main/resources/config/database.config",
                 "src/main/resources/config/commands.config",
                 "src/main/resources/config/controller.config"};
         Configuration.init(a[0], a[1], a[2], a[3],a[4]);
