@@ -70,20 +70,20 @@ public class ArangoSQLJobsHandler implements JobsHandler {
                     " RETURN t.userId";
             bindVars = new HashMap<>();
             bindVars.put("CompanyId", CompanyId);
-            if(cursor.hasNext()) {
                 cursor = dbInstance.query(query1, bindVars, null, String.class);
                 String user = cursor.next();
                 if (user.equals(userId))
                     return true;
                 return false;
-            }else
-                throw new BadRequestException("Invalid User");
+
         }
         throw new BadRequestException("Invalid User");
     }
 
 
     public boolean validateCompany(String userId, String companyId){
+        System.out.println(userId);
+        System.out.println(companyId);
         Map<String, Object> bindVars = new HashMap<>();
         String query = "For t in " + companyCollectionName + " FILTER " +
                 "t._key == @CompanyId" +
@@ -92,8 +92,9 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         bindVars.put("CompanyId", companyId);
         ArangoCursor<String> cursor = dbInstance.query(query, bindVars, null, String.class);
         if(cursor.hasNext()){
-        String user = cursor.next();
-        if(user.equals(userId))
+            String user = cursor.next();
+            System.out.println(user);
+            if(user.equals(userId))
             return true;
         return false;
         }
@@ -184,7 +185,6 @@ public class ArangoSQLJobsHandler implements JobsHandler {
                 job.setJobId(jobId);
                 job.setCompanyId(companyId);
                 job.setJobTitle(jobTitle);
-
                 if(args.get("industryType") != null) {
                     String industryType =  args.get("industryType").getAsString();
                     job.setJobTitle(industryType);
@@ -239,7 +239,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
                         counter++;
                     }else {
                         query += key + ":@field" + counter + " ,";
-                        bindVars.put("field" + counter, args.get(key));
+                        bindVars.put("field" + counter, args.get(key).getAsString());
                         counter++;
                     }
                 }
