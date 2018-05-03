@@ -54,19 +54,22 @@ public class ArangoSQLJobsHandler implements JobsHandler {
             stmt.executeQuery();
             return true;
         }else
-            return false;
+            throw new BadRequestException("Invalid User");
     }
     public boolean validateJob(String userId, String jobId){
         String query = "For t in " + jobsCollectionName + " FILTER " +
-                "t.jobId == @jobId" +
+                "t._key == @jobId" +
                 " RETURN t.companyId";
         Map<String, Object> bindVars = new HashMap<>();
         bindVars.put("jobId", jobId);
+        System.out.println("jobID"+jobId);
+        System.out.println("userId"+userId);
         ArangoCursor<String> cursor = dbInstance.query(query, bindVars, null, String.class);
         if(cursor.hasNext()) {
             String CompanyId = cursor.next();
+            System.out.println("companyy" +CompanyId);
             String query1 = "For t in " + companyCollectionName + " FILTER " +
-                    "t.companyId == @CompanyId" +
+                    "t._key == @CompanyId" +
                     " RETURN t.userId";
             bindVars = new HashMap<>();
             bindVars.put("CompanyId", CompanyId);
@@ -83,14 +86,16 @@ public class ArangoSQLJobsHandler implements JobsHandler {
     public boolean validateCompany(String userId, String companyId){
         Map<String, Object> bindVars = new HashMap<>();
         String query = "For t in " + companyCollectionName + " FILTER " +
-                "t.companyId == @CompanyId" +
-                " RETURN t.adminUserID";
+                "t._key == @CompanyId" +
+                " RETURN t.userId";
         bindVars = new HashMap<>();
         bindVars.put("CompanyId", companyId);
+        System.out.println(companyId);
         ArangoCursor<String> cursor = dbInstance.query(query, bindVars, null, String.class);
+        System.out.println(cursor.getCount());
         if(cursor.hasNext()){
         String user = cursor.next();
-        System.out.println("userId" + user);
+            System.out.println("userr" +user);
         if(user.equals(userId))
             return true;
         return false;
@@ -169,7 +174,9 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         public void createJobAsaCompany(JsonObject args) throws SQLException {
             String userId =  args.get("userId").getAsString();
             String companyId =  args.get("companyId").getAsString();
+            System.out.println(userId);
             if(validateCompany(userId,companyId)) {
+                System.out.println("enterhere");
                 String query = "{CALL Insert_Job(?,?,?)}";
                 CallableStatement stmt = mysqlConnection.prepareCall(query);
                 String jobId = UUID.randomUUID().toString();
@@ -200,14 +207,16 @@ public class ArangoSQLJobsHandler implements JobsHandler {
                     job.setRequiredSkills(skills);
                 }
                 jobsCollection.insertDocument(job);
-            }
+            }else
+                throw new BadRequestException("Invalid User");
 
     }
 
-        public  Job getJob(String jobId){
-            Job job = jobsCollection.getDocument(jobId,
-                    Job.class);
-            return job;
+        public  ReturnedJob getJob(String jobId){
+            ArrayList<String> ids = new ArrayList<>();
+            ids.add(jobId);
+            ArrayList<ReturnedJob> job = getReturnedJobs(ids);
+            return job.get(0);
         }
 
     public void editJob(JsonObject args){
@@ -221,15 +230,26 @@ public class ArangoSQLJobsHandler implements JobsHandler {
             bindVars.put("jobId",jobId);
             int counter = 0;
             for (String key : args.keySet()) {
-                if (!key.equals("jobId") && !key.equals("userId")) {
-                    query += key + ":@field" + counter + " ,";
-                    bindVars.put("field" + counter, args.get(key));
-                    counter++;
+                if (!key.equals("jobId") && !key.equals("userId") && !key.equals("commandName")) {
+                    if(key.equals("requiredSkills")){
+                        JsonArray requiredSkills =  args.get("requiredSkills").getAsJsonArray();
+                        String[] skills = new String[requiredSkills.size()];
+                        for (int i = 0; i < skills.length; i++){
+                            skills[i] = requiredSkills.get(i).toString();
+                        }
+                        query += key + ":@field" + counter + " ,";
+                        bindVars.put("field" + counter, skills);
+                        counter++;
+                    }else {
+                        query += key + ":@field" + counter + " ,";
+                        System.out.println(key);
+                        bindVars.put("field" + counter, args.get(key).getAsString());
+                        counter++;
+                    }
                 }
             }
             query = query.substring(0, query.length() - 1);
             query += "} IN " + jobsCollectionName;
-            System.out.println("Query opa " + query);
             dbInstance.query(query, bindVars, null, Job.class);
         }else
             throw new BadRequestException("Invalid user");
