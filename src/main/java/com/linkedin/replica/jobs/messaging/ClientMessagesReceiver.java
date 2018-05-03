@@ -4,12 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.linkedin.replica.jobs.config.Configuration;
-import com.linkedin.replica.jobs.database.DatabaseConnection;
+import com.linkedin.replica.jobs.exceptions.BadRequestException;
 import com.linkedin.replica.jobs.services.JobService;
 import com.linkedin.replica.jobs.services.Workers;
 import com.rabbitmq.client.*;
-import sun.jvm.hotspot.tools.ObjectHistogram;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -55,12 +53,11 @@ public class ClientMessagesReceiver {
                             .build();
 
                     // Extract the request arguments
+                    // Extract the request arguments that have a value of type string
                     JsonObject object = new JsonParser().parse(new String(body)).getAsJsonObject();
                     String commandName = object.get("commandName").getAsString();
                     HashMap<String, Object> args = new HashMap<>();
-                    for (String key : object.keySet())
-                        if (!key.equals("commandName"))
-                            args.put(key, object.get(key).getAsString());
+                    args.put("request",object);
 
                     // Call the service and form the response
                     LinkedHashMap<String, Object> response = new LinkedHashMap<>();
@@ -69,6 +66,10 @@ public class ClientMessagesReceiver {
                         if (results != null)
                             response.put("results", results);
                         response.put("statusCode", 200);
+                    } catch (BadRequestException e) {
+                        // set status code to 400
+                        response.put("statusCode", "400");
+                        response.put("error", e.getMessage());
                     }  catch (Exception e) {
                         e.printStackTrace();
                         // set status code to 500

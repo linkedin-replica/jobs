@@ -1,5 +1,6 @@
 package com.linkedin.replica.jobs.database.handlers;
 
+import com.google.gson.JsonObject;
 import com.linkedin.replica.jobs.models.Job;
 import com.linkedin.replica.jobs.models.ReturnedJob;
 
@@ -15,11 +16,11 @@ public interface JobsHandler extends DatabaseHandler{
 
     public ArrayList<ReturnedJob> getAppliedJobs(String userID) throws SQLException;
     public  ArrayList<ReturnedJob> getSavedJobs(String userId) throws SQLException;
-    public void createJobAsaCompany(HashMap<String, Object > args) throws SQLException;
-    public void deleteJobAsaCompany(String userId,String jobId);
-    public Job getJob(String JobID);
+    public void createJobAsaCompany(JsonObject args) throws SQLException;
+    public void deleteJobAsaCompany(String userId,String jobId) throws SQLException;
+    public ReturnedJob getJob(String JobID);
     public void userSaveJob(String userId,String jobId) throws SQLException;
-    public void editJob(HashMap<String, Object > args);
+    public void editJob(JsonObject args);
     public boolean respondToJobsAsCompany(String userId,String jobId,String applicantId, int status) throws SQLException;
     public boolean userApplyForJob(String userId, String jobId) throws SQLException;
 }

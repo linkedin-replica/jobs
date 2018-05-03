@@ -1,9 +1,11 @@
 package com.linkedin.replica.jobs.commands.impl;
 
+import com.google.gson.JsonObject;
 import com.linkedin.replica.jobs.commands.Command;
 import com.linkedin.replica.jobs.database.handlers.DatabaseHandler;
 import com.linkedin.replica.jobs.database.handlers.JobsHandler;
 import com.linkedin.replica.jobs.models.Job;
+import com.linkedin.replica.jobs.models.ReturnedJob;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -18,7 +20,9 @@ public class JobListingCommand extends Command {
     public Object execute() throws IOException {
         validateArgs(new String[]{"jobId"});
         JobsHandler jobsHandler = (JobsHandler) this.dbHandler;;
-        Job job =  jobsHandler.getJob((String)args.get("jobId"));
+        JsonObject request = (JsonObject) args.get("request");
+        String jobId = (request.get("jobId")).getAsString();
+        ReturnedJob job =  jobsHandler.getJob(jobId);
         return job;
     }
 }

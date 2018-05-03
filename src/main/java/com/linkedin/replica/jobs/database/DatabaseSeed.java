@@ -208,5 +208,6 @@ public class DatabaseSeed {
     public static void closeDBConnection() throws ArangoDBException, IOException, SQLException, ClassNotFoundException {
 
         DatabaseConnection.getInstance().getArangoDriver().shutdown();
+
     }
 }
