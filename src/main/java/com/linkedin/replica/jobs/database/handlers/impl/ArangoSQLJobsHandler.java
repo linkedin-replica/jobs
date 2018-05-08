@@ -142,6 +142,7 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         bindVars.put("jobIds",ids);
         ArangoCursor<ReturnedJob> cursor = dbInstance.query(Query, bindVars, null, ReturnedJob.class);
         ArrayList<ReturnedJob>jobs = new ArrayList<>();
+        System.out.println(Query);
           while (cursor.hasNext())
             jobs.add(cursor.next());
         return jobs;
@@ -210,7 +211,8 @@ public class ArangoSQLJobsHandler implements JobsHandler {
         ArrayList<String> ids = new ArrayList<>();
         ids.add(jobId);
         ArrayList<ReturnedJob> jobs = getReturnedJobs(ids);
-        if(jobs.size() >= 0)
+            System.out.println(jobs.size());
+        if(jobs.size() > 0)
             return jobs.get(0);
         else
             return null;
