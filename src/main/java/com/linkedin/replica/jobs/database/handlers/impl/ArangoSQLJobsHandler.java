@@ -203,7 +203,8 @@ public class ArangoSQLJobsHandler implements JobsHandler {
                     job.setRequiredSkills(skills);
                 }
                 jobsCollection.insertDocument(job);
-            }
+            }else
+                throw new BadRequestException("invalid comapany");
 
     }
 
